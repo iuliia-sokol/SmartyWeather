@@ -2,9 +2,10 @@ import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useGeolocated } from 'react-geolocated';
-
-const PLACES_TOKEN = process.env.REACT_APP_MAP_API_KEY;
-console.log(PLACES_TOKEN);
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCity } from 'redux/location/locOperations';
+import { setLatitude, setLongitude } from 'redux/location/locSlice';
+// import { getCity } from 'services/getCityName';
 
 export const App = () => {
   const { coords, isGeolocationAvailable, isGeolocationEnabled } =
@@ -17,16 +18,24 @@ export const App = () => {
       suppressLocationOnMount: false,
     });
 
-  const [latitude, setLatitude] = useState('');
-  const [longitude, setLongitude] = useState('');
+  // const [latitude, setLatitude] = useState('');
+  // const [longitude, setLongitude] = useState('');
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (coords) {
-      setLatitude(coords.latitude);
-      setLongitude(coords.longitude);
+      dispatch(setLatitude(coords.latitude));
+      dispatch(setLongitude(coords.longitude));
+      // getCity(coords.latitude, coords.longitude);
+      dispatch(fetchCity());
     }
     return;
-  }, [coords]);
+  }, [coords, dispatch]);
+
+  const latitude = useSelector(state => state.location.latitude);
+  const longitude = useSelector(state => state.location.longitude);
+  const city = useSelector(state => state.location.city);
 
   return !isGeolocationAvailable ? (
     <div>Your browser does not support Geolocation</div>
@@ -42,6 +51,10 @@ export const App = () => {
         <tr>
           <td>longitude</td>
           <td>{longitude}</td>
+        </tr>
+        <tr>
+          <td>city</td>
+          <td>{city}</td>
         </tr>
       </tbody>
     </table>
