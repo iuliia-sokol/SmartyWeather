@@ -3,7 +3,8 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useGeolocated } from 'react-geolocated';
 
-// const PLACES_TOKEN = process.env.REACT_APP_MAP_API_KEY;
+const PLACES_TOKEN = process.env.REACT_APP_MAP_API_KEY;
+console.log(PLACES_TOKEN);
 
 export const App = () => {
   const { coords, isGeolocationAvailable, isGeolocationEnabled } =
