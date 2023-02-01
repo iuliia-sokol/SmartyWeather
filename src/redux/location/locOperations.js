@@ -17,3 +17,17 @@ export const fetchCity = createAsyncThunk(
     }
   }
 );
+
+export const fetchImage = createAsyncThunk(
+  'getCityImage',
+  async (_, { getState, rejectWithValue }) => {
+    try {
+      const { location } = getState();
+      const data = await getCity(location.latitude, location.longitude);
+      return data;
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error);
+    }
+  }
+);

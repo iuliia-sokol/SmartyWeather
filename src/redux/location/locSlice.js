@@ -13,6 +13,7 @@ export const locationSlice = createSlice({
     latitude: null,
     longitude: null,
     city: null,
+    image: null,
     isLoading: false,
     error: null,
   },
@@ -30,7 +31,6 @@ export const locationSlice = createSlice({
     builder
       .addCase(fetchCity.pending, onPending)
       .addCase(fetchCity.fulfilled, (state, { payload }) => {
-        console.log(payload);
         state.isLoading = false;
         state.city = payload;
       })

@@ -15,7 +15,7 @@ import { locationSlice } from './location/locSlice';
 const persistConfig = {
   key: 'root',
   storage,
-  // whitelist: [],
+  whitelist: ['city'],
 };
 
 const persistedReducer = persistReducer(persistConfig, locationSlice.reducer);
