@@ -6,15 +6,13 @@ import { Card } from './Card.styled';
 import { getCityImages, getCityName } from 'redux/location/locSelectors';
 import { useMediaQuery } from 'hooks/useMedia';
 import bgImgMob from '../../images/umbrella-red-wallpaper-mob.jpg';
-import bgImg from '../../images/umbrella-red-wallpaper.jpg';
+import bgImg from '../../images/umbrella-red-wallpaper.jpg'; // 'https://www.wallpaperflare.com/static/79/210/459/nature-sky-umbrella-red-wallpaper-preview.jpg';
 
 export function CardUI() {
   const isRowBased = useMediaQuery('(min-width: 500px)');
   const city = useSelector(getCityName);
   const images = useSelector(getCityImages);
-  const defaultImg = { bgImg };
-  // 'https://www.wallpaperflare.com/static/79/210/459/nature-sky-umbrella-red-wallpaper-preview.jpg';
-  const defaultImgMob = { bgImgMob };
+
   const [image, setImage] = useState('');
   const [imageMob, setImageMob] = useState('');
 
@@ -41,8 +39,8 @@ export function CardUI() {
     <Card
       style={{
         backgroundImage: !isRowBased
-          ? `url(${imageMob ?? defaultImgMob})`
-          : `url(${image ?? defaultImg})`,
+          ? `url(${imageMob ?? bgImgMob})`
+          : `url(${image ?? bgImg})`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
       }}
