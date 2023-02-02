@@ -8,7 +8,8 @@ import { getCityImages, getCityName } from 'redux/location/locSelectors';
 export function CardUI() {
   const city = useSelector(getCityName);
   const images = useSelector(getCityImages);
-
+  const defaultImg =
+    'https://www.wallpaperflare.com/static/79/210/459/nature-sky-umbrella-red-wallpaper-preview.jpg';
   const [image, setImage] = useState('');
 
   const dispatch = useDispatch();
@@ -29,14 +30,12 @@ export function CardUI() {
   }, [images]);
 
   return (
-    <Card>
-      <img
-        alt={city}
-        src={
-          image ??
-          'https://www.wallpaperflare.com/static/79/210/459/nature-sky-umbrella-red-wallpaper-preview.jpg'
-        }
-      />
-    </Card>
+    <Card
+      style={{
+        backgroundImage: `url(${image ?? defaultImg})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+      }}
+    ></Card>
   );
 }

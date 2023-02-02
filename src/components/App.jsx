@@ -43,7 +43,7 @@ export const App = () => {
   ) : !isGeolocationEnabled ? (
     <div>Geolocation is not enabled</div>
   ) : latitude && longitude ? (
-    <main>
+    <>
       <CardUI />
       <Container>
         <table>
@@ -63,7 +63,7 @@ export const App = () => {
           </tbody>
         </table>
       </Container>
-    </main>
+    </>
   ) : (
     <div>Getting the location data&hellip; </div>
   );
