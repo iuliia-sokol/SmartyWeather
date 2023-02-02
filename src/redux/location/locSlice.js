@@ -1,7 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-// import Notiflix from 'notiflix';
-// import { notifySettings } from '../../utils/notifySettings';
-import { fetchCity } from './locOperations';
+
+import {
+  fetchCity,
+  fetchCityID,
+  fetchPexelsImage,
+  fetchPixabayImage,
+} from './locOperations';
 
 const onPending = state => {
   state.isLoading = true;
@@ -13,6 +17,7 @@ export const locationSlice = createSlice({
     latitude: null,
     longitude: null,
     city: null,
+    cityID: null,
     image: null,
     isLoading: false,
     error: null,
@@ -31,10 +36,40 @@ export const locationSlice = createSlice({
     builder
       .addCase(fetchCity.pending, onPending)
       .addCase(fetchCity.fulfilled, (state, { payload }) => {
+        // console.log(payload);
         state.isLoading = false;
-        state.city = payload;
+        state.city = payload.cityName;
+        state.cityID = payload.placeId;
       })
       .addCase(fetchCity.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      })
+      .addCase(fetchCityID.pending, onPending)
+      .addCase(fetchCityID.fulfilled, (state, { payload }) => {
+        console.log(payload);
+        state.isLoading = false;
+        state.cityID = payload;
+      })
+      .addCase(fetchCityID.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      })
+      .addCase(fetchPixabayImage.pending, onPending)
+      .addCase(fetchPixabayImage.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.image = payload;
+      })
+      .addCase(fetchPixabayImage.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      })
+      .addCase(fetchPexelsImage.pending, onPending)
+      .addCase(fetchPexelsImage.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.image = payload;
+      })
+      .addCase(fetchPexelsImage.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
       });

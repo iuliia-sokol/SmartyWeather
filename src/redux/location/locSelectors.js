@@ -1,3 +1,5 @@
+export const getCityId = state => state.location.cityID;
+
 // export const getUser = state => state.auth.user;
 // export const getLoadingStatus = state => state.auth.isLoading;
 // export const getLogStatus = state => state.auth.isLoggedIn;

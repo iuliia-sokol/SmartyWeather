@@ -1,37 +1,29 @@
-// const { default: axios } = require('axios');
-
 const PLACES_TOKEN = process.env.REACT_APP_MAP_API_KEY;
-// console.log(PLACES_TOKEN);
 
-const city_state = 'paris';
+// const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+const proxy = 'https://api.allorigins.win/get?url=';
 
-// const proxyUrl = 'https://my-cors-anywhere-deployment/';
-const placesRequestUrl = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${city_state}&key=${PLACES_TOKEN}&inputtype=textquery&fields=name,photos`;
-
-export const getImage = async () => {
+export const getImage = async id => {
+  const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${id}&key=${PLACES_TOKEN}`;
   try {
-    const response = await fetch(placesRequestUrl);
-    console.log(response);
-    return response;
+    const response = await fetch(`${proxy}${encodeURIComponent(`${url}`)}`);
+    const result = await response.json();
+    const data = JSON.parse(result.contents);
+    const photoRef = data.result.photos[0].photo_reference;
+
+    let imageSrc;
+    if (photoRef) {
+      const imageLookupURL = `https://maps.googleapis.com/maps/api/place/photo?photoreference=${photoRef}&photo_reference=${photoRef}&key=${PLACES_TOKEN}&maxwidth=2400&maxheight=1200`;
+
+      const imageURLQuery = await fetch(
+        `${proxy}${encodeURIComponent(`${imageLookupURL}`)}`
+      );
+
+      const res = await imageURLQuery.json();
+      imageSrc = res.status.url;
+    }
+    return imageSrc;
   } catch (error) {
     console.log(error);
   }
 };
-
-getImage();
-
-// const photoRef =
-//   initialPlacesRequest?.data?.candidates?.[0]?.photos?.[0]?.photo_reference;
-// // photoRef is the result of the initial Place Search query
-
-// if (photoRef) {
-//   const imageLookupURL = `https://maps.googleapis.com/maps/api/place/photo?photoreference=${photoRef}&key=${PLACES_TOKEN}&maxwidth=700&maxheight=700`;
-//   const imageURLQuery = await fetch(proxyURL + imageLookupURL)
-//     .then(r => r.blob())
-//     .catch(console.error);
-
-//   image = URL.createObjectURL(imageURLQuery); //declared earlier
-// }
-// more code below adds the image URL to an entry in the Redux store
-
-// console.log();
