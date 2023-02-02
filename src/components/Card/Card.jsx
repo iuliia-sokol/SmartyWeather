@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPexelsImage } from 'redux/location/locOperations';
 import { useState } from 'react';
+import { Card } from './Card.styled';
+import { getCityImages, getCityName } from 'redux/location/locSelectors';
 
 export default function CardUI() {
-  const city = useSelector(state => state.location.city);
-  const images = useSelector(state => state.location.image);
+  const city = useSelector(getCityName);
+  const images = useSelector(getCityImages);
 
   const [image, setImage] = useState('');
 
@@ -26,17 +26,14 @@ export default function CardUI() {
   }, [images]);
 
   return (
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={image} />
-      {/* <Card.Img variant="top" src={src} /> */}
-      <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
-      </Card.Body>
+    <Card>
+      <img
+        alt={city}
+        src={
+          image ??
+          'https://www.wallpaperflare.com/static/79/210/459/nature-sky-umbrella-red-wallpaper-preview.jpg'
+        }
+      />
     </Card>
   );
 }

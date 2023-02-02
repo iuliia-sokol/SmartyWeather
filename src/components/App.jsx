@@ -3,6 +3,11 @@ import { useEffect } from 'react';
 import { useGeolocated } from 'react-geolocated';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCity } from 'redux/location/locOperations';
+import {
+  getCityName,
+  getCurrentLatitude,
+  getCurrentLongitude,
+} from 'redux/location/locSelectors';
 import { setLatitude, setLongitude } from 'redux/location/locSlice';
 
 import CardUI from './Card/Card';
@@ -19,9 +24,9 @@ export const App = () => {
     });
 
   const dispatch = useDispatch();
-  const latitude = useSelector(state => state.location.latitude);
-  const longitude = useSelector(state => state.location.longitude);
-  const city = useSelector(state => state.location.city);
+  const latitude = useSelector(getCurrentLatitude);
+  const longitude = useSelector(getCurrentLongitude);
+  const city = useSelector(getCityName);
 
   useEffect(() => {
     if (coords) {
