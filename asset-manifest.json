@@ -1,13 +1,15 @@
 {
   "files": {
     "main.css": "/smartyWeather/static/css/main.418c9122.css",
-    "main.js": "/smartyWeather/static/js/main.6041d69b.js",
+    "main.js": "/smartyWeather/static/js/main.b58ce1cf.js",
+    "static/js/356.0fba04e9.chunk.js": "/smartyWeather/static/js/356.0fba04e9.chunk.js",
     "index.html": "/smartyWeather/index.html",
     "main.418c9122.css.map": "/smartyWeather/static/css/main.418c9122.css.map",
-    "main.6041d69b.js.map": "/smartyWeather/static/js/main.6041d69b.js.map"
+    "main.b58ce1cf.js.map": "/smartyWeather/static/js/main.b58ce1cf.js.map",
+    "356.0fba04e9.chunk.js.map": "/smartyWeather/static/js/356.0fba04e9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.418c9122.css",
-    "static/js/main.6041d69b.js"
+    "static/js/main.b58ce1cf.js"
   ]
 }
