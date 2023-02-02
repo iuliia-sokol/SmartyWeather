@@ -20,7 +20,8 @@ export default function CardUI() {
 
   useEffect(() => {
     if (images) {
-      setImage(images[2].landscape);
+      const random = Math.floor(Math.random() * images.length);
+      setImage(images[random].landscape);
     }
   }, [images]);
 
