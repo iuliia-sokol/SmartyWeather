@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Card } from './Card.styled';
 import { getCityImages, getCityName } from 'redux/location/locSelectors';
 
-export default function CardUI() {
+export function CardUI() {
   const city = useSelector(getCityName);
   const images = useSelector(getCityImages);
 
@@ -19,7 +19,10 @@ export default function CardUI() {
   }, [city, dispatch]);
 
   useEffect(() => {
-    if (images) {
+    if (images.length === 1) {
+      setImage(images[0].landscape);
+    }
+    if (images.length > 1) {
       const random = Math.floor(Math.random() * images.length);
       setImage(images[random].landscape);
     }

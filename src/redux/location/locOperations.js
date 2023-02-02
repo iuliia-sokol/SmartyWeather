@@ -63,11 +63,12 @@ export const fetchPexelsImage = createAsyncThunk(
     try {
       const { location } = getState();
       const data = await getCityImagePexels(`${location.city}`);
-      // console.log(data);
-      const pics = [];
-      data.forEach(el => pics.push(el.src));
-      // console.log(pics);
-      return pics;
+      if (data) {
+        const pics = [];
+        data.forEach(el => pics.push(el.src));
+        return pics;
+      }
+      return;
     } catch (error) {
       console.log(error);
       return rejectWithValue(error);
