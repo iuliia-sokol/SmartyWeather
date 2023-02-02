@@ -1,7 +1,11 @@
 const PLACES_TOKEN = process.env.REACT_APP_MAP_API_KEY;
 
-// const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-const proxy = 'https://api.allorigins.win/get?url=';
+// const proxyUrl = 'https://cors-anywhere.herokuapp.com/'; // ---- service currently has request limitations
+const proxy = 'https://api.allorigins.win/get?url='; //  ---- service is currently working, but permorming too slow
+
+// BELOW IS A WAY TO GET PLACE'S IMAGES FROM GOOGLE
+// THE METHOD IS LEFT HERE JUST IN CASE BUT WAS NOT ACTUALLY USED DUE TO THE CORS PROBLEMS
+// FOR FETCHING IMAGES DIRECTLY FROM GOOGLE API YOU NEED TO ADJUST YOUR OWN PROXY SERVER FIRST
 
 export const getImage = async id => {
   const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${id}&key=${PLACES_TOKEN}`;

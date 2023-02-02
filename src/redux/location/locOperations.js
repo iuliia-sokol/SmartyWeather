@@ -8,7 +8,7 @@ import {
   getCityId,
   getCityImagePexels,
   getCityImagePixabay,
-} from 'services/getCity';
+} from 'services/currentLocationAPI';
 
 export const fetchCity = createAsyncThunk(
   'getCity',
