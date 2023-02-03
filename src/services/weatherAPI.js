@@ -3,7 +3,7 @@ import axios from 'axios';
 const WEATHER_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 
 export const getCurrentWeatherFromWeatherApi = async (lat, long) => {
-  axios.defaults.baseURL = 'http://api.weatherapi.com/v1';
+  axios.defaults.baseURL = 'https://api.weatherapi.com/v1';
   try {
     const { data } = await axios.get(
       `/current.json?key=${WEATHER_KEY}&q=${lat},${long}&aqi=yes`
@@ -18,7 +18,7 @@ export const getCurrentWeatherFromWeatherApi = async (lat, long) => {
 // IF WEATHER FORCAST NEEDED: for free mode 3 day city and town weather are available. Daily and Hourly.
 
 export const getWeatherForecastFromWeatherApi = async (lat, long) => {
-  axios.defaults.baseURL = 'http://api.weatherapi.com/v1';
+  axios.defaults.baseURL = 'https://api.weatherapi.com/v1';
   try {
     const { data } = await axios.get(
       `/forecast.json?key=${WEATHER_KEY}&q=${lat},${long}&aqi=yes`
@@ -31,7 +31,7 @@ export const getWeatherForecastFromWeatherApi = async (lat, long) => {
 };
 
 export const getAstroDataFromWeatherApi = async (lat, long) => {
-  axios.defaults.baseURL = 'http://api.weatherapi.com/v1';
+  axios.defaults.baseURL = 'https://api.weatherapi.com/v1';
   try {
     const { data } = await axios.get(
       `/astronomy.json?key=${WEATHER_KEY}&q=${lat},${long}`
