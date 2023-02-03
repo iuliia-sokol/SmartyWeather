@@ -7,6 +7,7 @@ import { notifySettings } from 'utils/notifySettings';
 const PLACES_TOKEN = process.env.REACT_APP_MAP_API_KEY;
 const PEXELS_KEY = process.env.REACT_APP_PEXELS_API_KEY;
 const PIXABAY_KEY = process.env.REACT_APP_PIXABAY_API_KEY;
+const TIMEZONE_API = process.env.REACT_APP_TIMEZONE_API;
 
 const client = createClient(PEXELS_KEY);
 Geocode.setApiKey(PLACES_TOKEN);
@@ -61,6 +62,17 @@ export const getCityId = async (lat, long) => {
   }
 };
 
+export const getTimezone = async (lat, long) => {
+  const url = `https://timezone.abstractapi.com/v1/current_time?api_key=${TIMEZONE_API}&location=${lat},${long}`;
+  try {
+    const { data } = await axios.get(url);
+    // console.log(data);
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 // USED IMAGES API
 
 export async function getCityImagePexels(query) {
@@ -86,9 +98,7 @@ export async function getCityImagePixabay(searchQuery) {
     page: 1,
     per_page: 12,
   });
-
   const url = `https://pixabay.com/api/?${searchParams}`;
-
   const response = await axios.get(url);
   if (response.status === 404) {
     Notiflix.Notify.failure(

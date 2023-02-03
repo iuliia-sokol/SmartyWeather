@@ -1,9 +1,10 @@
 import { CardUI } from 'components/Card/Card';
 import { Container } from 'components/Container/Container';
+import { WeatherUI } from 'components/WeatherBox/WeatherBox';
 import { useEffect } from 'react';
 import { useGeolocated } from 'react-geolocated';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCity } from 'redux/location/locOperations';
+import { fetchCity, fetchTimezone } from 'redux/location/locOperations';
 import {
   getCityName,
   getCurrentLatitude,
@@ -29,9 +30,10 @@ const Homepage = () => {
 
   useEffect(() => {
     if (coords) {
-      dispatch(setLatitude(coords.latitude));
-      dispatch(setLongitude(coords.longitude));
+      dispatch(setLatitude(coords.latitude.toFixed(2)));
+      dispatch(setLongitude(coords.longitude.toFixed(2)));
       dispatch(fetchCity());
+      dispatch(fetchTimezone());
     }
     return;
   }, [coords, dispatch]);
@@ -60,6 +62,7 @@ const Homepage = () => {
             </tr>
           </tbody>
         </table>
+        <WeatherUI />
       </Container>
     </>
   ) : (

@@ -8,7 +8,9 @@ import {
   getCityId,
   getCityImagePexels,
   getCityImagePixabay,
+  getTimezone,
 } from 'services/currentLocationAPI';
+import { getCurrentWeather } from 'services/weatherAPI';
 
 export const fetchCity = createAsyncThunk(
   'getCity',
@@ -69,6 +71,40 @@ export const fetchPexelsImage = createAsyncThunk(
         return pics;
       }
       return;
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const fetchCurrentWeather = createAsyncThunk(
+  'getCurrentWeather',
+  async (_, { getState, rejectWithValue }) => {
+    try {
+      const { location } = getState();
+      const result = await getCurrentWeather(
+        +location.latitude,
+        +location.longitude,
+        location.timezone
+      );
+      // console.log(result.current_weather);
+      return result;
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const fetchTimezone = createAsyncThunk(
+  'getTimezone',
+  async (_, { getState, rejectWithValue }) => {
+    try {
+      const { location } = getState();
+      const result = await getTimezone(location.latitude, location.longitude);
+      // console.log(result);
+      return result.timezone_location;
     } catch (error) {
       console.log(error);
       return rejectWithValue(error);

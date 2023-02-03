@@ -5,6 +5,8 @@ import {
   fetchCityID,
   fetchPexelsImage,
   fetchPixabayImage,
+  fetchCurrentWeather,
+  fetchTimezone,
 } from './locOperations';
 
 const onPending = state => {
@@ -18,6 +20,8 @@ export const locationSlice = createSlice({
     longitude: null,
     city: null,
     cityID: null,
+    timezone: null,
+    weather: null,
     image:
       'https://www.wallpaperflare.com/static/79/210/459/nature-sky-umbrella-red-wallpaper-preview.jpg',
     isLoading: false,
@@ -71,6 +75,24 @@ export const locationSlice = createSlice({
         state.image = payload;
       })
       .addCase(fetchPexelsImage.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      })
+      .addCase(fetchCurrentWeather.pending, onPending)
+      .addCase(fetchCurrentWeather.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.weather = payload;
+      })
+      .addCase(fetchCurrentWeather.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      })
+      .addCase(fetchTimezone.pending, onPending)
+      .addCase(fetchTimezone.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.timezone = payload;
+      })
+      .addCase(fetchTimezone.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
       });
