@@ -31,15 +31,17 @@ const Homepage = () => {
   const [showWeather, setShowWeather] = useState(false);
 
   useEffect(() => {
-    // if (coords) {
-    // dispatch(setLatitude(coords.latitude));
-    // dispatch(setLongitude(coords.longitude));
-    dispatch(setLatitude(48.33));
-    dispatch(setLongitude(34.77));
-    dispatch(fetchCity());
-    // dispatch(fetchTimezone());
-    // }
-    // return;
+    if (coords) {
+      dispatch(setLatitude(coords.latitude));
+      dispatch(setLongitude(coords.longitude));
+      dispatch(fetchCity());
+      // ----------check exact coordinates
+      // dispatch(setLatitude(48.33));
+      // dispatch(setLongitude(34.77));
+
+      // dispatch(fetchTimezone());
+    }
+    return;
   }, [coords, dispatch]);
 
   const onWeatherBtnClick = () => {
