@@ -1,77 +1,114 @@
-import { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCurrentWeather } from 'redux/location/locOperations';
-import { getCurrentWeather, getTimezone } from 'redux/location/locSelectors';
+import {
+  fetchAstroDataFromWeatherApi,
+  fetchCurrentWeather,
+  fetchCurrentWeatherFromWeatherApi,
+  // fetchWeatherForecastFromWeatherApi,
+} from 'redux/location/locOperations';
+import {
+  getAdditionalCurrentWeather,
+  getCurrentWeather,
+  getTimezone,
+} from 'redux/location/locSelectors';
 import { WeatherWrapper } from './WeatherBox.styled';
+import AstroUI from '../AstroBox/AstroBox';
 
-export function WeatherUI() {
+function WeatherUI() {
   const timezone = useSelector(getTimezone);
   const weather = useSelector(getCurrentWeather);
-  console.log(weather);
+  const extraWeather = useSelector(getAdditionalCurrentWeather);
 
-  // const [weather, setWeather] = useState('');
+  // console.log(weather);
+  // console.log(extraWeather);
+
+  const [showAstro, setShowAstro] = useState(false);
+
+  const onShowAstroBtnClick = () => {
+    setShowAstro(!showAstro);
+  };
 
   const dispatch = useDispatch();
+
   useEffect(() => {
+    // dispatch(fetchWeatherForecastFromWeatherApi());
+    if (weather && extraWeather) {
+      return;
+    }
     if (timezone) {
       dispatch(fetchCurrentWeather());
     }
-  }, [timezone, dispatch]);
+    dispatch(fetchAstroDataFromWeatherApi());
+    dispatch(fetchCurrentWeatherFromWeatherApi());
+  }, [timezone, dispatch, weather, extraWeather]);
 
-  // useEffect(() => {}, []);
-
-  return (
-    weather && (
-      <WeatherWrapper>
-        <p>
-          Weather conditions:
-          <span>{weather.current_weather.weathercode}</span>
-        </p>
-        <p>
-          Temperature:
-          <span>{weather.current_weather.temperature} °C</span>
-        </p>
-        <p>
-          Max temperature:
-          <span>{weather.daily.temperature_2m_max[0]} °C</span>
-        </p>
-        <p>
-          Min temperature:
-          <span>{weather.daily.temperature_2m_min[0]} °C</span>
-        </p>
-        <p>
-          Precipitation:
-          <span>{weather.daily.precipitation_sum[0]} mm</span>
-        </p>
-        <p>
-          Windspeed:
-          <span>{weather.current_weather.windspeed} km/h</span>
-        </p>
-        <p>
-          Max windgusts:
-          <span>{weather.daily.windgusts_10m_max[0]} km/h</span>
-        </p>
-        <p>
-          Max windspeed:
-          <span>{weather.daily.windspeed_10m_max[0]} km/h</span>
-        </p>
-        <p>
-          Wind direction:
-          <span>{weather.current_weather.winddirection}°</span>
-        </p>
-        <p>
-          Sunrise:
-          <span>{weather.daily.sunrise[0]}</span>
-        </p>
-        <p>
-          Sunset:
-          <span>{weather.daily.sunset[0]}</span>
-        </p>
-        <p>
-          Shortwave radiation:
-          <span>{weather.daily.shortwave_radiation_sum[0]} MJ/m²</span>
-        </p>
-      </WeatherWrapper>
-    )
+  return weather && extraWeather ? (
+    <WeatherWrapper>
+      <p>
+        Weather conditions:
+        <span>{extraWeather.condition.text}</span>
+      </p>
+      <p>
+        Temperature:
+        <span>{extraWeather.temp_c} °C</span> <br />
+        <span>Feels like {extraWeather.feelslike_c} °C</span>
+      </p>
+      <p>
+        Max temperature:
+        <span>{weather.daily.temperature_2m_max[0]} °C</span>
+      </p>
+      <p>
+        Min temperature:
+        <span>{weather.daily.temperature_2m_min[0]} °C</span>
+      </p>
+      <p>
+        Clouds:
+        <span>{extraWeather.cloud} %</span>
+      </p>
+      <p>
+        Precipitation:
+        <span>{weather.daily.precipitation_sum[0]} mm</span>
+      </p>
+      <p>
+        Humidity:
+        <span>{extraWeather.humidity} %</span>
+      </p>
+      <p>
+        Windspeed:
+        <span>{weather.current_weather.windspeed} km/h</span>
+      </p>
+      <p>
+        Max windgusts:
+        <span>{weather.daily.windgusts_10m_max[0]} km/h</span>
+      </p>
+      <p>
+        Max windspeed:
+        <span>{weather.daily.windspeed_10m_max[0]} km/h</span>
+      </p>
+      <p>
+        Wind direction:
+        <span>{extraWeather.wind_dir}</span>
+      </p>
+      <p>
+        Pressure:
+        <span>{extraWeather.pressure_mb} millibars</span>
+      </p>
+      <p>
+        Shortwave radiation:
+        <span>{weather.daily.shortwave_radiation_sum[0]} MJ/m²</span>
+      </p>
+      <p>
+        UV:
+        <span>Index {extraWeather.uv} </span>
+      </p>
+      <button type="button" onClick={onShowAstroBtnClick}>
+        Display astrodata
+      </button>
+      {showAstro && <AstroUI />}
+    </WeatherWrapper>
+  ) : (
+    <div>No weather data available</div>
   );
 }
+
+export default React.memo(WeatherUI);

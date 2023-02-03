@@ -1,10 +1,11 @@
 import { CardUI } from 'components/Card/Card';
 import { Container } from 'components/Container/Container';
-import { WeatherUI } from 'components/WeatherBox/WeatherBox';
+import WeatherUI from 'components/WeatherBox/WeatherBox';
+import { useState } from 'react';
 import { useEffect } from 'react';
 import { useGeolocated } from 'react-geolocated';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCity, fetchTimezone } from 'redux/location/locOperations';
+import { fetchCity } from 'redux/location/locOperations';
 import {
   getCityName,
   getCurrentLatitude,
@@ -27,16 +28,21 @@ const Homepage = () => {
   const latitude = useSelector(getCurrentLatitude);
   const longitude = useSelector(getCurrentLongitude);
   const city = useSelector(getCityName);
+  const [showWeather, setShowWeather] = useState(false);
 
   useEffect(() => {
     if (coords) {
-      dispatch(setLatitude(coords.latitude.toFixed(2)));
-      dispatch(setLongitude(coords.longitude.toFixed(2)));
+      dispatch(setLatitude(coords.latitude));
+      dispatch(setLongitude(coords.longitude));
       dispatch(fetchCity());
-      dispatch(fetchTimezone());
+      // dispatch(fetchTimezone());
     }
     return;
   }, [coords, dispatch]);
+
+  const onWeatherBtnClick = () => {
+    setShowWeather(!showWeather);
+  };
 
   return !isGeolocationAvailable ? (
     <div>Your browser does not support Geolocation</div>
@@ -50,11 +56,11 @@ const Homepage = () => {
           <tbody>
             <tr>
               <td>latitude</td>
-              <td>{latitude}</td>
+              <td>{latitude.toFixed(2)}</td>
             </tr>
             <tr>
               <td>longitude</td>
-              <td>{longitude}</td>
+              <td>{longitude.toFixed(2)}</td>
             </tr>
             <tr>
               <td>city</td>
@@ -62,11 +68,14 @@ const Homepage = () => {
             </tr>
           </tbody>
         </table>
-        <WeatherUI />
+        <button type="button" onClick={onWeatherBtnClick}>
+          Display weather
+        </button>
+        {showWeather && <WeatherUI />}
       </Container>
     </>
   ) : (
-    <div>Getting the location data&hellip; </div>
+    <div>Loading...</div>
   );
 };
 

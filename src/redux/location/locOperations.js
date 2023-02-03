@@ -10,7 +10,12 @@ import {
   getCityImagePixabay,
   getTimezone,
 } from 'services/currentLocationAPI';
-import { getCurrentWeather } from 'services/weatherAPI';
+import {
+  getAstroDataFromWeatherApi,
+  getCurrentWeather,
+  getCurrentWeatherFromWeatherApi,
+  getWeatherForecastFromWeatherApi,
+} from 'services/weatherAPI';
 
 export const fetchCity = createAsyncThunk(
   'getCity',
@@ -78,6 +83,21 @@ export const fetchPexelsImage = createAsyncThunk(
   }
 );
 
+export const fetchTimezone = createAsyncThunk(
+  'getTimezone',
+  async (_, { getState, rejectWithValue }) => {
+    try {
+      const { location } = getState();
+      const result = await getTimezone(location.latitude, location.longitude);
+      // console.log(result);
+      return result.timezone_location;
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error);
+    }
+  }
+);
+
 export const fetchCurrentWeather = createAsyncThunk(
   'getCurrentWeather',
   async (_, { getState, rejectWithValue }) => {
@@ -97,14 +117,53 @@ export const fetchCurrentWeather = createAsyncThunk(
   }
 );
 
-export const fetchTimezone = createAsyncThunk(
-  'getTimezone',
+export const fetchCurrentWeatherFromWeatherApi = createAsyncThunk(
+  'getCurrentWeatherAdditional',
   async (_, { getState, rejectWithValue }) => {
     try {
       const { location } = getState();
-      const result = await getTimezone(location.latitude, location.longitude);
+      const result = await getCurrentWeatherFromWeatherApi(
+        location.latitude,
+        location.longitude
+      );
       // console.log(result);
-      return result.timezone_location;
+      return result;
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const fetchWeatherForecastFromWeatherApi = createAsyncThunk(
+  'getWeatherForecast',
+  async (_, { getState, rejectWithValue }) => {
+    try {
+      const { location } = getState();
+      const result = await getWeatherForecastFromWeatherApi(
+        location.latitude,
+        location.longitude
+      );
+      console.log('forecast', result);
+      return result;
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const fetchAstroDataFromWeatherApi = createAsyncThunk(
+  'getAstrodata',
+  async (_, { getState, rejectWithValue }) => {
+    try {
+      const { location } = getState();
+      const result = await getAstroDataFromWeatherApi(
+        location.latitude,
+        location.longitude
+      );
+      // console.log('astro', result);
+      return result.astronomy.astro;
     } catch (error) {
       console.log(error);
       return rejectWithValue(error);

@@ -7,6 +7,9 @@ import {
   fetchPixabayImage,
   fetchCurrentWeather,
   fetchTimezone,
+  fetchCurrentWeatherFromWeatherApi,
+  fetchWeatherForecastFromWeatherApi,
+  fetchAstroDataFromWeatherApi,
 } from './locOperations';
 
 const onPending = state => {
@@ -22,6 +25,10 @@ export const locationSlice = createSlice({
     cityID: null,
     timezone: null,
     weather: null,
+    weatherAdditional: null,
+    weatherForecast: null,
+    astrodata: null,
+    daytime: false,
     image:
       'https://www.wallpaperflare.com/static/79/210/459/nature-sky-umbrella-red-wallpaper-preview.jpg',
     isLoading: false,
@@ -87,12 +94,53 @@ export const locationSlice = createSlice({
         state.isLoading = false;
         state.error = payload;
       })
+      .addCase(fetchCurrentWeatherFromWeatherApi.pending, onPending)
+      .addCase(
+        fetchCurrentWeatherFromWeatherApi.fulfilled,
+        (state, { payload }) => {
+          state.isLoading = false;
+          state.weatherAdditional = payload.current;
+          state.timezone = payload.location.tz_id;
+          state.daytime = payload.current.is_day;
+        }
+      )
+      .addCase(
+        fetchCurrentWeatherFromWeatherApi.rejected,
+        (state, { payload }) => {
+          state.isLoading = false;
+          state.error = payload;
+        }
+      )
+      .addCase(fetchWeatherForecastFromWeatherApi.pending, onPending)
+      .addCase(
+        fetchWeatherForecastFromWeatherApi.fulfilled,
+        (state, { payload }) => {
+          state.isLoading = false;
+          state.weatherForecast = payload;
+        }
+      )
+      .addCase(
+        fetchWeatherForecastFromWeatherApi.rejected,
+        (state, { payload }) => {
+          state.isLoading = false;
+          state.error = payload;
+        }
+      )
       .addCase(fetchTimezone.pending, onPending)
       .addCase(fetchTimezone.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.timezone = payload;
       })
       .addCase(fetchTimezone.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      })
+      .addCase(fetchAstroDataFromWeatherApi.pending, onPending)
+      .addCase(fetchAstroDataFromWeatherApi.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.astrodata = payload;
+      })
+      .addCase(fetchAstroDataFromWeatherApi.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
       });
