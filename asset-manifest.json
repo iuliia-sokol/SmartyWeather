@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/smartyWeather/static/css/main.418c9122.css",
-    "main.js": "/smartyWeather/static/js/main.11959a4f.js",
-    "static/js/356.604c35f9.chunk.js": "/smartyWeather/static/js/356.604c35f9.chunk.js",
+    "main.js": "/smartyWeather/static/js/main.58b672ff.js",
+    "static/js/275.104ae1ab.chunk.js": "/smartyWeather/static/js/275.104ae1ab.chunk.js",
     "static/media/umbrella-red-wallpaper.jpg": "/smartyWeather/static/media/umbrella-red-wallpaper.36e0b739e1d39a933ea4.jpg",
     "static/media/umbrella-red-wallpaper-mob.jpg": "/smartyWeather/static/media/umbrella-red-wallpaper-mob.0750ca53fd37696fe714.jpg",
     "index.html": "/smartyWeather/index.html",
     "main.418c9122.css.map": "/smartyWeather/static/css/main.418c9122.css.map",
-    "main.11959a4f.js.map": "/smartyWeather/static/js/main.11959a4f.js.map",
-    "356.604c35f9.chunk.js.map": "/smartyWeather/static/js/356.604c35f9.chunk.js.map"
+    "main.58b672ff.js.map": "/smartyWeather/static/js/main.58b672ff.js.map",
+    "275.104ae1ab.chunk.js.map": "/smartyWeather/static/js/275.104ae1ab.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.418c9122.css",
-    "static/js/main.11959a4f.js"
+    "static/js/main.58b672ff.js"
   ]
 }
