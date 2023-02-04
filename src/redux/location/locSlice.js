@@ -22,6 +22,7 @@ export const locationSlice = createSlice({
     latitude: null,
     longitude: null,
     city: null,
+    country: null,
     cityID: null,
     timezone: null,
     weather: null,
@@ -52,6 +53,7 @@ export const locationSlice = createSlice({
         state.isLoading = false;
         state.city = payload.cityName;
         state.cityID = payload.placeId;
+        state.country = payload.country;
       })
       .addCase(fetchCity.rejected, (state, { payload }) => {
         state.isLoading = false;

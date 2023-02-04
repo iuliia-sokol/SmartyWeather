@@ -17,6 +17,7 @@ Geocode.setApiKey(PLACES_TOKEN);
 export const getCity = async (lat, long) => {
   let city = {
     cityName: null,
+    country: null,
     placeId: null,
   };
   try {
@@ -26,6 +27,7 @@ export const getCity = async (lat, long) => {
     );
 
     city.placeId = approximate[0].place_id;
+    console.log(city);
 
     for (let i = 0; i < response.results[0].address_components.length; i++) {
       for (
@@ -36,6 +38,9 @@ export const getCity = async (lat, long) => {
         switch (response.results[0].address_components[i].types[j]) {
           case 'locality':
             city.cityName = response.results[0].address_components[i].long_name;
+            break;
+          case 'country':
+            city.country = response.results[0].address_components[i].long_name;
             break;
           default:
         }

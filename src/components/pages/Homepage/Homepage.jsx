@@ -8,10 +8,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchCity } from 'redux/location/locOperations';
 import {
   getCityName,
+  getCountry,
   getCurrentLatitude,
   getCurrentLongitude,
 } from 'redux/location/locSelectors';
 import { setLatitude, setLongitude } from 'redux/location/locSlice';
+import { CityName, DataWrapper } from './Homepage.styled';
 
 const Homepage = () => {
   const { coords, isGeolocationAvailable, isGeolocationEnabled } =
@@ -28,6 +30,7 @@ const Homepage = () => {
   const latitude = useSelector(getCurrentLatitude);
   const longitude = useSelector(getCurrentLongitude);
   const city = useSelector(getCityName);
+  const country = useSelector(getCountry);
   const [showWeather, setShowWeather] = useState(false);
 
   useEffect(() => {
@@ -56,22 +59,12 @@ const Homepage = () => {
     <>
       <CardUI />
       <Container>
-        <table>
-          <tbody>
-            <tr>
-              <td>latitude</td>
-              <td>{latitude.toFixed(2)}</td>
-            </tr>
-            <tr>
-              <td>longitude</td>
-              <td>{longitude.toFixed(2)}</td>
-            </tr>
-            <tr>
-              <td>city</td>
-              <td>{city}</td>
-            </tr>
-          </tbody>
-        </table>
+        <DataWrapper>
+          <CityName>
+            {city}, {country}
+          </CityName>
+        </DataWrapper>
+
         <button type="button" onClick={onWeatherBtnClick}>
           Display weather
         </button>
