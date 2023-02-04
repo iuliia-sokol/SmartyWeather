@@ -9,6 +9,7 @@ export const theme = {
     accentPink: '#D86191',
     accentBlue: '#658ED9',
     accentYellow: '#E9C939',
+    mainAccentPink: 'rgba(212, 66, 111, 0.5)',
 
     mainBgLight: '#FBFBFB',
     bgViolet: 'rgba(94, 79, 193, 0.1)',
@@ -22,23 +23,10 @@ export const theme = {
     main: '"Alegreya Sans", sans-serif',
     // secondary: 'Times New Roman',
   },
-  fontSizes: {
-    xxxl: '128px',
-    xxl: '96px',
-    xl: '64px',
-    l: '40px',
-    m: '36px',
-    s: '32px',
-    xs: '24px',
-    xxs: '20px',
-    xxxs: '16px',
-    xxxxs: '14px',
-    xxxxxs: '12px',
-    xxxxxxs: '10px',
-  },
+  fontSizes: {},
   fontWeights: [500, 700],
   lineHeights: {
-    main: '1.15',
+    main: '1.2',
     content: '1.25',
   },
   letterSpacings: {
@@ -56,6 +44,7 @@ export const theme = {
   radii: {
     circle: '50%',
     box: '30px',
+    main: '20px',
   },
   transitions: {
     main: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1)',

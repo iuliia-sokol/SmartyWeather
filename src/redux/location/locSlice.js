@@ -6,7 +6,7 @@ import {
   fetchPexelsImage,
   fetchPixabayImage,
   fetchCurrentWeather,
-  fetchTimezone,
+  // fetchTimezone,
   fetchCurrentWeatherFromWeatherApi,
   fetchWeatherForecastFromWeatherApi,
   fetchAstroDataFromWeatherApi,
@@ -128,15 +128,15 @@ export const locationSlice = createSlice({
           state.error = payload;
         }
       )
-      .addCase(fetchTimezone.pending, onPending)
-      .addCase(fetchTimezone.fulfilled, (state, { payload }) => {
-        state.isLoading = false;
-        state.timezone = payload;
-      })
-      .addCase(fetchTimezone.rejected, (state, { payload }) => {
-        state.isLoading = false;
-        state.error = payload;
-      })
+      // .addCase(fetchTimezone.pending, onPending)
+      // .addCase(fetchTimezone.fulfilled, (state, { payload }) => {
+      //   state.isLoading = false;
+      //   state.timezone = payload;
+      // })
+      // .addCase(fetchTimezone.rejected, (state, { payload }) => {
+      //   state.isLoading = false;
+      //   state.error = payload;
+      // })
       .addCase(fetchAstroDataFromWeatherApi.pending, onPending)
       .addCase(fetchAstroDataFromWeatherApi.fulfilled, (state, { payload }) => {
         state.isLoading = false;

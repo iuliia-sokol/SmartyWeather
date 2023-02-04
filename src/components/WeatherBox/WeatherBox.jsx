@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  fetchAstroDataFromWeatherApi,
-  fetchCurrentWeather,
-  fetchCurrentWeatherFromWeatherApi,
-  // fetchWeatherForecastFromWeatherApi,
-} from 'redux/location/locOperations';
+import // fetchAstroDataFromWeatherApi,
+// fetchCurrentWeather,
+// fetchCurrentWeatherFromWeatherApi,
+// // fetchWeatherForecastFromWeatherApi,
+'redux/location/locOperations';
 import {
   getAdditionalCurrentWeather,
   getCurrentWeather,
-  getTimezone,
+  // getTimezone,
 } from 'redux/location/locSelectors';
 import { WeatherWrapper } from './WeatherBox.styled';
 import AstroUI from '../AstroBox/AstroBox';
 
 function WeatherUI() {
-  const timezone = useSelector(getTimezone);
+  // const timezone = useSelector(getTimezone);
   const weather = useSelector(getCurrentWeather);
   const extraWeather = useSelector(getAdditionalCurrentWeather);
 
@@ -28,31 +27,22 @@ function WeatherUI() {
     setShowAstro(!showAstro);
   };
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    // dispatch(fetchWeatherForecastFromWeatherApi());
-    if (weather && extraWeather) {
-      return;
-    }
-    if (timezone) {
-      dispatch(fetchCurrentWeather());
-    }
-    dispatch(fetchAstroDataFromWeatherApi());
-    dispatch(fetchCurrentWeatherFromWeatherApi());
-  }, [timezone, dispatch, weather, extraWeather]);
+  // useEffect(() => {
+  //   // dispatch(fetchWeatherForecastFromWeatherApi());
+  //   if (weather && extraWeather) {
+  //     return;
+  //   }
+  //   if (timezone) {
+  //     dispatch(fetchCurrentWeather());
+  //   }
+  //   dispatch(fetchAstroDataFromWeatherApi());
+  //   dispatch(fetchCurrentWeatherFromWeatherApi());
+  // }, [timezone, dispatch, weather, extraWeather]);
 
   return weather && extraWeather ? (
     <WeatherWrapper>
-      <p>
-        Weather conditions:
-        <span>{extraWeather.condition.text}</span>
-      </p>
-      <p>
-        Temperature:
-        <span>{extraWeather.temp_c} °C</span> <br />
-        <span>Feels like {extraWeather.feelslike_c} °C</span>
-      </p>
       <p>
         Max temperature:
         <span>{weather.daily.temperature_2m_max[0]} °C</span>
@@ -65,18 +55,7 @@ function WeatherUI() {
         Clouds:
         <span>{extraWeather.cloud} %</span>
       </p>
-      <p>
-        Precipitation:
-        <span>{weather.daily.precipitation_sum[0]} mm</span>
-      </p>
-      <p>
-        Humidity:
-        <span>{extraWeather.humidity} %</span>
-      </p>
-      <p>
-        Windspeed:
-        <span>{weather.current_weather.windspeed} km/h</span>
-      </p>
+
       <p>
         Max windgusts:
         <span>{weather.daily.windgusts_10m_max[0]} km/h</span>
