@@ -1,17 +1,29 @@
 {
   "files": {
-    "main.css": "/smartyWeather/static/css/main.4e5102af.css",
-    "main.js": "/smartyWeather/static/js/main.b6bc5c80.js",
-    "static/js/434.9f08a9ab.chunk.js": "/smartyWeather/static/js/434.9f08a9ab.chunk.js",
-    "static/media/umbrella-red-wallpaper.jpg": "/smartyWeather/static/media/umbrella-red-wallpaper.36e0b739e1d39a933ea4.jpg",
-    "static/media/umbrella-red-wallpaper-mob.jpg": "/smartyWeather/static/media/umbrella-red-wallpaper-mob.0750ca53fd37696fe714.jpg",
+    "main.css": "/smartyWeather/static/css/main.d8f44118.css",
+    "main.js": "/smartyWeather/static/js/main.39a17927.js",
+    "static/js/355.3918fcd9.chunk.js": "/smartyWeather/static/js/355.3918fcd9.chunk.js",
+    "static/media/day-snow-min.png": "/smartyWeather/static/media/day-snow-min.b3f7b30faf8d8e44f0a2.png",
+    "static/media/day-storm-min.png": "/smartyWeather/static/media/day-storm-min.5c60632e2334c8548d7a.png",
+    "static/media/day-clouds-min.png": "/smartyWeather/static/media/day-clouds-min.15e9dea62f0154da6218.png",
+    "static/media/day-wind-min.png": "/smartyWeather/static/media/day-wind-min.b6bc200ec76b5e7ed52c.png",
+    "static/media/day-sun-min.png": "/smartyWeather/static/media/day-sun-min.3cd4308d29ec1e3ad911.png",
+    "static/media/day-rain-min.png": "/smartyWeather/static/media/day-rain-min.91de59f0024d3448c687.png",
+    "static/media/night-snow-min.png": "/smartyWeather/static/media/night-snow-min.0f2d7b1c6c5220f72ec4.png",
+    "static/media/umbrella-red-wallpaper-mob.jpg": "/smartyWeather/static/media/umbrella-red-wallpaper-mob.3da8545f7852e93f9205.jpg",
+    "static/media/night-wind-min.png": "/smartyWeather/static/media/night-wind-min.b43ee2d469d0eb648e9c.png",
+    "static/media/night-storm-min.png": "/smartyWeather/static/media/night-storm-min.190e7e193f49ebb2df48.png",
+    "static/media/umbrella-red-wallpaper.jpg": "/smartyWeather/static/media/umbrella-red-wallpaper.95ebfd2b200936d409c6.jpg",
+    "static/media/night-rain-min.png": "/smartyWeather/static/media/night-rain-min.753119edfeefd098305f.png",
+    "static/media/night-clouds-min.png": "/smartyWeather/static/media/night-clouds-min.2a7a47e316e4d0cf39fc.png",
+    "static/media/night-moon-min.png": "/smartyWeather/static/media/night-moon-min.af8740f0edb561d454dd.png",
     "index.html": "/smartyWeather/index.html",
-    "main.4e5102af.css.map": "/smartyWeather/static/css/main.4e5102af.css.map",
-    "main.b6bc5c80.js.map": "/smartyWeather/static/js/main.b6bc5c80.js.map",
-    "434.9f08a9ab.chunk.js.map": "/smartyWeather/static/js/434.9f08a9ab.chunk.js.map"
+    "main.d8f44118.css.map": "/smartyWeather/static/css/main.d8f44118.css.map",
+    "main.39a17927.js.map": "/smartyWeather/static/js/main.39a17927.js.map",
+    "355.3918fcd9.chunk.js.map": "/smartyWeather/static/js/355.3918fcd9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4e5102af.css",
-    "static/js/main.b6bc5c80.js"
+    "static/css/main.d8f44118.css",
+    "static/js/main.39a17927.js"
   ]
 }
