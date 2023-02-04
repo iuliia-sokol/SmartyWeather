@@ -145,8 +145,8 @@ export const fetchWeatherForecastFromWeatherApi = createAsyncThunk(
         location.latitude,
         location.longitude
       );
-      console.log('forecast', result);
-      return result;
+      // console.log('forecast', result);
+      return result.forecast.forecastday;
     } catch (error) {
       console.log(error);
       return rejectWithValue(error);

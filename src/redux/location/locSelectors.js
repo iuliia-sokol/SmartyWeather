@@ -10,3 +10,5 @@ export const getAdditionalCurrentWeather = state =>
 export const getDayTime = state => state.location.daytime;
 export const getTimezone = state => state.location.timezone;
 export const getAstroData = state => state.location.astrodata;
+// export const getForcast = state => state.location.weatherForecast;
+export const getForcast = state => state.location.weather.daily;

@@ -1,4 +1,5 @@
 import { CardUI } from 'components/Card/Card';
+import { ChartsUI } from 'components/ChartBox/Charts';
 import { Container } from 'components/Container/Container';
 import WeatherUI from 'components/WeatherBox/WeatherBox';
 import { useState } from 'react';
@@ -10,6 +11,7 @@ import {
   fetchCity,
   fetchCurrentWeather,
   fetchCurrentWeatherFromWeatherApi,
+  fetchWeatherForecastFromWeatherApi,
 } from 'redux/location/locOperations';
 import {
   getAdditionalCurrentWeather,
@@ -57,6 +59,7 @@ const Homepage = () => {
   const weather = useSelector(getCurrentWeather);
   const extraWeather = useSelector(getAdditionalCurrentWeather);
   const dayTime = useSelector(getDayTime);
+
   const [showWeather, setShowWeather] = useState(false);
   const [weatherPng, setWeatherPng] = useState(null);
 
@@ -76,13 +79,13 @@ const Homepage = () => {
   }, [coords, dispatch]);
 
   useEffect(() => {
-    // dispatch(fetchWeatherForecastFromWeatherApi());
     if (extraWeather) {
       return;
     }
     if (coords) {
       dispatch(fetchAstroDataFromWeatherApi());
       dispatch(fetchCurrentWeatherFromWeatherApi());
+      dispatch(fetchWeatherForecastFromWeatherApi());
     }
   }, [dispatch, extraWeather, coords]);
 
@@ -114,7 +117,7 @@ const Homepage = () => {
   ) : !isGeolocationEnabled ? (
     <div>Geolocation is not enabled</div>
   ) : latitude && longitude ? (
-    <>
+    <main>
       <CardUI />
       <Container>
         {weather && extraWeather ? (
@@ -157,6 +160,7 @@ const Homepage = () => {
                   <span>{weather.current_weather.windspeed} km/h</span>
                 </Indicator>
               </IndicatorsWrapper>
+              <ChartsUI />
             </WeatherInfoWrapper>
           </DataWrapper>
         ) : (
@@ -168,7 +172,7 @@ const Homepage = () => {
         </button>
         {showWeather && <WeatherUI />}
       </Container>
-    </>
+    </main>
   ) : (
     <div>Loading...</div>
   );

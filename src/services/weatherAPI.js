@@ -21,7 +21,7 @@ export const getWeatherForecastFromWeatherApi = async (lat, long) => {
   axios.defaults.baseURL = 'https://api.weatherapi.com/v1';
   try {
     const { data } = await axios.get(
-      `/forecast.json?key=${WEATHER_KEY}&q=${lat},${long}&aqi=yes`
+      `/forecast.json?key=${WEATHER_KEY}&q=${lat},${long}&aqi=yes&days=3`
     );
     // console.log(data);
     return data;
