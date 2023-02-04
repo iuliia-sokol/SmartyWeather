@@ -27,7 +27,6 @@ export const getCity = async (lat, long) => {
     );
 
     city.placeId = approximate[0].place_id;
-    console.log(city);
 
     for (let i = 0; i < response.results[0].address_components.length; i++) {
       for (

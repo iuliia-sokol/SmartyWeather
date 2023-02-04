@@ -7,5 +7,6 @@ export const getCurrentLatitude = state => state.location.latitude;
 export const getCurrentWeather = state => state.location.weather;
 export const getAdditionalCurrentWeather = state =>
   state.location.weatherAdditional;
+export const getDayTime = state => state.location.daytime;
 export const getTimezone = state => state.location.timezone;
 export const getAstroData = state => state.location.astrodata;

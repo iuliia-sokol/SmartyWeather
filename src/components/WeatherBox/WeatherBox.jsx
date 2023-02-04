@@ -1,20 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import // fetchAstroDataFromWeatherApi,
-// fetchCurrentWeather,
-// fetchCurrentWeatherFromWeatherApi,
-// // fetchWeatherForecastFromWeatherApi,
-'redux/location/locOperations';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import {
   getAdditionalCurrentWeather,
   getCurrentWeather,
-  // getTimezone,
 } from 'redux/location/locSelectors';
 import { WeatherWrapper } from './WeatherBox.styled';
 import AstroUI from '../AstroBox/AstroBox';
 
 function WeatherUI() {
-  // const timezone = useSelector(getTimezone);
   const weather = useSelector(getCurrentWeather);
   const extraWeather = useSelector(getAdditionalCurrentWeather);
 
@@ -26,20 +19,6 @@ function WeatherUI() {
   const onShowAstroBtnClick = () => {
     setShowAstro(!showAstro);
   };
-
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   // dispatch(fetchWeatherForecastFromWeatherApi());
-  //   if (weather && extraWeather) {
-  //     return;
-  //   }
-  //   if (timezone) {
-  //     dispatch(fetchCurrentWeather());
-  //   }
-  //   dispatch(fetchAstroDataFromWeatherApi());
-  //   dispatch(fetchCurrentWeatherFromWeatherApi());
-  // }, [timezone, dispatch, weather, extraWeather]);
 
   return weather && extraWeather ? (
     <WeatherWrapper>

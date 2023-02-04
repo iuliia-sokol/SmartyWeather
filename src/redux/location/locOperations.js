@@ -122,6 +122,7 @@ export const fetchCurrentWeatherFromWeatherApi = createAsyncThunk(
   async (_, { getState, rejectWithValue }) => {
     try {
       const { location } = getState();
+      // console.log(location);
       const result = await getCurrentWeatherFromWeatherApi(
         location.latitude,
         location.longitude

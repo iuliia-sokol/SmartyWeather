@@ -1,34 +1,57 @@
 import styled from 'styled-components';
 
 export const DataWrapper = styled.div`
+  width: 70%;
   display: flex;
+  justify-content: space-between;
   flex-direction: column;
+  gap: 32px;
+  margin: 0 auto;
   border-radius: 30px;
   padding: 32px;
-  background: rgba(255, 255, 255, 0.23);
-  box-shadow: inset -5px -5px 9px rgba(255, 255, 255, 0.45),
-    inset 5px 5px 9px rgba(94, 104, 121, 0.3);
-  backdrop-filter: blur(5.3px);
-  -webkit-backdrop-filter: blur(5.3px);
+  background: rgba(255, 255, 255, 0.13);
+  /* box-shadow: inset -5px -5px 9px rgba(255, 255, 255, 0.45),
+    inset 5px 5px 9px rgba(94, 104, 121, 0.3); */
+  box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
+  backdrop-filter: blur(2.3px);
+  -webkit-backdrop-filter: blur(2.3px);
   border: 1px solid rgba(255, 255, 255, 0.77);
-`;
-
-export const NameIconWrapper = styled.div`
-  display: flex;
 `;
 
 export const WeatherDataWrapper = styled.div`
   display: flex;
-  flex-direction: row-reverse;
+  /* flex-direction: row-reverse; */
   justify-content: space-between;
-  /* align-items: center; */
+
+  /* align-items: flex-end; */
+  gap: 16px;
 `;
 
 export const WeatherInfoWrapper = styled.div`
+  padding: 16px;
   display: flex;
   flex-direction: column;
-  align-items: space-between;
-  justify-content: space-between;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 16px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.28);
+  border-radius: 16px;
+  /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
+  /* box-shadow: -2px -2px 5px white, 3px 3px 5px rgba(0, 0, 0, 0.1); */
+  box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+`;
+
+export const IconWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & img {
+    width: 220px;
+  }
 `;
 
 export const CityName = styled.p`
@@ -88,7 +111,7 @@ export const TemperatureWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
 `;
 
 export const FeelsLike = styled.span`

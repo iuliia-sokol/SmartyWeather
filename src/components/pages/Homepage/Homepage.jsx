@@ -18,16 +18,18 @@ import {
   getCurrentLatitude,
   getCurrentLongitude,
   getCurrentWeather,
+  getDayTime,
   getTimezone,
 } from 'redux/location/locSelectors';
 import { setLatitude, setLongitude } from 'redux/location/locSlice';
+import { conditionsWeatherApi } from 'utils/conditionsWeatherApi';
 import {
   CityName,
   DataWrapper,
   FeelsLike,
+  IconWrapper,
   Indicator,
   IndicatorsWrapper,
-  NameIconWrapper,
   Temperature,
   TemperatureWrapper,
   WeatherConditions,
@@ -54,7 +56,9 @@ const Homepage = () => {
   const timezone = useSelector(getTimezone);
   const weather = useSelector(getCurrentWeather);
   const extraWeather = useSelector(getAdditionalCurrentWeather);
+  const dayTime = useSelector(getDayTime);
   const [showWeather, setShowWeather] = useState(false);
+  const [weatherPng, setWeatherPng] = useState(null);
 
   useEffect(() => {
     if (coords) {
@@ -73,15 +77,33 @@ const Homepage = () => {
 
   useEffect(() => {
     // dispatch(fetchWeatherForecastFromWeatherApi());
-    if (weather && extraWeather) {
+    if (extraWeather) {
+      return;
+    }
+    if (coords) {
+      dispatch(fetchAstroDataFromWeatherApi());
+      dispatch(fetchCurrentWeatherFromWeatherApi());
+    }
+  }, [dispatch, extraWeather, coords]);
+
+  useEffect(() => {
+    if (weather) {
       return;
     }
     if (timezone) {
       dispatch(fetchCurrentWeather());
     }
-    dispatch(fetchAstroDataFromWeatherApi());
-    dispatch(fetchCurrentWeatherFromWeatherApi());
-  }, [timezone, dispatch, weather, extraWeather]);
+  }, [dispatch, timezone, weather]);
+
+  useEffect(() => {
+    if (extraWeather) {
+      const weatherCode = extraWeather.condition.code;
+      const conditionPng = conditionsWeatherApi.find(
+        cond => cond.code === weatherCode
+      ).png;
+      dayTime ? setWeatherPng(conditionPng[0]) : setWeatherPng(conditionPng[1]);
+    }
+  }, [dayTime, extraWeather]);
 
   const onWeatherBtnClick = () => {
     setShowWeather(!showWeather);
@@ -95,13 +117,28 @@ const Homepage = () => {
     <>
       <CardUI />
       <Container>
-        <DataWrapper>
-          <NameIconWrapper>
-            <CityName>
-              {city}, {country}
-            </CityName>
-          </NameIconWrapper>
-          <WeatherDataWrapper>
+        {weather && extraWeather ? (
+          <DataWrapper>
+            <WeatherDataWrapper>
+              <IconWrapper>
+                <img
+                  src={weatherPng}
+                  alt={extraWeather.condition.text}
+                  loading="lazy"
+                />
+              </IconWrapper>
+
+              <TemperatureWrapper>
+                <CityName>
+                  {city}, {country}
+                </CityName>
+                <Temperature>
+                  {extraWeather.temp_c} <span>°C</span>
+                </Temperature>
+
+                <FeelsLike>Feels like {extraWeather.feelslike_c} °C</FeelsLike>
+              </TemperatureWrapper>
+            </WeatherDataWrapper>
             <WeatherInfoWrapper>
               <WeatherConditions>
                 <span>{extraWeather.condition.text}</span>
@@ -121,15 +158,10 @@ const Homepage = () => {
                 </Indicator>
               </IndicatorsWrapper>
             </WeatherInfoWrapper>
-            <TemperatureWrapper>
-              <Temperature>
-                {extraWeather.temp_c} <span>°C</span>
-              </Temperature>
-
-              <FeelsLike>Feels like {extraWeather.feelslike_c} °C</FeelsLike>
-            </TemperatureWrapper>
-          </WeatherDataWrapper>
-        </DataWrapper>
+          </DataWrapper>
+        ) : (
+          <div>No data to display</div>
+        )}
 
         <button type="button" onClick={onWeatherBtnClick}>
           Display weather
