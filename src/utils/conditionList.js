@@ -1,5 +1,5 @@
 export const conditions = [
-  { code: 0, description: 'Clear sky' },
+  { code: 0, description: 'Clear sky', icon: '' },
   { code: 1, description: 'Mainly clear' },
   { code: 2, description: 'Partly cloudy' },
   { code: 3, description: 'Cloudy' },
