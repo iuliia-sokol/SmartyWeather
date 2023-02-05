@@ -8,7 +8,7 @@ import { useMediaQuery } from 'hooks/useMedia';
 import bgImgMob from '../../images/umbrella-red-wallpaper-mob.jpg';
 import bgImg from '../../images/umbrella-red-wallpaper.jpg'; // 'https://www.wallpaperflare.com/static/79/210/459/nature-sky-umbrella-red-wallpaper-preview.jpg';
 
-export function CardUI() {
+export const CardUI = ({ children }) => {
   const isRowBased = useMediaQuery('(min-width: 500px)');
   const city = useSelector(getCityName);
   const images = useSelector(getCityImages);
@@ -44,6 +44,8 @@ export function CardUI() {
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
       }}
-    ></Card>
+    >
+      {children}
+    </Card>
   );
-}
+};

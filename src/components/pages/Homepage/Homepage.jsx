@@ -1,8 +1,6 @@
 import { CardUI } from 'components/Card/Card';
-import { ChartsUI } from 'components/ChartBox/Charts';
 import { Container } from 'components/Container/Container';
-import WeatherUI from 'components/WeatherBox/WeatherBox';
-import { useState } from 'react';
+import { MainBoxUI } from 'components/MainBox/MainBox';
 import { useEffect } from 'react';
 import { useGeolocated } from 'react-geolocated';
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,29 +13,12 @@ import {
 } from 'redux/location/locOperations';
 import {
   getAdditionalCurrentWeather,
-  getCityName,
-  getCountry,
   getCurrentLatitude,
   getCurrentLongitude,
   getCurrentWeather,
-  getDayTime,
   getTimezone,
 } from 'redux/location/locSelectors';
 import { setLatitude, setLongitude } from 'redux/location/locSlice';
-import { conditionsWeatherApi } from 'utils/conditionsWeatherApi';
-import {
-  CityName,
-  DataWrapper,
-  FeelsLike,
-  IconWrapper,
-  Indicator,
-  IndicatorsWrapper,
-  Temperature,
-  TemperatureWrapper,
-  WeatherConditions,
-  WeatherDataWrapper,
-  WeatherInfoWrapper,
-} from './Homepage.styled';
 
 const Homepage = () => {
   const { coords, isGeolocationAvailable, isGeolocationEnabled } =
@@ -53,15 +34,10 @@ const Homepage = () => {
   const dispatch = useDispatch();
   const latitude = useSelector(getCurrentLatitude);
   const longitude = useSelector(getCurrentLongitude);
-  const city = useSelector(getCityName);
-  const country = useSelector(getCountry);
+
   const timezone = useSelector(getTimezone);
   const weather = useSelector(getCurrentWeather);
   const extraWeather = useSelector(getAdditionalCurrentWeather);
-  const dayTime = useSelector(getDayTime);
-
-  const [showWeather, setShowWeather] = useState(false);
-  const [weatherPng, setWeatherPng] = useState(null);
 
   useEffect(() => {
     if (coords) {
@@ -98,83 +74,21 @@ const Homepage = () => {
     }
   }, [dispatch, timezone, weather]);
 
-  useEffect(() => {
-    if (extraWeather) {
-      const weatherCode = extraWeather.condition.code;
-      const conditionPng = conditionsWeatherApi.find(
-        cond => cond.code === weatherCode
-      ).png;
-      dayTime ? setWeatherPng(conditionPng[0]) : setWeatherPng(conditionPng[1]);
-    }
-  }, [dayTime, extraWeather]);
-
-  const onWeatherBtnClick = () => {
-    setShowWeather(!showWeather);
-  };
-
-  return !isGeolocationAvailable ? (
-    <div>Your browser does not support Geolocation</div>
-  ) : !isGeolocationEnabled ? (
-    <div>Geolocation is not enabled</div>
-  ) : latitude && longitude ? (
+  return (
     <main>
       <CardUI />
       <Container>
-        {weather && extraWeather ? (
-          <DataWrapper>
-            <WeatherDataWrapper>
-              <IconWrapper>
-                <img
-                  src={weatherPng}
-                  alt={extraWeather.condition.text}
-                  loading="lazy"
-                />
-              </IconWrapper>
-
-              <TemperatureWrapper>
-                <CityName>
-                  {city}, {country}
-                </CityName>
-                <Temperature>
-                  {extraWeather.temp_c} <span>°C</span>
-                </Temperature>
-
-                <FeelsLike>Feels like {extraWeather.feelslike_c} °C</FeelsLike>
-              </TemperatureWrapper>
-            </WeatherDataWrapper>
-            <WeatherInfoWrapper>
-              <WeatherConditions>
-                <span>{extraWeather.condition.text}</span>
-              </WeatherConditions>
-              <IndicatorsWrapper>
-                <Indicator color="blue">
-                  Precipitation:
-                  <span>{weather.daily.precipitation_sum[0]} mm</span>
-                </Indicator>
-                <Indicator color="pink">
-                  Humidity:
-                  <span>{extraWeather.humidity} %</span>
-                </Indicator>
-                <Indicator color="violet">
-                  Windspeed:
-                  <span>{weather.current_weather.windspeed} km/h</span>
-                </Indicator>
-              </IndicatorsWrapper>
-              <ChartsUI />
-            </WeatherInfoWrapper>
-          </DataWrapper>
+        {!isGeolocationAvailable ? (
+          <div>Your browser does not support Geolocation</div>
+        ) : !isGeolocationEnabled ? (
+          <div>Geolocation is not enabled</div>
+        ) : latitude && longitude ? (
+          <MainBoxUI />
         ) : (
-          <div>No data to display</div>
+          <div>Loading...</div>
         )}
-
-        <button type="button" onClick={onWeatherBtnClick}>
-          Display weather
-        </button>
-        {showWeather && <WeatherUI />}
       </Container>
     </main>
-  ) : (
-    <div>Loading...</div>
   );
 };
 

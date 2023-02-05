@@ -6,7 +6,7 @@ export const Card = styled.div`
   left: 0;
   z-index: -1;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   box-sizing: border-box;
 
   /* @media screen and (min-width: 320px) {

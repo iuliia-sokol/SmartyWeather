@@ -7,7 +7,7 @@ import {
 import { WeatherWrapper } from './WeatherBox.styled';
 import AstroUI from '../AstroBox/AstroBox';
 
-function WeatherUI() {
+export const WeatherUI = () => {
   const weather = useSelector(getCurrentWeather);
   const extraWeather = useSelector(getAdditionalCurrentWeather);
 
@@ -67,6 +67,4 @@ function WeatherUI() {
   ) : (
     <div>No weather data available</div>
   );
-}
-
-export default React.memo(WeatherUI);
+};
