@@ -8,9 +8,11 @@ import {
   getCountry,
   getCurrentWeather,
   getDayTime,
+  getForcast,
 } from 'redux/location/locSelectors';
 import { conditionsWeatherApi } from 'utils/conditionsWeatherApi';
 import {
+  ChanceOfIndicator,
   CityName,
   DataWrapper,
   FeelsLike,
@@ -26,13 +28,21 @@ import {
 
 import termometrPlus from '../../images/thermomater-max-min.png';
 import termometrMinus from '../../images/thermomater-min-min.png';
+import percipitationImg from '../../images/percipitation-min.png';
+import windImg from '../../images/wind-min.png';
+import humidityImg from '../../images/humidity-min.png';
+import rain from '../../images/rain-min.png';
+import snow from '../../images/snow-min.png';
 
 export const MainBoxUI = () => {
   const weather = useSelector(getCurrentWeather);
   const extraWeather = useSelector(getAdditionalCurrentWeather);
+  const forecast = useSelector(getForcast);
   const dayTime = useSelector(getDayTime);
   const city = useSelector(getCityName);
   const country = useSelector(getCountry);
+
+  //   console.log(forecast[0].day.daily_chance_of_rain);
 
   const [showWeather, setShowWeather] = useState(false);
   const [weatherPng, setWeatherPng] = useState(null);
@@ -65,9 +75,13 @@ export const MainBoxUI = () => {
             </IconWrapper>
 
             <TemperatureWrapper>
+              <WeatherConditions>
+                <span>{extraWeather.condition.text}</span>
+              </WeatherConditions>
               <CityName>
                 {city}, {country}
               </CityName>
+
               <Temperature>
                 <img
                   src={
@@ -83,21 +97,46 @@ export const MainBoxUI = () => {
             </TemperatureWrapper>
           </WeatherDataWrapper>
           <WeatherInfoWrapper>
-            <WeatherConditions>
-              <span>{extraWeather.condition.text}</span>
-            </WeatherConditions>
             <IndicatorsWrapper>
+              <ChanceOfIndicator>
+                <div>
+                  <img src={rain} alt="rain" loading="lazy" />
+                  <span>Chance of rain:</span>
+                  <span>{forecast[0].day.daily_chance_of_rain} %</span>
+                </div>
+                <div>
+                  <img src={snow} alt="snow" loading="lazy" />
+                  <span>Chance of snow:</span>
+                  <span>{forecast[0].day.daily_chance_of_snow} %</span>
+                </div>
+              </ChanceOfIndicator>
               <Indicator color="blue">
-                Precipitation:
-                <span>{weather.daily.precipitation_sum[0]} mm</span>
+                <img
+                  src={percipitationImg}
+                  alt="percipitation"
+                  loading="lazy"
+                />
+                <div>
+                  <span>Precipitation:</span>
+                  <br />
+                  <span>{weather.daily.precipitation_sum[0]} mm</span>
+                </div>
               </Indicator>
               <Indicator color="pink">
-                Humidity:
-                <span>{extraWeather.humidity} %</span>
+                <img src={humidityImg} alt="humidity" loading="lazy" />
+                <div>
+                  <span>Humidity:</span>
+                  <br />
+                  <span>{extraWeather.humidity} %</span>
+                </div>
               </Indicator>
               <Indicator color="violet">
-                Windspeed:
-                <span>{weather.current_weather.windspeed} km/h</span>
+                <img src={windImg} alt="wind" loading="lazy" />
+                <div>
+                  <span>Windspeed:</span>
+                  <br />
+                  <span>{weather.current_weather.windspeed} km/h</span>
+                </div>
               </Indicator>
             </IndicatorsWrapper>
             <ChartsUI />

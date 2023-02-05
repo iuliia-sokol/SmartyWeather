@@ -7,17 +7,16 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
-import { getDailyForcast, getHourlyForcast } from 'redux/location/locSelectors';
+import {
+  // getDailyForcast,
+  getHourlyForcast,
+} from 'redux/location/locSelectors';
 import { renderCustomAxisTick } from 'utils/customAxis';
 import { ChartsWrapper } from './Charts.styled';
 
 export const ChartsUI = () => {
-  const dailyForecast = useSelector(getDailyForcast);
+  // const dailyForecast = useSelector(getDailyForcast);
   const hourlyForecast = useSelector(getHourlyForcast);
-
-  //   const dates = forecast.map(el => {
-  //     return { date: `${el.date}`, temp: `${el.day.maxtemp_c}` };
-  //   });
 
   // FOR HOURLY FORECAST
   const hours = hourlyForecast.time.map(el => el).slice(0, 24);
@@ -32,17 +31,17 @@ export const ChartsUI = () => {
   });
 
   // FOR DAILY FORECAST
-  const dates = dailyForecast.time.map(el => el);
-  const tempMin = dailyForecast.temperature_2m_min.map(el => el);
-  const tempMax = dailyForecast.temperature_2m_max.map(el => el);
+  // const dates = dailyForecast.time.map(el => el);
+  // const tempMin = dailyForecast.temperature_2m_min.map(el => el);
+  // const tempMax = dailyForecast.temperature_2m_max.map(el => el);
 
-  const dailyData = dates.map((el, index) => {
-    return {
-      date: `${el}`,
-      min_temperature: `${tempMin[index]}`,
-      max_temperature: `${tempMax[index]}`,
-    };
-  });
+  // const dailyData = dates.map((el, index) => {
+  //   return {
+  //     date: `${el}`,
+  //     min_temperature: `${tempMin[index]}`,
+  //     max_temperature: `${tempMax[index]}`,
+  //   };
+  // });
 
   return (
     <ChartsWrapper>
