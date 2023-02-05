@@ -1,3 +1,4 @@
+import { useMediaQuery } from 'hooks/useMedia';
 import { useSelector } from 'react-redux';
 import {
   AreaChart,
@@ -17,6 +18,8 @@ import { ChartsWrapper } from './Charts.styled';
 export const ChartsUI = () => {
   // const dailyForecast = useSelector(getDailyForcast);
   const hourlyForecast = useSelector(getHourlyForcast);
+  const isRowBased = useMediaQuery('(min-width: 768px)');
+  console.log(isRowBased);
 
   // FOR HOURLY FORECAST
   const hours = hourlyForecast.time.map(el => el).slice(0, 24);
@@ -59,15 +62,17 @@ export const ChartsUI = () => {
           }}
         >
           <Tooltip />
-          <XAxis
-            dataKey="code"
-            xAxisId="1"
-            stroke="transparent"
-            fill="transparent"
-            tick={renderCustomAxisTick}
-          />
+          {isRowBased && (
+            <XAxis
+              dataKey="code"
+              xAxisId="1"
+              stroke="transparent"
+              fill="transparent"
+              tick={renderCustomAxisTick}
+            />
+          )}
           <XAxis dataKey="time" xAxisId="0" />
-          <YAxis />
+          {isRowBased && <YAxis />}
           <Area
             type="monotone"
             stackId="1"

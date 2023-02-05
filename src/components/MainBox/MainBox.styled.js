@@ -37,7 +37,7 @@ export const WeatherInfoWrapper = styled.div`
   flex-direction: column;
   align-items: flex-end;
   justify-content: flex-end;
-  gap: 16px;
+  gap: 24px;
   border-radius: 30px;
   background: rgba(255, 255, 255, 0.28);
   border-radius: 16px;
@@ -46,6 +46,10 @@ export const WeatherInfoWrapper = styled.div`
   box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
+
+  @media screen and (min-width: 1280px) {
+    gap: 16px;
+  }
 `;
 
 export const IconWrapper = styled.div`
