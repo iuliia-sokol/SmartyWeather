@@ -9,7 +9,6 @@ export const DataWrapper = styled.div`
   margin: 0 auto;
   border-radius: 30px;
   padding: 16px;
-
   background: rgba(255, 255, 255, 0.63);
   /* box-shadow: inset -5px -5px 9px rgba(255, 255, 255, 0.45),
     inset 5px 5px 9px rgba(94, 104, 121, 0.3); */
@@ -29,6 +28,7 @@ export const WeatherDataWrapper = styled.div`
   justify-content: space-between;
   gap: 16px;
   width: 100%;
+  position: relative;
 `;
 
 export const WeatherInfoWrapper = styled.div`
@@ -56,11 +56,23 @@ export const IconWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 40%;
+  width: 30vw;
+  top: -20%;
+  left: -20%;
+  position: absolute;
 
   & img {
     width: 100%;
     /* width: 220px; */
+  }
+
+  @media screen and (min-width: 768px) {
+    position: static;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 40%;
+    /* position: relative; */
   }
 `;
 
