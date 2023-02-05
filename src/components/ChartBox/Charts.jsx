@@ -26,27 +26,38 @@ import {
   AreaChart,
   Area,
   XAxis,
-  //   YAxis,
+  YAxis,
   //   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
-import { getForcast } from 'redux/location/locSelectors';
+import { getDailyForcast, getHourlyForcast } from 'redux/location/locSelectors';
 import { ChartsWrapper } from './Charts.styled';
 
 export const ChartsUI = () => {
-  const forecast = useSelector(getForcast);
+  const dailyForecast = useSelector(getDailyForcast);
+  const hourlyForecast = useSelector(getHourlyForcast);
 
   //   const dates = forecast.map(el => {
   //     return { date: `${el.date}`, temp: `${el.day.maxtemp_c}` };
   //   });
 
-  const dates = forecast.time.map(el => el);
-  const tempMin = forecast.temperature_2m_min.map(el => el);
-  const tempMax = forecast.temperature_2m_max.map(el => el);
+  // FOR HOURLY FORECAST
+  const hours = hourlyForecast.time.map(el => el).slice(0, 24);
+  const temp = hourlyForecast.temperature_2m.map(el => el).slice(0, 24);
+  const hourlyData = hours.map((el, index) => {
+    return {
+      time: `${el}`.slice(11),
+      temperature: `${temp[index]}`,
+    };
+  });
 
-  //   console.log('charts forecast', forecast)
-  const data = dates.map((el, index) => {
+  // FOR DAILY FORECAST
+  const dates = dailyForecast.time.map(el => el);
+  const tempMin = dailyForecast.temperature_2m_min.map(el => el);
+  const tempMax = dailyForecast.temperature_2m_max.map(el => el);
+
+  const dailyData = dates.map((el, index) => {
     return {
       date: `${el}`,
       min_temperature: `${tempMin[index]}`,
@@ -54,14 +65,13 @@ export const ChartsUI = () => {
     };
   });
 
-  console.log(data);
   return (
     <ChartsWrapper>
       <ResponsiveContainer width="100%" height="100%">
         <AreaChart
           width={200}
           height={200}
-          data={data}
+          data={hourlyData}
           fill="rgba(233, 201, 57, 0.25)"
           margin={{
             top: 5,
@@ -71,23 +81,24 @@ export const ChartsUI = () => {
           }}
         >
           <Tooltip />
-          <XAxis dataKey="date" />
+          <XAxis dataKey="time" />
+          <YAxis dataKey="temperature" />
           <Area
             type="monotone"
             stackId="1"
-            dataKey="min_temperature"
+            dataKey="temperature"
             stroke="#E9C939"
             strokeWidth={3}
             fill="rgba(233, 201, 57, 0.25)"
           />
-          <Area
+          {/* <Area
             type="monotone"
             stackId="1"
             dataKey="max_temperature"
             stroke="#4be939"
             strokeWidth={3}
             fill="rgba(235, 209, 131, 0.267)"
-          />
+          /> */}
         </AreaChart>
       </ResponsiveContainer>
     </ChartsWrapper>
