@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 export const DataWrapper = styled.div`
-  width: 70%;
+  /* width: 100%; */
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   gap: 16px;
   margin: 0 auto;
   border-radius: 30px;
-  padding: 32px 56px;
+  padding: 16px;
 
   background: rgba(255, 255, 255, 0.63);
   /* box-shadow: inset -5px -5px 9px rgba(255, 255, 255, 0.45),
@@ -17,6 +17,11 @@ export const DataWrapper = styled.div`
   backdrop-filter: blur(2.3px);
   -webkit-backdrop-filter: blur(2.3px);
   /* border: 1px solid rgba(255, 255, 255, 0.77); */
+
+  @media screen and (min-width: 1280px) {
+    width: 70%;
+    padding: 32px 56px;
+  }
 `;
 
 export const WeatherDataWrapper = styled.div`
@@ -82,17 +87,26 @@ export const WeatherConditions = styled.div`
 export const IndicatorsWrapper = styled.div`
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  gap: 16px;
+
+  @media screen and (min-width: 1280px) {
+    flex-wrap: nowrap;
+  }
 `;
 
 export const Indicator = styled.div`
-  display: inline-flex;
-  /* flex-direction: column; */
-  /* justify-content: center; */
-  /* gap: 12px; */
+  display: flex;
   align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 35%;
+  box-shadow: 4px 0px 20px rgba(0, 0, 0, 0.25);
   border-radius: ${p => p.theme.radii.main};
-  padding: 10px;
+  padding: 8px;
   font-family: ${p => p.theme.fonts.main};
   font-weight: ${p => p.theme.fontWeights[0]};
   font-size: 20px;
@@ -111,21 +125,54 @@ export const Indicator = styled.div`
       : p.theme.colors.bgViolet};
 
   & img {
-    width: 30px;
-    height: 30px;
-    margin-right: 12px;
+    width: 20px;
+    height: 20px;
+    margin-bottom: 8px;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 10px;
+    width: 20%;
+
+    & img {
+      width: 30px;
+      height: 30px;
+    }
+
+    @media screen and (min-width: 1280px) {
+      width: fit-content;
+    }
+  }
+`;
+
+export const IndicatorText = styled.span`
+  display: none;
+
+  @media screen and (min-width: 1280px) {
+    display: inline-block;
+    margin-right: 8px;
   }
 `;
 
 export const ChanceOfIndicator = styled(Indicator)`
   flex-direction: column;
-  /* justify-content: flex-start; */
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   background-color: ${p => p.theme.colors.bgGrey};
   color: #8495b2;
+  gap: 8px;
 
   & div {
     display: flex;
+  }
+
+  & img {
+    margin-right: 8px;
+    margin-bottom: 0;
+  }
+
+  @media screen and (min-width: 1280px) {
+    align-items: flex-start;
   }
 `;
 

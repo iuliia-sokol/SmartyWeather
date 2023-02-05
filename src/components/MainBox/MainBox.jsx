@@ -19,6 +19,7 @@ import {
   IconWrapper,
   Indicator,
   IndicatorsWrapper,
+  IndicatorText,
   Temperature,
   TemperatureWrapper,
   WeatherConditions,
@@ -101,12 +102,12 @@ export const MainBoxUI = () => {
               <ChanceOfIndicator>
                 <div>
                   <img src={rain} alt="rain" loading="lazy" />
-                  <span>Chance of rain:</span>
+                  <IndicatorText>Chance of rain:</IndicatorText>
                   <span>{forecast[0].day.daily_chance_of_rain} %</span>
                 </div>
                 <div>
                   <img src={snow} alt="snow" loading="lazy" />
-                  <span>Chance of snow:</span>
+                  <IndicatorText>Chance of snow:</IndicatorText>
                   <span>{forecast[0].day.daily_chance_of_snow} %</span>
                 </div>
               </ChanceOfIndicator>
@@ -117,24 +118,24 @@ export const MainBoxUI = () => {
                   loading="lazy"
                 />
                 <div>
-                  <span>Precipitation:</span>
-                  <br />
+                  <IndicatorText>Precipitation:</IndicatorText>
+
                   <span>{weather.daily.precipitation_sum[0]} mm</span>
                 </div>
               </Indicator>
               <Indicator color="pink">
                 <img src={humidityImg} alt="humidity" loading="lazy" />
                 <div>
-                  <span>Humidity:</span>
-                  <br />
+                  <IndicatorText>Humidity:</IndicatorText>
+
                   <span>{extraWeather.humidity} %</span>
                 </div>
               </Indicator>
               <Indicator color="violet">
                 <img src={windImg} alt="wind" loading="lazy" />
                 <div>
-                  <span>Windspeed:</span>
-                  <br />
+                  <IndicatorText>Windspeed:</IndicatorText>
+
                   <span>{weather.current_weather.windspeed} km/h</span>
                 </div>
               </Indicator>

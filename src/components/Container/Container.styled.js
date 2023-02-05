@@ -5,7 +5,6 @@ export const WrapperContainer = styled.div`
   padding: 15px;
   margin: 0 auto;
   box-sizing: border-box;
-  /* overflow: hidden; */
   overflow: visible;
 
   @media screen and (min-width: 320px) {
