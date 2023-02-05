@@ -1,5 +1,6 @@
 import { CardUI } from 'components/Card/Card';
 import { Container } from 'components/Container/Container';
+import { Loader } from 'components/Loader/Loader';
 import { MainBoxUI } from 'components/MainBox/MainBox';
 import { useEffect } from 'react';
 import { useGeolocated } from 'react-geolocated';
@@ -85,7 +86,9 @@ const Homepage = () => {
         ) : latitude && longitude ? (
           <MainBoxUI />
         ) : (
-          <div>Loading...</div>
+          <div>
+            <Loader />
+          </div>
         )}
       </Container>
     </main>

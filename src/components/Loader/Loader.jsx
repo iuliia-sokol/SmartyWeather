@@ -1,19 +1,17 @@
-import { RotatingTriangles } from 'react-loader-spinner';
+import { LoaderOverlay, LoaderWrapper, PicWrapper } from './Loader.styled';
 
-import { LoaderOverlay } from './Loader.styled';
+import moon from '../../images/conditions/night-moon-min.png';
+import sun from '../../images/conditions/day-sun-min.png';
 
 export const Loader = () => {
   return (
     <LoaderOverlay>
-      <RotatingTriangles
-        visible={true}
-        height="180"
-        width="180"
-        ariaLabel="rotating-triangels-loading"
-        wrapperStyle={{ position: 'absolute', top: '30%' }}
-        wrapperClass="rotating-triangels-wrapper"
-        colors={['#c47436', '#733c14', '#f1e46d']}
-      />
+      <LoaderWrapper>
+        <PicWrapper>
+          <img src={sun} alt="sun" loading="lazy" />
+          <img src={moon} alt="moon" loading="lazy" />
+        </PicWrapper>
+      </LoaderWrapper>
     </LoaderOverlay>
   );
 };

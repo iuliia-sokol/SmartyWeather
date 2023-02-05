@@ -5,10 +5,10 @@ export const DataWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  gap: 32px;
+  gap: 16px;
   margin: 0 auto;
   border-radius: 30px;
-  padding: 32px;
+  padding: 32px 56px;
 
   background: rgba(255, 255, 255, 0.63);
   /* box-shadow: inset -5px -5px 9px rgba(255, 255, 255, 0.45),
@@ -21,11 +21,9 @@ export const DataWrapper = styled.div`
 
 export const WeatherDataWrapper = styled.div`
   display: flex;
-  /* flex-direction: row-reverse; */
   justify-content: space-between;
-
-  /* align-items: flex-end; */
   gap: 16px;
+  width: 100%;
 `;
 
 export const WeatherInfoWrapper = styled.div`
@@ -49,9 +47,11 @@ export const IconWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 40%;
 
   & img {
-    width: 220px;
+    width: 100%;
+    /* width: 220px; */
   }
 `;
 
@@ -134,6 +134,7 @@ export const TemperatureWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
+  flex-grow: 1;
 `;
 
 export const FeelsLike = styled.span`
