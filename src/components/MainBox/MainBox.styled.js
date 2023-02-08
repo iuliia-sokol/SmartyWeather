@@ -63,16 +63,23 @@ export const IconWrapper = styled.div`
 
   & img {
     width: 100%;
-    /* width: 220px; */
+  }
+
+  @media screen and (max-width: 519px) {
+    width: 30vw;
+  }
+
+  @media screen and (min-width: 520px) {
+    width: 20vw;
   }
 
   @media screen and (min-width: 768px) {
     position: static;
+    width: 30vw;
   }
 
   @media screen and (min-width: 1280px) {
     width: 40%;
-    /* position: relative; */
   }
 `;
 
