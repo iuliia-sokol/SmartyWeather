@@ -56,7 +56,7 @@ export const IconWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 30vw;
+  width: 40vw;
   top: -20%;
   left: -20%;
   position: absolute;
@@ -65,12 +65,8 @@ export const IconWrapper = styled.div`
     width: 100%;
   }
 
-  @media screen and (max-width: 519px) {
-    width: 30vw;
-  }
-
-  @media screen and (min-width: 520px) {
-    width: 20vw;
+  @media screen and (min-width: 320px) {
+    width: 170px;
   }
 
   @media screen and (min-width: 768px) {
