@@ -4,12 +4,12 @@ import { fetchAstroDataFromWeatherApi } from 'redux/location/locOperations';
 import { getAstroData } from 'redux/location/locSelectors';
 import { moonPhasesPng } from 'utils/moonPhases';
 import { IndicatorText } from 'components/MainBox/MainBox.styled';
-import moonrise from '../../images/moonrise.png';
-import moonset from '../../images/moonset.png';
-import phase from '../../images/waxing-gibbous.png';
-import moon from '../../images/moon.png';
-import sunrise from '../../images/sunrise.png';
-import sunset from '../../images/sunset.png';
+import moonrise from '../../images/moonrise-min.png';
+import moonset from '../../images/moonset-min.png';
+import phase from '../../images/waxing-gibbous-min.png';
+import moon from '../../images/moon-min.png';
+import sunrise from '../../images/sunrise-min.png';
+import sunset from '../../images/sunset-min.png';
 
 import {
   AstroWrapper,
