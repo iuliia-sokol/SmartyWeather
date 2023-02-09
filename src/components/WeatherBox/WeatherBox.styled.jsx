@@ -29,5 +29,13 @@ export const IndicatorsWrapper = styled.div`
   & div {
     display: flex;
     width: 100%;
+
+    & span {
+      margin-right: 0;
+    }
+
+    @media screen and (min-width: 768px) {
+      width: fit-content;
+    }
   }
 `;
