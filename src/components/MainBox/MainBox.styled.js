@@ -32,12 +32,12 @@ export const WeatherDataWrapper = styled.div`
 `;
 
 export const WeatherInfoWrapper = styled.div`
-  padding: 32px;
+  padding: 32px 16px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   justify-content: flex-end;
-  gap: 24px;
+  gap: 16px;
   border-radius: 30px;
   background: rgba(255, 255, 255, 0.28);
   border-radius: 16px;
@@ -47,8 +47,8 @@ export const WeatherInfoWrapper = styled.div`
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
 
-  @media screen and (min-width: 1280px) {
-    gap: 16px;
+  @media screen and (min-width: 768px) {
+    padding: 32px;
   }
 `;
 
@@ -57,8 +57,8 @@ export const IconWrapper = styled.div`
   justify-content: center;
   align-items: center;
   width: 40vw;
-  top: -20%;
-  left: -20%;
+  top: -25%;
+  left: -25%;
   position: absolute;
 
   & img {
@@ -122,7 +122,7 @@ export const Indicator = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: 35%;
+  width: calc(50% - 32px);
   box-shadow: 4px 0px 20px rgba(0, 0, 0, 0.25);
   border-radius: ${p => p.theme.radii.main};
   padding: 8px;
