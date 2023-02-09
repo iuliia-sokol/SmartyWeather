@@ -244,8 +244,12 @@ export const Temperature = styled.div`
 export const ButtonsWrapper = styled.div`
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: 16px;
+
+  @media screen and (min-width: 768px) {
+    justify-content: space-between;
+  }
 `;

@@ -15,9 +15,6 @@ export const WeatherWrapper = styled.div`
   font-weight: ${p => p.theme.fontWeights[0]};
   font-size: 20px;
   line-height: ${p => p.theme.lineHeights.main};
-  /* &:hover {
-    box-shadow: 0px 10px 20px 2px rgba(0, 255, 255, 0.7);
-  } */
 `;
 
 export const IndicatorsWrapper = styled.div`

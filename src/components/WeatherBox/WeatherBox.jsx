@@ -19,15 +19,11 @@ export const WeatherUI = () => {
   const weather = useSelector(getCurrentWeather);
   const extraWeather = useSelector(getAdditionalCurrentWeather);
 
-  console.log(TbTemperatureMinus);
-  // console.log(extraWeather);
-
   return weather && extraWeather ? (
     <WeatherWrapper>
       <IndicatorsWrapper>
         <Indicator>
           <TbTemperaturePlus />
-          {/* <img src={maxTemp} alt="max temperature" loading="lazy" /> */}
           <IndicatorText>Max temperature:</IndicatorText>
           <span>{weather.daily.temperature_2m_max[0]} °C</span>
         </Indicator>
@@ -41,7 +37,6 @@ export const WeatherUI = () => {
           <IndicatorText>Clouds:</IndicatorText>
           <span>{extraWeather.cloud} %</span>
         </Indicator>
-
         <Indicator>
           <TbWindmill />
           <IndicatorText>Max windgusts:</IndicatorText>

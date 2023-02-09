@@ -179,7 +179,7 @@ export const MainBoxUI = () => {
               <ButtonUI
                 type="button"
                 onClick={onShowAirBtnClick}
-                text="Air"
+                text="Air quality"
                 selected={showAir}
               />
             </ButtonsWrapper>
