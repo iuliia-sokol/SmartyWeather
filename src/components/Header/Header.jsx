@@ -1,16 +1,24 @@
 import { Container } from 'components/Container/Container';
-import { LogoWrapper } from './Header.styled';
+import { Elipse, HeaderWrapper, Logo, LogoWrapper } from './Header.styled';
 
-import logo from '../../images/logo-min.png';
+// import logo from '../../images/logo-min.png';
+import sprite from '../../images/icons_sprite.svg';
 
 export const Header = () => {
   return (
-    <header>
+    <HeaderWrapper>
       <Container>
         <LogoWrapper>
-          <img src={logo} alt="logo" loading="lazy" />
+          {/* <img src={logo} alt="logo" loading="lazy" /> */}
+          <Elipse width={46} height={42} viewBox="0 0 36 36">
+            <use href={sprite + `#elipse`} />
+          </Elipse>
+          <Logo>
+            <p>smarty</p>
+            <span>Weather</span>
+          </Logo>
         </LogoWrapper>
       </Container>
-    </header>
+    </HeaderWrapper>
   );
 };

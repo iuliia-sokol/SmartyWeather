@@ -57,7 +57,7 @@ export const IconWrapper = styled.div`
   justify-content: center;
   align-items: center;
   width: 40vw;
-  top: -25%;
+  top: -35%;
   left: -25%;
   position: absolute;
 

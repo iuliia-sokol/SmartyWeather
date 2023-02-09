@@ -4,6 +4,7 @@ export const theme = {
     mainDark: '#332821',
     mainLight: '#FFFFFF',
     textGrey: 'rgba(51, 40, 33, 0.5)',
+    logoTransparent: 'rgba(251, 251, 251, 0.75)',
 
     accentViolet: '#5E4FC1',
     accentPink: '#D86191',
@@ -31,7 +32,7 @@ export const theme = {
     content: '1.25',
   },
   letterSpacings: {
-    logo: '0.3em',
+    logo: '0.1em',
     subheader: '0.05em',
     content: '0.02em',
   },
