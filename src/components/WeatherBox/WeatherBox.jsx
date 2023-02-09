@@ -14,11 +14,11 @@ export const WeatherUI = () => {
   // console.log(weather);
   // console.log(extraWeather);
 
-  const [showAstro, setShowAstro] = useState(false);
+  // const [showAstro, setShowAstro] = useState(false);
 
-  const onShowAstroBtnClick = () => {
-    setShowAstro(!showAstro);
-  };
+  // const onShowAstroBtnClick = () => {
+  //   setShowAstro(!showAstro);
+  // };
 
   return weather && extraWeather ? (
     <WeatherWrapper>
@@ -59,10 +59,10 @@ export const WeatherUI = () => {
         UV:
         <span>Index {extraWeather.uv} </span>
       </p>
-      <button type="button" onClick={onShowAstroBtnClick}>
+      {/* <button type="button" onClick={onShowAstroBtnClick}>
         Display astrodata
       </button>
-      {showAstro && <AstroUI />}
+      {showAstro && <AstroUI />} */}
     </WeatherWrapper>
   ) : (
     <div>No weather data available</div>

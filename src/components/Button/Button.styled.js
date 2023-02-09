@@ -97,7 +97,7 @@ export const ButtonMain = styled.button`
   // Active
   &:active {
     &:before {
-      background-color: ${p => p.theme.colors.mainAccentPink};
+      background-color: ${p => p.theme.colors.bgYellow};
     }
   }
 `;

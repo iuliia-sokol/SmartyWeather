@@ -1,5 +1,6 @@
 import { ChartsUI } from 'components/ChartBox/Charts';
 import { WeatherUI } from 'components/WeatherBox/WeatherBox';
+import AstroUI from 'components/AstroBox/AstroBox';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
@@ -25,6 +26,7 @@ import {
   WeatherConditions,
   WeatherDataWrapper,
   WeatherInfoWrapper,
+  ButtonsWrapper,
 } from './MainBox.styled';
 
 import termometrPlus from '../../images/thermomater-max-min.png';
@@ -47,6 +49,8 @@ export const MainBoxUI = () => {
   //   console.log(forecast[0].day.daily_chance_of_rain);
 
   const [showWeather, setShowWeather] = useState(false);
+  const [showAstro, setShowAstro] = useState(false);
+  const [showAir, setShowAir] = useState(false);
   const [weatherPng, setWeatherPng] = useState(null);
 
   useEffect(() => {
@@ -61,6 +65,20 @@ export const MainBoxUI = () => {
 
   const onWeatherBtnClick = () => {
     setShowWeather(!showWeather);
+    setShowAstro(false);
+    setShowAir(false);
+  };
+
+  const onShowAstroBtnClick = () => {
+    setShowAstro(!showAstro);
+    setShowAir(false);
+    setShowWeather(false);
+  };
+
+  const onShowAirBtnClick = () => {
+    setShowAir(!showAir);
+    setShowAstro(false);
+    setShowWeather(false);
   };
 
   return (
@@ -142,14 +160,22 @@ export const MainBoxUI = () => {
               </Indicator>
             </IndicatorsWrapper>
             <ChartsUI />
-            <ButtonUI
-              type="button"
-              onClick={onWeatherBtnClick}
-              text="Details"
-            />
-            {/* <button onClick={onWeatherBtnClick}></button> */}
+            <ButtonsWrapper>
+              <ButtonUI
+                type="button"
+                onClick={onWeatherBtnClick}
+                text="Details"
+              />
+              <ButtonUI
+                type="button"
+                onClick={onShowAstroBtnClick}
+                text="Astro"
+              />
+              <ButtonUI type="button" onClick={onShowAirBtnClick} text="Air" />
+            </ButtonsWrapper>
           </WeatherInfoWrapper>
           {showWeather && <WeatherUI />}
+          {showAstro && <AstroUI />}
         </>
       ) : (
         <div>No data to display</div>

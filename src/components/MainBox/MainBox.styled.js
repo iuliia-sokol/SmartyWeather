@@ -231,3 +231,11 @@ export const Temperature = styled.div`
     font-size: 24px;
   }
 `;
+
+export const ButtonsWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+`;
