@@ -3,7 +3,7 @@ export const theme = {
   colors: {
     mainDark: '#332821',
     mainLight: '#FFFFFF',
-    textGrey: 'rgba(51, 40, 33, 0.5)',
+    textGrey: 'rgba(51, 40, 33, 0.7)',
     logoTransparent: 'rgba(251, 251, 251, 0.75)',
 
     accentViolet: '#5E4FC1',

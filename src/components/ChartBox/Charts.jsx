@@ -13,15 +13,16 @@ import {
   getHourlyForcast,
 } from 'redux/location/locSelectors';
 import { renderCustomAxisTick } from 'utils/customAxis';
+import { CustomizedDot } from 'utils/customDot';
 import { ChartsWrapper } from './Charts.styled';
 
 export const ChartsUI = () => {
   // const dailyForecast = useSelector(getDailyForcast);
   const hourlyForecast = useSelector(getHourlyForcast);
   const isRowBased = useMediaQuery('(min-width: 768px)');
-  // console.log(isRowBased);
 
   // FOR HOURLY FORECAST
+
   const hours = hourlyForecast.time.map(el => el).slice(0, 24);
   const temp = hourlyForecast.temperature_2m.map(el => el).slice(0, 24);
   const code = hourlyForecast.weathercode.map(el => el).slice(0, 24);
@@ -80,6 +81,8 @@ export const ChartsUI = () => {
             stroke="#E9C939"
             strokeWidth={3}
             fill="rgba(233, 201, 57, 0.25)"
+            activeDot={{ r: 6 }}
+            dot={<CustomizedDot />}
           />
           {/* <Area
             type="monotone"

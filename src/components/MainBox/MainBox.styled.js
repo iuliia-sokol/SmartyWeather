@@ -148,6 +148,11 @@ export const Indicator = styled.div`
       ? p.theme.colors.bgViolet
       : p.theme.colors.bgGrey};
 
+  & svg {
+    width: 20px;
+    height: 20px;
+  }
+
   & img {
     width: 20px;
     height: 20px;

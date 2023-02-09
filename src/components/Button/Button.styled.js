@@ -34,7 +34,11 @@ export const ButtonMain = styled.button`
       ${p =>
         p.color === 'blue'
           ? p.theme.colors.accentBlue
-          : p.theme.colors.textGrey};
+          : p.color === 'pink'
+          ? p.theme.colors.accentPink
+          : p.color === 'violet'
+          ? p.theme.colors.accentViolet
+          : p.theme.colors.iconsFill};
     border-radius: 50px;
     z-index: -10;
 
@@ -55,7 +59,7 @@ export const ButtonMain = styled.button`
   &:after {
     top: 10px;
     left: 0px;
-    opacity: 0.2;
+    opacity: 0.3;
     transition: transform 0.3s, opacity 0.3s;
 
     @media screen and (min-width: 768px) {

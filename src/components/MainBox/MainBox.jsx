@@ -114,6 +114,9 @@ export const MainBoxUI = () => {
               </Temperature>
 
               <FeelsLike>Feels like {extraWeather.feelslike_c} °C</FeelsLike>
+              <FeelsLike>
+                Local time {weather.current_weather.time.slice(11)}
+              </FeelsLike>
             </TemperatureWrapper>
           </WeatherDataWrapper>
           <WeatherInfoWrapper>

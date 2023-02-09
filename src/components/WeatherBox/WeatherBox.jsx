@@ -1,6 +1,14 @@
-import { Indicator } from 'components/MainBox/MainBox.styled';
+import { Indicator, IndicatorText } from 'components/MainBox/MainBox.styled';
 import React from 'react';
 import { useSelector } from 'react-redux';
+import {
+  TbTemperaturePlus,
+  TbTemperatureMinus,
+  TbWindmill,
+} from 'react-icons/tb';
+import { BsClouds, BsWind } from 'react-icons/bs';
+import { WiBarometer, WiWindDeg } from 'react-icons/wi';
+import { GiSunRadiations, GiStripedSun } from 'react-icons/gi';
 import {
   getAdditionalCurrentWeather,
   getCurrentWeather,
@@ -11,47 +19,57 @@ export const WeatherUI = () => {
   const weather = useSelector(getCurrentWeather);
   const extraWeather = useSelector(getAdditionalCurrentWeather);
 
-  // console.log(weather);
+  console.log(TbTemperatureMinus);
   // console.log(extraWeather);
 
   return weather && extraWeather ? (
     <WeatherWrapper>
       <IndicatorsWrapper>
         <Indicator>
-          Max temperature:
+          <TbTemperaturePlus />
+          {/* <img src={maxTemp} alt="max temperature" loading="lazy" /> */}
+          <IndicatorText>Max temperature:</IndicatorText>
           <span>{weather.daily.temperature_2m_max[0]} °C</span>
         </Indicator>
         <Indicator>
-          Min temperature:
+          <TbTemperatureMinus />
+          <IndicatorText>Min temperature:</IndicatorText>
           <span>{weather.daily.temperature_2m_min[0]} °C</span>
         </Indicator>
         <Indicator>
-          Clouds:
+          <BsClouds />
+          <IndicatorText>Clouds:</IndicatorText>
           <span>{extraWeather.cloud} %</span>
         </Indicator>
 
         <Indicator>
-          Max windgusts:
+          <TbWindmill />
+          <IndicatorText>Max windgusts:</IndicatorText>
           <span>{weather.daily.windgusts_10m_max[0]} km/h</span>
         </Indicator>
         <Indicator>
-          Max windspeed:
+          <BsWind />
+          <IndicatorText>Max windspeed:</IndicatorText>
           <span>{weather.daily.windspeed_10m_max[0]} km/h</span>
         </Indicator>
         <Indicator>
-          Wind direction:
+          <WiWindDeg />
+          <IndicatorText>Wind direction:</IndicatorText>
           <span>{extraWeather.wind_dir}</span>
         </Indicator>
         <Indicator>
-          Pressure:
+          <WiBarometer />
+          <IndicatorText>Pressure:</IndicatorText>
           <span>{extraWeather.pressure_mb} millibars</span>
         </Indicator>
         <Indicator>
-          Shortwave radiation:
+          <GiSunRadiations />
+          <IndicatorText>Shortwave radiation:</IndicatorText>
           <span>{weather.daily.shortwave_radiation_sum[0]} MJ/m²</span>
         </Indicator>
         <Indicator>
-          UV:
+          <GiStripedSun />
+          <IndicatorText>UV:</IndicatorText>
           <span>Index {extraWeather.uv} </span>
         </Indicator>
       </IndicatorsWrapper>
