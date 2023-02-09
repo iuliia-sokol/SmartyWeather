@@ -1,3 +1,4 @@
+import { Indicator } from 'components/MainBox/MainBox.styled';
 import styled from 'styled-components';
 
 export const AstroWrapper = styled.div`
@@ -21,11 +22,95 @@ export const AstroWrapper = styled.div`
   line-height: ${p => p.theme.lineHeights.main};
 
   @media screen and (min-width: 768px) {
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
   }
 `;
 
-export const SunBox = styled.div``;
+export const SunBox = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+  /* width: calc(50% - 32px); */
 
-export const MoonBox = styled.div``;
+  & div {
+    width: 100%;
+  }
+`;
+
+// export const AstroIndicator = styled.div`
+//   display: flex;
+//
+// `;
+
+export const IndicatorImg = styled.img`
+  display: block;
+  width: 40px;
+  height: auto;
+  margin: 0 !important;
+`;
+
+export const AstroIndicator = styled(Indicator)`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: 768px) {
+    width: calc(100% - 32px);
+    /* flex-direction: row; */
+  }
+`;
+
+export const MoonImg = styled.img`
+  width: 60%;
+  height: auto;
+  margin: 0;
+
+  @media screen and (min-width: 768px) {
+    width: calc(50% - 16px);
+    height: auto;
+  }
+`;
+
+export const MoonBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  gap: 32px;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
+`;
+
+export const MoonIndicatorsWrapper = styled.div`
+  width: 100%;
+  /* width: calc(50% - 32px); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 16px;
+  column-gap: 32px;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: column;
+  }
+`;
+
+export const SunIndicatorsWrapper = styled.div`
+  /* width: 100%; */
+  width: calc(50% - 32px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 16px;
+  column-gap: 32px;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
+`;
