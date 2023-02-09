@@ -119,7 +119,7 @@ export const IndicatorsWrapper = styled.div`
 `;
 
 export const Indicator = styled.div`
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -246,5 +246,6 @@ export const ButtonsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   gap: 16px;
 `;

@@ -25,4 +25,9 @@ export const IndicatorsWrapper = styled.div`
   gap: 16px;
   flex-wrap: wrap;
   justify-content: center;
+
+  & div {
+    display: flex;
+    width: 100%;
+  }
 `;
