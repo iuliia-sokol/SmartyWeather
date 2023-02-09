@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/smartyWeather/static/css/main.38ad1c5e.css",
-    "main.js": "/smartyWeather/static/js/main.0aa0b2ae.js",
-    "static/js/415.1afb2f1d.chunk.js": "/smartyWeather/static/js/415.1afb2f1d.chunk.js",
+    "main.js": "/smartyWeather/static/js/main.bfa87890.js",
+    "static/js/34.d674a1d1.chunk.js": "/smartyWeather/static/js/34.d674a1d1.chunk.js",
     "static/js/642.9aa65e46.chunk.js": "/smartyWeather/static/js/642.9aa65e46.chunk.js",
     "static/media/day-snow-min.png": "/smartyWeather/static/media/day-snow-min.b3f7b30faf8d8e44f0a2.png",
     "static/media/day-storm-min.png": "/smartyWeather/static/media/day-storm-min.5c60632e2334c8548d7a.png",
@@ -20,15 +20,15 @@
     "static/media/night-moon-min.png": "/smartyWeather/static/media/night-moon-min.af8740f0edb561d454dd.png",
     "static/media/thermomater-max-min.png": "/smartyWeather/static/media/thermomater-max-min.5cb386569b105d9a400b.png",
     "static/media/thermomater-min-min.png": "/smartyWeather/static/media/thermomater-min-min.7f6139665f74752f3887.png",
-    "static/media/icons_sprite.svg": "/smartyWeather/static/media/icons_sprite.fe8ac3c4f4454fdcf25f221c04eee300.svg",
+    "static/media/icons_sprite.svg": "/smartyWeather/static/media/icons_sprite.373b645a6ec8de8140c191b13d47a004.svg",
     "index.html": "/smartyWeather/index.html",
     "main.38ad1c5e.css.map": "/smartyWeather/static/css/main.38ad1c5e.css.map",
-    "main.0aa0b2ae.js.map": "/smartyWeather/static/js/main.0aa0b2ae.js.map",
-    "415.1afb2f1d.chunk.js.map": "/smartyWeather/static/js/415.1afb2f1d.chunk.js.map",
+    "main.bfa87890.js.map": "/smartyWeather/static/js/main.bfa87890.js.map",
+    "34.d674a1d1.chunk.js.map": "/smartyWeather/static/js/34.d674a1d1.chunk.js.map",
     "642.9aa65e46.chunk.js.map": "/smartyWeather/static/js/642.9aa65e46.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.38ad1c5e.css",
-    "static/js/main.0aa0b2ae.js"
+    "static/js/main.bfa87890.js"
   ]
 }
