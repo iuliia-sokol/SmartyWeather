@@ -1,6 +1,7 @@
 import { ChartsUI } from 'components/ChartBox/Charts';
 import { WeatherUI } from 'components/WeatherBox/WeatherBox';
 import AstroUI from 'components/AstroBox/AstroBox';
+import { ButtonUI } from 'components/Button/Button';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
@@ -36,7 +37,6 @@ import windImg from '../../images/wind-min.png';
 import humidityImg from '../../images/humidity-min.png';
 import rain from '../../images/rain-min.png';
 import snow from '../../images/snow-min.png';
-import { ButtonUI } from 'components/Button/Button';
 
 export const MainBoxUI = () => {
   const weather = useSelector(getCurrentWeather);
@@ -165,13 +165,20 @@ export const MainBoxUI = () => {
                 type="button"
                 onClick={onWeatherBtnClick}
                 text="Details"
+                selected={showWeather}
               />
               <ButtonUI
                 type="button"
                 onClick={onShowAstroBtnClick}
                 text="Astro"
+                selected={showAstro}
               />
-              <ButtonUI type="button" onClick={onShowAirBtnClick} text="Air" />
+              <ButtonUI
+                type="button"
+                onClick={onShowAirBtnClick}
+                text="Air"
+                selected={showAir}
+              />
             </ButtonsWrapper>
           </WeatherInfoWrapper>
           {showWeather && <WeatherUI />}

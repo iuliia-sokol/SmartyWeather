@@ -119,7 +119,7 @@ export const IndicatorsWrapper = styled.div`
 `;
 
 export const Indicator = styled.div`
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -136,13 +136,17 @@ export const Indicator = styled.div`
       ? p.theme.colors.accentBlue
       : p.color === 'pink'
       ? p.theme.colors.accentPink
-      : p.theme.colors.accentViolet};
+      : p.color === 'violet'
+      ? p.theme.colors.accentViolet
+      : p.theme.colors.textGrey};
   background-color: ${p =>
     p.color === 'blue'
       ? p.theme.colors.bgBlue
       : p.color === 'pink'
       ? p.theme.colors.bgPink
-      : p.theme.colors.bgViolet};
+      : p.color === 'violet'
+      ? p.theme.colors.bgViolet
+      : p.theme.colors.bgGrey};
 
   & img {
     width: 20px;

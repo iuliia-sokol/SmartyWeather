@@ -11,8 +11,18 @@ export const WeatherWrapper = styled.div`
   backdrop-filter: blur(5.3px);
   -webkit-backdrop-filter: blur(5.3px);
   border: 1px solid rgba(255, 255, 255, 0.77);
-
+  font-family: ${p => p.theme.fonts.main};
+  font-weight: ${p => p.theme.fontWeights[0]};
+  font-size: 20px;
+  line-height: ${p => p.theme.lineHeights.main};
   /* &:hover {
     box-shadow: 0px 10px 20px 2px rgba(0, 255, 255, 0.7);
   } */
+`;
+
+export const IndicatorsWrapper = styled.div`
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
 `;

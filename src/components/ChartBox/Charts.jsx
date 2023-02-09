@@ -19,7 +19,7 @@ export const ChartsUI = () => {
   // const dailyForecast = useSelector(getDailyForcast);
   const hourlyForecast = useSelector(getHourlyForcast);
   const isRowBased = useMediaQuery('(min-width: 768px)');
-  console.log(isRowBased);
+  // console.log(isRowBased);
 
   // FOR HOURLY FORECAST
   const hours = hourlyForecast.time.map(el => el).slice(0, 24);
