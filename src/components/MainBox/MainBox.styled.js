@@ -114,6 +114,7 @@ export const IndicatorsWrapper = styled.div`
 
   @media screen and (min-width: 1280px) {
     flex-wrap: nowrap;
+    align-items: stretch;
   }
 `;
 

@@ -18,7 +18,6 @@ export const theme = {
     bgBlue: 'rgba(101, 142, 217, 0.1)',
     bgYellow: 'rgba(233, 201, 57, 0.25)',
     bgGrey: 'rgba(132, 149, 178, 0.1)',
-
     iconsFill: 'rgba(196, 196, 196, 0.8)',
   },
   fonts: {

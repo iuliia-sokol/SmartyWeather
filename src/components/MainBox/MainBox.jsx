@@ -34,6 +34,7 @@ import windImg from '../../images/wind-min.png';
 import humidityImg from '../../images/humidity-min.png';
 import rain from '../../images/rain-min.png';
 import snow from '../../images/snow-min.png';
+import { ButtonUI } from 'components/Button/Button';
 
 export const MainBoxUI = () => {
   const weather = useSelector(getCurrentWeather);
@@ -141,9 +142,12 @@ export const MainBoxUI = () => {
               </Indicator>
             </IndicatorsWrapper>
             <ChartsUI />
-            <button type="button" onClick={onWeatherBtnClick}>
-              Display weather
-            </button>
+            <ButtonUI
+              type="button"
+              onClick={onWeatherBtnClick}
+              text="Details"
+            />
+            {/* <button onClick={onWeatherBtnClick}></button> */}
           </WeatherInfoWrapper>
           {showWeather && <WeatherUI />}
         </>
