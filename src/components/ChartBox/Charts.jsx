@@ -81,7 +81,7 @@ export const ChartsUI = () => {
             stroke="#E9C939"
             strokeWidth={3}
             fill="rgba(233, 201, 57, 0.25)"
-            activeDot={{ r: 6 }}
+            activeDot={{ r: 5 }}
             dot={<CustomizedDot />}
           />
           {/* <Area
