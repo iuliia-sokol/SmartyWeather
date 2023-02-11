@@ -18,13 +18,15 @@ import pressure from '../../images/pressure-min.png';
 import uv from '../../images/uv-index-min.png';
 import radio from '../../images/optical-radiation-min.png';
 import { DailyChartsUI } from 'components/ChartBox/DailyCharts';
+import { Subheader } from 'components/BoxSubheader/Subheader';
 
-export const WeatherUI = () => {
+const WeatherUI = () => {
   const weather = useSelector(getCurrentWeather);
   const extraWeather = useSelector(getAdditionalCurrentWeather);
 
   return weather && extraWeather ? (
     <WeatherWrapper>
+      <Subheader text="Today's data" />
       <IndicatorsWrapper>
         <IndicatorUI
           src={hot}
@@ -68,9 +70,12 @@ export const WeatherUI = () => {
         />
         <IndicatorUI src={uv} text="UV:" source={`Index ${extraWeather.uv}`} />
       </IndicatorsWrapper>
+      <Subheader text="7-day forecast" />
       <DailyChartsUI />
     </WeatherWrapper>
   ) : (
     <div>No weather data available</div>
   );
 };
+
+export default React.memo(WeatherUI);

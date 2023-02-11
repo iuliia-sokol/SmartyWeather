@@ -26,7 +26,7 @@ export const IndicatorsWrapper = styled.ul`
   gap: 16px;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 16px;
+  margin-bottom: 32px;
 
   & li {
     display: flex;
@@ -39,7 +39,6 @@ export const IndicatorsWrapper = styled.ul`
 
   @media screen and (min-width: 768px) {
     justify-content: space-between;
-    margin-bottom: 32px;
 
     & li {
       width: 25%;

@@ -12,7 +12,6 @@ import {
 import { getDailyForcast } from 'redux/location/locSelectors';
 import { renderCustomAxisTick } from 'utils/customAxis';
 
-// import { renderCustomAxisTick } from 'utils/customAxis';
 import {
   CustomizeActivedDotPrecipitation,
   CustomizeActivedDotTempMax,
@@ -59,7 +58,7 @@ export const DailyChartsUI = () => {
           height={200}
           data={dailyData}
           margin={{
-            top: 16,
+            top: 0,
             right: 16,
             left: 16,
             bottom: 16,

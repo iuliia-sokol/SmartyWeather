@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { HourlyChartsUI } from 'components/ChartBox/HourlyCharts';
-import { WeatherUI } from 'components/WeatherBox/WeatherBox';
+import WeatherUI from 'components/WeatherBox/WeatherBox';
 import AstroUI from 'components/AstroBox/AstroBox';
 import { ButtonUI } from 'components/Button/Button';
 import { IndicatorText } from 'components/Indicator/Indicator.styled';
