@@ -23,7 +23,7 @@ const formatIndex = index => {
     case 4:
       return 'Unhealthy';
     case 5:
-      return 'Very Unhealthy';
+      return 'Very unhealthy';
     case 6:
       return 'Hazardous';
     default:
@@ -36,7 +36,7 @@ const AirUI = () => {
   const index = formatIndex(air['us-epa-index']);
   return (
     <WrapperBox>
-      <CurrentState>{index}</CurrentState>
+      <CurrentState index={index}>{index}</CurrentState>
       <IndicatorsWrapper>
         <IndicatorUI
           src={co}

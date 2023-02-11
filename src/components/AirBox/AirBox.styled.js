@@ -8,7 +8,20 @@ export const CurrentState = styled.div`
   font-weight: ${p => p.theme.fontWeights[0]};
   font-size: 20px;
   line-height: ${p => p.theme.lineHeights.main};
-  background-color: ${p => p.theme.colors.mainAccentPink};
+  background-color: ${p =>
+    p.index === 'Good'
+      ? '#31a37d'
+      : p.index === 'Moderate'
+      ? '#709f2e'
+      : p.index === 'Unhealthy for sensitive group'
+      ? '#bcba1c'
+      : p.index === 'Unhealthy'
+      ? '#ca7616'
+      : p.index === 'Very unhealthy'
+      ? '#ca5b16'
+      : p.index === 'Hazardous'
+      ? '#ca3116'
+      : '#5E4FC1'};
   border-radius: ${p => p.theme.radii.main};
 `;
 
