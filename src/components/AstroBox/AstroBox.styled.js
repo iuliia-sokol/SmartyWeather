@@ -2,33 +2,6 @@ import { IndicatorUI } from 'components/Indicator/Indicator';
 
 import styled from 'styled-components';
 
-export const AstroWrapper = styled.div`
-  width: 100%;
-  box-sizing: border-box;
-  padding: 32px 16px;
-  display: flex;
-  gap: 16px;
-  flex-direction: column;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.23);
-  border-radius: 30px;
-  box-shadow: inset -5px -5px 9px rgba(255, 255, 255, 0.45),
-    inset 5px 5px 9px rgba(94, 104, 121, 0.3);
-  backdrop-filter: blur(5.3px);
-  -webkit-backdrop-filter: blur(5.3px);
-  border: 1px solid rgba(255, 255, 255, 0.77);
-  font-family: ${p => p.theme.fonts.main};
-  font-weight: ${p => p.theme.fontWeights[0]};
-  font-size: 20px;
-  line-height: ${p => p.theme.lineHeights.main};
-
-  @media screen and (min-width: 768px) {
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 56px 32px;
-  }
-`;
-
 export const SunBox = styled.div`
   display: flex;
   justify-content: center;
@@ -99,7 +72,7 @@ export const SunIndicatorsWrapper = styled.ul`
 
   & li {
     box-sizing: border-box;
-    width: 100%;
+    width: 80%;
   }
 
   @media screen and (min-width: 768px) {

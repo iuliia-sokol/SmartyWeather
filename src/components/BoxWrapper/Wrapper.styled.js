@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 
-export const WeatherWrapper = styled.div`
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   padding: 32px 16px;
   background: rgba(255, 255, 255, 0.23);
   border-radius: 30px;
+  gap: 16px;
   /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
   /* box-shadow: 0px 5px 10px 0px rgba(0, 255, 255, 0.7); */
   box-shadow: inset -5px -5px 9px rgba(255, 255, 255, 0.45),
@@ -18,30 +21,5 @@ export const WeatherWrapper = styled.div`
 
   @media screen and (min-width: 768px) {
     padding: 56px 32px;
-  }
-`;
-
-export const IndicatorsWrapper = styled.ul`
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 32px;
-
-  & li {
-    display: flex;
-    width: 80%;
-
-    & span {
-      margin-right: 0;
-    }
-  }
-
-  @media screen and (min-width: 768px) {
-    justify-content: space-between;
-
-    & li {
-      width: 25%;
-    }
   }
 `;

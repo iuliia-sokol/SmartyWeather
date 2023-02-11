@@ -11,7 +11,6 @@ import sunrise from '../../images/sunrise-min.png';
 import sunset from '../../images/sunset-min.png';
 
 import {
-  AstroWrapper,
   MoonBox,
   SunBox,
   MoonImg,
@@ -19,6 +18,7 @@ import {
   MoonIndicatorsWrapper,
   SunIndicatorsWrapper,
 } from './AstroBox.styled';
+import { WrapperBox } from 'components/BoxWrapper/Wrapper';
 
 function AstroUI() {
   const astro = useSelector(getAstroData);
@@ -39,7 +39,7 @@ function AstroUI() {
   }, [dispatch, astro, moonPhase]);
 
   return astro && moonPng ? (
-    <AstroWrapper>
+    <WrapperBox>
       <MoonBox>
         <MoonImg src={moonPng} alt="moon phase" loading="lazy" />
         <MoonIndicatorsWrapper>
@@ -79,7 +79,7 @@ function AstroUI() {
           />
         </SunIndicatorsWrapper>
       </SunBox>
-    </AstroWrapper>
+    </WrapperBox>
   ) : (
     <div>No astro data available</div>
   );

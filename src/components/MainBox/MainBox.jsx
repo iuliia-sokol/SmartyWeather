@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { HourlyChartsUI } from 'components/ChartBox/HourlyCharts';
 import WeatherUI from 'components/WeatherBox/WeatherBox';
 import AstroUI from 'components/AstroBox/AstroBox';
+import AirUI from 'components/AirBox/AirBox';
 import { ButtonUI } from 'components/Button/Button';
 import { IndicatorText } from 'components/Indicator/Indicator.styled';
 import { IndicatorUI } from 'components/Indicator/Indicator';
@@ -182,6 +183,7 @@ export const MainBoxUI = () => {
           </WeatherInfoWrapper>
           {showWeather && <WeatherUI />}
           {showAstro && <AstroUI />}
+          {showAir && <AirUI />}
         </>
       ) : (
         <div>No data to display</div>

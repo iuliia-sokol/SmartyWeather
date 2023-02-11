@@ -13,3 +13,4 @@ export const getAstroData = state => state.location.astrodata;
 export const getForcast = state => state.location.weatherForecast;
 export const getDailyForcast = state => state.location.weather.daily;
 export const getHourlyForcast = state => state.location.weather.hourly;
+export const getAirData = state => state.location.airdata;

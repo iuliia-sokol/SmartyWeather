@@ -30,6 +30,7 @@ export const locationSlice = createSlice({
     weatherForecast: null,
     astrodata: null,
     daytime: false,
+    airdata: null,
     image:
       'https://www.wallpaperflare.com/static/79/210/459/nature-sky-umbrella-red-wallpaper-preview.jpg',
     isLoading: false,
@@ -104,6 +105,7 @@ export const locationSlice = createSlice({
           state.weatherAdditional = payload.current;
           state.timezone = payload.location.tz_id;
           state.daytime = payload.current.is_day;
+          state.airdata = payload.current.air_quality;
         }
       )
       .addCase(

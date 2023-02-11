@@ -6,7 +6,7 @@ import {
 } from 'redux/location/locSelectors';
 import { IndicatorUI } from 'components/Indicator/Indicator';
 
-import { WeatherWrapper, IndicatorsWrapper } from './WeatherBox.styled';
+import { IndicatorsWrapper } from './WeatherBox.styled';
 
 import hot from '../../images/hot-min.png';
 import cold from '../../images/cold-min.png';
@@ -19,13 +19,14 @@ import uv from '../../images/uv-index-min.png';
 import radio from '../../images/optical-radiation-min.png';
 import { DailyChartsUI } from 'components/ChartBox/DailyCharts';
 import { Subheader } from 'components/BoxSubheader/Subheader';
+import { WrapperBox } from 'components/BoxWrapper/Wrapper';
 
 const WeatherUI = () => {
   const weather = useSelector(getCurrentWeather);
   const extraWeather = useSelector(getAdditionalCurrentWeather);
 
   return weather && extraWeather ? (
-    <WeatherWrapper>
+    <WrapperBox>
       <Subheader text="Today's data" />
       <IndicatorsWrapper>
         <IndicatorUI
@@ -72,7 +73,7 @@ const WeatherUI = () => {
       </IndicatorsWrapper>
       <Subheader text="7-day forecast" />
       <DailyChartsUI />
-    </WeatherWrapper>
+    </WrapperBox>
   ) : (
     <div>No weather data available</div>
   );
