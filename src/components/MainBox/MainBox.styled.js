@@ -8,7 +8,7 @@ export const DataWrapper = styled.div`
   gap: 16px;
   margin: 0 auto;
   border-radius: 30px;
-  padding: 16px;
+  padding: 32px 16px;
   background: rgba(255, 255, 255, 0.63);
   /* box-shadow: inset -5px -5px 9px rgba(255, 255, 255, 0.45),
     inset 5px 5px 9px rgba(94, 104, 121, 0.3); */
@@ -57,15 +57,15 @@ export const IconWrapper = styled.div`
   justify-content: center;
   align-items: center;
   width: 40vw;
-  top: -35%;
-  left: -25%;
+  top: -25%;
+  left: -10%;
   position: absolute;
 
   & img {
     width: 100%;
   }
 
-  @media screen and (min-width: 320px) {
+  @media screen and (min-width: 420px) {
     width: 170px;
   }
 
