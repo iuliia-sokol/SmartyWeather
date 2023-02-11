@@ -8,16 +8,12 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
-import {
-  // getDailyForcast,
-  getHourlyForcast,
-} from 'redux/location/locSelectors';
+import { getHourlyForcast } from 'redux/location/locSelectors';
 import { renderCustomAxisTick } from 'utils/customAxis';
 import { CustomizeActivedDot, CustomizedDot } from 'utils/customDot';
-import { ChartsWrapper } from './Charts.styled';
+import { ChartsWrapper } from './HourlyCharts.styled';
 
-export const ChartsUI = () => {
-  // const dailyForecast = useSelector(getDailyForcast);
+export const HourlyChartsUI = () => {
   const hourlyForecast = useSelector(getHourlyForcast);
   const isRowBased = useMediaQuery('(min-width: 768px)');
 
@@ -33,19 +29,6 @@ export const ChartsUI = () => {
       code: `${code[index]}`,
     };
   });
-
-  // FOR DAILY FORECAST
-  // const dates = dailyForecast.time.map(el => el);
-  // const tempMin = dailyForecast.temperature_2m_min.map(el => el);
-  // const tempMax = dailyForecast.temperature_2m_max.map(el => el);
-
-  // const dailyData = dates.map((el, index) => {
-  //   return {
-  //     date: `${el}`,
-  //     min_temperature: `${tempMin[index]}`,
-  //     max_temperature: `${tempMax[index]}`,
-  //   };
-  // });
 
   return (
     <ChartsWrapper>
@@ -84,14 +67,6 @@ export const ChartsUI = () => {
             activeDot={<CustomizeActivedDot />}
             dot={<CustomizedDot />}
           />
-          {/* <Area
-            type="monotone"
-            stackId="1"
-            dataKey="max_temperature"
-            stroke="#4be939"
-            strokeWidth={3}
-            fill="rgba(235, 209, 131, 0.267)"
-          /> */}
         </AreaChart>
       </ResponsiveContainer>
     </ChartsWrapper>

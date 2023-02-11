@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { ChartsUI } from 'components/ChartBox/Charts';
+import { HourlyChartsUI } from 'components/ChartBox/HourlyCharts';
 import { WeatherUI } from 'components/WeatherBox/WeatherBox';
 import AstroUI from 'components/AstroBox/AstroBox';
 import { ButtonUI } from 'components/Button/Button';
@@ -152,7 +152,7 @@ export const MainBoxUI = () => {
                 source={`${weather.current_weather.windspeed} km/h`}
               />
             </IndicatorsWrapper>
-            <ChartsUI />
+            <HourlyChartsUI />
             <ButtonsWrapper>
               <li>
                 <ButtonUI

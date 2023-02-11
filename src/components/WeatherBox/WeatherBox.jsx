@@ -17,6 +17,7 @@ import windSocket from '../../images/windsock-min.png';
 import pressure from '../../images/pressure-min.png';
 import uv from '../../images/uv-index-min.png';
 import radio from '../../images/optical-radiation-min.png';
+import { DailyChartsUI } from 'components/ChartBox/DailyCharts';
 
 export const WeatherUI = () => {
   const weather = useSelector(getCurrentWeather);
@@ -67,6 +68,7 @@ export const WeatherUI = () => {
         />
         <IndicatorUI src={uv} text="UV:" source={`Index ${extraWeather.uv}`} />
       </IndicatorsWrapper>
+      <DailyChartsUI />
     </WeatherWrapper>
   ) : (
     <div>No weather data available</div>

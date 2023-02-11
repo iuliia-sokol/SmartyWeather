@@ -37,3 +37,25 @@ export const CustomizeActivedDot = props => {
     </>
   );
 };
+
+export const CustomizeActivedDotTempMin = props => {
+  const { cx, cy, payload } = props;
+  return (
+    <>
+      <svg x={cx - 10} y={cy - 10} width={20} height={20}>
+        <use href={sprite + `#temp-min`} />
+      </svg>
+    </>
+  );
+};
+
+export const CustomizeActivedDotTempMax = props => {
+  const { cx, cy, payload } = props;
+  return (
+    <>
+      <svg x={cx - 10} y={cy - 10} width={20} height={20}>
+        <use href={sprite + `#temp-max`} />
+      </svg>
+    </>
+  );
+};
