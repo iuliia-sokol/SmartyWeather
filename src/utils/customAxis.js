@@ -53,7 +53,7 @@ export const renderCustomAxisTick = ({ x, y, payload }) => {
   }
 
   return (
-    <svg x={x - 12} y={y - 20} width={46} height={42} viewBox="0 0 46 46">
+    <svg x={x - 30} y={y - 20} width={42} height={42} viewBox="0 0 46 46">
       <use href={sprite + `#${path}`} />
     </svg>
   );

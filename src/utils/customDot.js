@@ -39,7 +39,7 @@ export const CustomizeActivedDot = props => {
 };
 
 export const CustomizeActivedDotTempMin = props => {
-  const { cx, cy, payload } = props;
+  const { cx, cy } = props;
   return (
     <>
       <svg x={cx - 10} y={cy - 10} width={20} height={20}>
@@ -50,11 +50,22 @@ export const CustomizeActivedDotTempMin = props => {
 };
 
 export const CustomizeActivedDotTempMax = props => {
-  const { cx, cy, payload } = props;
+  const { cx, cy } = props;
   return (
     <>
       <svg x={cx - 10} y={cy - 10} width={20} height={20}>
         <use href={sprite + `#temp-max`} />
+      </svg>
+    </>
+  );
+};
+
+export const CustomizeActivedDotPrecipitation = props => {
+  const { cx, cy } = props;
+  return (
+    <>
+      <svg x={cx - 10} y={cy - 10} width={20} height={20}>
+        <use href={sprite + `#umbrella`} />
       </svg>
     </>
   );

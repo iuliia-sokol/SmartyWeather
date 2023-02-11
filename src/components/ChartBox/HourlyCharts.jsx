@@ -40,23 +40,26 @@ export const HourlyChartsUI = () => {
           fill="rgba(233, 201, 57, 0.25)"
           margin={{
             top: 5,
-            right: 0,
-            left: 0,
+            right: 16,
+            left: 16,
             bottom: 5,
           }}
         >
           <Tooltip />
           {isRowBased && (
-            <XAxis
-              dataKey="code"
-              xAxisId="1"
-              stroke="transparent"
-              fill="transparent"
-              tick={renderCustomAxisTick}
-            />
+            <>
+              <YAxis interval="preserveStartEnd" />
+              <XAxis
+                dataKey="code"
+                xAxisId="1"
+                stroke="transparent"
+                fill="transparent"
+                tick={renderCustomAxisTick}
+              />
+            </>
           )}
           <XAxis dataKey="time" xAxisId="0" />
-          {isRowBased && <YAxis />}
+
           <Area
             type="monotone"
             stackId="1"
