@@ -36,8 +36,8 @@ export const Indicator = styled.li`
   }
 
   & img {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     margin-bottom: 8px;
   }
 
@@ -46,8 +46,8 @@ export const Indicator = styled.li`
     width: 20%;
 
     & img {
-      width: 30px;
-      height: 30px;
+      width: 40px;
+      height: 40px;
     }
 
     @media screen and (min-width: 1280px) {
