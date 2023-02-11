@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const WeatherWrapper = styled.div`
-  padding: 32px;
+  padding: 32px 16px;
   background: rgba(255, 255, 255, 0.23);
   border-radius: 30px;
   /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
@@ -15,6 +15,10 @@ export const WeatherWrapper = styled.div`
   font-weight: ${p => p.theme.fontWeights[0]};
   font-size: 20px;
   line-height: ${p => p.theme.lineHeights.main};
+
+  @media screen and (min-width: 768px) {
+    padding: 56px 32px;
+  }
 `;
 
 export const IndicatorsWrapper = styled.ul`
@@ -22,17 +26,23 @@ export const IndicatorsWrapper = styled.ul`
   gap: 16px;
   flex-wrap: wrap;
   justify-content: center;
+  margin-bottom: 16px;
 
   & li {
     display: flex;
-    width: 100%;
+    width: 80%;
 
     & span {
       margin-right: 0;
     }
+  }
 
-    @media screen and (min-width: 768px) {
-      width: fit-content;
+  @media screen and (min-width: 768px) {
+    justify-content: space-between;
+    margin-bottom: 32px;
+
+    & li {
+      width: 25%;
     }
   }
 `;

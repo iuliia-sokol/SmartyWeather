@@ -17,9 +17,12 @@ export const DataWrapper = styled.div`
   -webkit-backdrop-filter: blur(2.3px);
   /* border: 1px solid rgba(255, 255, 255, 0.77); */
 
+  @media screen and (min-width: 768px) {
+    padding: 32px 56px;
+  }
+
   @media screen and (min-width: 1280px) {
     width: 70%;
-    padding: 32px 56px;
   }
 `;
 
@@ -48,7 +51,7 @@ export const WeatherInfoWrapper = styled.div`
   -webkit-backdrop-filter: blur(5px);
 
   @media screen and (min-width: 768px) {
-    padding: 32px;
+    padding: 56px 32px;
   }
 `;
 
@@ -112,7 +115,7 @@ export const IndicatorsWrapper = styled.ul`
   align-content: center;
   gap: 16px;
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 768px) {
     flex-wrap: nowrap;
     align-items: stretch;
   }

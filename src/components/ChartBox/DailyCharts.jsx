@@ -51,7 +51,6 @@ export const DailyChartsUI = () => {
     };
   });
 
-  console.log(dailyData);
   return (
     <ChartsWrapper>
       <ResponsiveContainer width="100%" height="100%">

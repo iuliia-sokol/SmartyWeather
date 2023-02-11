@@ -1,17 +1,11 @@
 import styled from 'styled-components';
 
 export const HeaderWrapper = styled.header`
-  padding: 16px 0 64px;
-
-  @media screen and (min-width: 768px) {
-    padding: 16px 0 32px;
-  }
+  padding: 16px 0;
 `;
 
 export const LogoWrapper = styled.div`
   display: flex;
-  /* justify-content: center;
-  align-items: center; */
   position: relative;
   width: 144px;
   height: fit-content;
