@@ -11,8 +11,8 @@ export const CustomizedDot = props => {
 
   if (payload.time === currentTime) {
     return (
-      <svg x={cx - 12} y={cy - 12} width={24} height={24}>
-        <use href={sprite + `#planet-earth`} />
+      <svg x={cx - 14} y={cy - 14} width={28} height={28}>
+        <use href={sprite + `#sun`} />
       </svg>
     );
   }
@@ -22,6 +22,18 @@ export const CustomizedDot = props => {
       {/* <svg x={cx - 10} y={cy - 10} width={20} height={20}>
         <use href={sprite + `#planet-earth`} />
       </svg> */}
+    </>
+  );
+};
+
+export const CustomizeActivedDot = props => {
+  const { cx, cy } = props;
+
+  return (
+    <>
+      <svg x={cx - 10} y={cy - 10} width={20} height={20}>
+        <use href={sprite + `#planet-earth`} />
+      </svg>
     </>
   );
 };

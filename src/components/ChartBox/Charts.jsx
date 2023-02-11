@@ -13,7 +13,7 @@ import {
   getHourlyForcast,
 } from 'redux/location/locSelectors';
 import { renderCustomAxisTick } from 'utils/customAxis';
-import { CustomizedDot } from 'utils/customDot';
+import { CustomizeActivedDot, CustomizedDot } from 'utils/customDot';
 import { ChartsWrapper } from './Charts.styled';
 
 export const ChartsUI = () => {
@@ -81,7 +81,7 @@ export const ChartsUI = () => {
             stroke="#E9C939"
             strokeWidth={3}
             fill="rgba(233, 201, 57, 0.25)"
-            activeDot={{ r: 5 }}
+            activeDot={<CustomizeActivedDot />}
             dot={<CustomizedDot />}
           />
           {/* <Area
