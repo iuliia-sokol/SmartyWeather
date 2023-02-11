@@ -5,7 +5,7 @@ import styled from 'styled-components';
 export const AstroWrapper = styled.div`
   width: 100%;
   box-sizing: border-box;
-  padding: 32px;
+  padding: 32px 16px;
   display: flex;
   gap: 16px;
   flex-direction: column;
@@ -25,6 +25,7 @@ export const AstroWrapper = styled.div`
   @media screen and (min-width: 768px) {
     flex-direction: column;
     justify-content: space-between;
+    padding: 56px 32px;
   }
 `;
 
@@ -74,12 +75,16 @@ export const MoonIndicatorsWrapper = styled.ul`
 
   & li {
     box-sizing: border-box;
-    width: 100%;
+    width: 80%;
   }
 
   @media screen and (min-width: 768px) {
     flex-direction: column;
     width: calc(50% - 16px);
+
+    & li {
+      width: 100%;
+    }
   }
 `;
 
