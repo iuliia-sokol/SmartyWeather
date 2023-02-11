@@ -1,9 +1,13 @@
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+
 import { ChartsUI } from 'components/ChartBox/Charts';
 import { WeatherUI } from 'components/WeatherBox/WeatherBox';
 import AstroUI from 'components/AstroBox/AstroBox';
 import { ButtonUI } from 'components/Button/Button';
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { IndicatorText } from 'components/Indicator/Indicator.styled';
+import { IndicatorUI } from 'components/Indicator/Indicator';
+
 import {
   getAdditionalCurrentWeather,
   getCityName,
@@ -19,9 +23,7 @@ import {
   DataWrapper,
   FeelsLike,
   IconWrapper,
-  Indicator,
   IndicatorsWrapper,
-  IndicatorText,
   Temperature,
   TemperatureWrapper,
   WeatherConditions,
@@ -93,7 +95,6 @@ export const MainBoxUI = () => {
                 loading="lazy"
               />
             </IconWrapper>
-
             <TemperatureWrapper>
               <WeatherConditions>
                 <span>{extraWeather.condition.text}</span>
@@ -101,7 +102,6 @@ export const MainBoxUI = () => {
               <CityName>
                 {city}, {country}
               </CityName>
-
               <Temperature>
                 <img
                   src={
@@ -112,11 +112,10 @@ export const MainBoxUI = () => {
                 />
                 {extraWeather.temp_c} <span>°C</span>
               </Temperature>
-
               <FeelsLike>Feels like {extraWeather.feelslike_c} °C</FeelsLike>
-              <FeelsLike>
+              {/* <FeelsLike>
                 Local time {weather.current_weather.time.slice(11)}
-              </FeelsLike>
+              </FeelsLike> */}
             </TemperatureWrapper>
           </WeatherDataWrapper>
           <WeatherInfoWrapper>
@@ -133,55 +132,52 @@ export const MainBoxUI = () => {
                   <span>{forecast[0].day.daily_chance_of_snow} %</span>
                 </div>
               </ChanceOfIndicator>
-              <Indicator color="blue">
-                <img
-                  src={percipitationImg}
-                  alt="percipitation"
-                  loading="lazy"
-                />
-                <div>
-                  <IndicatorText>Precipitation:</IndicatorText>
+              <IndicatorUI
+                color="blue"
+                src={percipitationImg}
+                text="Precipitation:"
+                source={`${weather.daily.precipitation_sum[0]} mm`}
+              />
+              <IndicatorUI
+                color="pink"
+                src={humidityImg}
+                text="Humidity:"
+                source={`${extraWeather.humidity} %`}
+              />
 
-                  <span>{weather.daily.precipitation_sum[0]} mm</span>
-                </div>
-              </Indicator>
-              <Indicator color="pink">
-                <img src={humidityImg} alt="humidity" loading="lazy" />
-                <div>
-                  <IndicatorText>Humidity:</IndicatorText>
-
-                  <span>{extraWeather.humidity} %</span>
-                </div>
-              </Indicator>
-              <Indicator color="violet">
-                <img src={windImg} alt="wind" loading="lazy" />
-                <div>
-                  <IndicatorText>Windspeed:</IndicatorText>
-
-                  <span>{weather.current_weather.windspeed} km/h</span>
-                </div>
-              </Indicator>
+              <IndicatorUI
+                color="violet"
+                src={windImg}
+                text="Windspeed:"
+                source={`${weather.current_weather.windspeed} km/h`}
+              />
             </IndicatorsWrapper>
             <ChartsUI />
             <ButtonsWrapper>
-              <ButtonUI
-                type="button"
-                onClick={onWeatherBtnClick}
-                text="Details"
-                selected={showWeather}
-              />
-              <ButtonUI
-                type="button"
-                onClick={onShowAstroBtnClick}
-                text="Astro"
-                selected={showAstro}
-              />
-              <ButtonUI
-                type="button"
-                onClick={onShowAirBtnClick}
-                text="Air quality"
-                selected={showAir}
-              />
+              <li>
+                <ButtonUI
+                  type="button"
+                  onClick={onWeatherBtnClick}
+                  text="Details"
+                  selected={showWeather}
+                />
+              </li>
+              <li>
+                <ButtonUI
+                  type="button"
+                  onClick={onShowAstroBtnClick}
+                  text="Astro"
+                  selected={showAstro}
+                />
+              </li>
+              <li>
+                <ButtonUI
+                  type="button"
+                  onClick={onShowAirBtnClick}
+                  text="Air quality"
+                  selected={showAir}
+                />
+              </li>
             </ButtonsWrapper>
           </WeatherInfoWrapper>
           {showWeather && <WeatherUI />}

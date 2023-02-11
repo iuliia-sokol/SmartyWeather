@@ -17,13 +17,13 @@ export const WeatherWrapper = styled.div`
   line-height: ${p => p.theme.lineHeights.main};
 `;
 
-export const IndicatorsWrapper = styled.div`
+export const IndicatorsWrapper = styled.ul`
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
   justify-content: center;
 
-  & div {
+  & li {
     display: flex;
     width: 100%;
 

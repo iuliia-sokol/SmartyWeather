@@ -1,7 +1,7 @@
+import { Indicator } from 'components/Indicator/Indicator.styled';
 import styled from 'styled-components';
 
 export const DataWrapper = styled.div`
-  /* width: 100%; */
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -103,7 +103,7 @@ export const WeatherConditions = styled.div`
   border-radius: ${p => p.theme.radii.main};
 `;
 
-export const IndicatorsWrapper = styled.div`
+export const IndicatorsWrapper = styled.ul`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -115,71 +115,6 @@ export const IndicatorsWrapper = styled.div`
   @media screen and (min-width: 1280px) {
     flex-wrap: nowrap;
     align-items: stretch;
-  }
-`;
-
-export const Indicator = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: calc(50% - 32px);
-  box-shadow: 4px 0px 20px rgba(0, 0, 0, 0.25);
-  border-radius: ${p => p.theme.radii.main};
-  padding: 8px;
-  font-family: ${p => p.theme.fonts.main};
-  font-weight: ${p => p.theme.fontWeights[0]};
-  font-size: 20px;
-  line-height: ${p => p.theme.lineHeights.main};
-  color: ${p =>
-    p.color === 'blue'
-      ? p.theme.colors.accentBlue
-      : p.color === 'pink'
-      ? p.theme.colors.accentPink
-      : p.color === 'violet'
-      ? p.theme.colors.accentViolet
-      : p.theme.colors.textGrey};
-  background-color: ${p =>
-    p.color === 'blue'
-      ? p.theme.colors.bgBlue
-      : p.color === 'pink'
-      ? p.theme.colors.bgPink
-      : p.color === 'violet'
-      ? p.theme.colors.bgViolet
-      : p.theme.colors.bgGrey};
-
-  & svg {
-    width: 20px;
-    height: 20px;
-  }
-
-  & img {
-    width: 20px;
-    height: 20px;
-    margin-bottom: 8px;
-  }
-
-  @media screen and (min-width: 768px) {
-    padding: 10px;
-    width: 20%;
-
-    & img {
-      width: 30px;
-      height: 30px;
-    }
-
-    @media screen and (min-width: 1280px) {
-      width: fit-content;
-    }
-  }
-`;
-
-export const IndicatorText = styled.span`
-  display: none;
-
-  @media screen and (min-width: 1280px) {
-    display: inline-block;
-    margin-right: 8px;
   }
 `;
 
@@ -241,15 +176,25 @@ export const Temperature = styled.div`
   }
 `;
 
-export const ButtonsWrapper = styled.div`
+export const ButtonsWrapper = styled.ul`
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+
   gap: 16px;
+
+  & li {
+    display: inline-flex;
+    width: calc(50% - 16px);
+  }
 
   @media screen and (min-width: 768px) {
     justify-content: space-between;
+
+    & li {
+      width: calc(100% / 3 - 32px);
+    }
   }
 `;

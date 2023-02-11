@@ -5,7 +5,7 @@ export const ButtonMain = styled.button`
   justify-content: center;
   align-items: center;
   position: relative;
-  width: calc(50%-32px);
+  width: 100%;
   height: 50px;
   font-family: ${p => p.theme.fonts.main};
   font-weight: ${p => p.theme.fontWeights[1]};
@@ -19,7 +19,6 @@ export const ButtonMain = styled.button`
   background-color: transparent;
 
   @media screen and (min-width: 768px) {
-    width: calc(30%);
     height: 70px;
   }
 

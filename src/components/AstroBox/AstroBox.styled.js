@@ -1,4 +1,5 @@
-import { Indicator } from 'components/MainBox/MainBox.styled';
+import { IndicatorUI } from 'components/Indicator/Indicator';
+
 import styled from 'styled-components';
 
 export const AstroWrapper = styled.div`
@@ -32,26 +33,9 @@ export const SunBox = styled.div`
   justify-content: center;
   flex-direction: column;
   gap: 16px;
-  /* width: calc(50% - 32px); */
-
-  & div {
-    width: 100%;
-  }
 `;
 
-// export const AstroIndicator = styled.div`
-//   display: flex;
-//
-// `;
-
-export const IndicatorImg = styled.img`
-  display: block;
-  width: 40px;
-  height: auto;
-  margin: 0 !important;
-`;
-
-export const AstroIndicator = styled(Indicator)`
+export const AstroIndicator = styled(IndicatorUI)`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -85,7 +69,7 @@ export const MoonBox = styled.div`
   }
 `;
 
-export const MoonIndicatorsWrapper = styled.div`
+export const MoonIndicatorsWrapper = styled.ul`
   width: 100%;
   /* width: calc(50% - 32px); */
   display: flex;
@@ -95,14 +79,20 @@ export const MoonIndicatorsWrapper = styled.div`
   row-gap: 16px;
   column-gap: 32px;
 
+  & li {
+    width: 100%;
+  }
+
   @media screen and (min-width: 768px) {
     flex-direction: column;
+
+    & li {
+      width: calc(100% - 16px);
+    }
   }
 `;
 
-export const SunIndicatorsWrapper = styled.div`
-  /* width: 100%; */
-  width: calc(50% - 32px);
+export const SunIndicatorsWrapper = styled.ul`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -110,7 +100,15 @@ export const SunIndicatorsWrapper = styled.div`
   row-gap: 16px;
   column-gap: 32px;
 
+  & li {
+    width: 100%;
+  }
+
   @media screen and (min-width: 768px) {
     flex-direction: row;
+
+    & li {
+      width: calc(50% - 32px);
+    }
   }
 `;

@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchAstroDataFromWeatherApi } from 'redux/location/locOperations';
 import { getAstroData } from 'redux/location/locSelectors';
 import { moonPhasesPng } from 'utils/moonPhases';
-import { IndicatorText } from 'components/MainBox/MainBox.styled';
 import moonrise from '../../images/moonrise-min.png';
 import moonset from '../../images/moonset-min.png';
 import phase from '../../images/waxing-gibbous-min.png';
@@ -15,7 +14,6 @@ import {
   AstroWrapper,
   MoonBox,
   SunBox,
-  IndicatorImg,
   MoonImg,
   AstroIndicator,
   MoonIndicatorsWrapper,
@@ -45,43 +43,40 @@ function AstroUI() {
       <MoonBox>
         <MoonImg src={moonPng} alt="moon phase" loading="lazy" />
         <MoonIndicatorsWrapper>
-          <AstroIndicator>
-            <IndicatorImg src={moon} alt="moon illumination" loading="lazy" />
-            <IndicatorText>Moon illumination:</IndicatorText>
-
-            <span>{astro.moon_illumination} %</span>
-          </AstroIndicator>
-          <AstroIndicator>
-            <IndicatorImg src={phase} alt="moon phase" loading="lazy" />
-            <IndicatorText>Moon phase:</IndicatorText>
-
-            <span>{astro.moon_phase}</span>
-          </AstroIndicator>
-          <AstroIndicator>
-            <IndicatorImg src={moonrise} alt="moonrise" loading="lazy" />
-            <IndicatorText>Moonrise:</IndicatorText>
-            <span>{astro.moonrise}</span>
-          </AstroIndicator>
-
-          <AstroIndicator>
-            <IndicatorImg src={moonset} alt="moonset" loading="lazy" />
-            <IndicatorText>Moonset:</IndicatorText>
-            <span>{astro.moonset}</span>
-          </AstroIndicator>
+          <AstroIndicator
+            src={moon}
+            text="Moon illumination:"
+            source={`${astro.moon_illumination} %`}
+          />
+          <AstroIndicator
+            src={phase}
+            text="Moon phase:"
+            source={`${astro.moon_phase}`}
+          />
+          <AstroIndicator
+            src={moonrise}
+            text="Moonrise:"
+            source={`${astro.moonrise}`}
+          />
+          <AstroIndicator
+            src={moonset}
+            text="Moonset:"
+            source={`${astro.moonset}`}
+          />
         </MoonIndicatorsWrapper>
       </MoonBox>
       <SunBox>
         <SunIndicatorsWrapper>
-          <AstroIndicator>
-            <IndicatorImg src={sunrise} alt="sunrise" loading="lazy" />
-            <IndicatorText>Sunrise:</IndicatorText>
-            <span>{astro.sunrise}</span>
-          </AstroIndicator>
-          <AstroIndicator>
-            <IndicatorImg src={sunset} alt="sunset" loading="lazy" />
-            <IndicatorText>Sunset:</IndicatorText>
-            <span>{astro.sunset}</span>
-          </AstroIndicator>
+          <AstroIndicator
+            src={sunrise}
+            text="Sunrise:"
+            source={`${astro.sunrise}`}
+          />
+          <AstroIndicator
+            src={sunset}
+            text="Sunset:"
+            source={`${astro.sunset}`}
+          />
         </SunIndicatorsWrapper>
       </SunBox>
     </AstroWrapper>
