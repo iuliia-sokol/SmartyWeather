@@ -17,14 +17,8 @@ import {
   CustomizeActivedDotTempMax,
   CustomizeActivedDotTempMin,
 } from 'utils/customDot';
+import { formatDate } from 'utils/formatDate';
 import { ChartsWrapper } from './DailyCharts.styled';
-
-function formatDate(date) {
-  const month = String(date.toLocaleString('en-us', { month: 'short' }));
-  const day = String(date.getDate()).padStart(2, '0');
-
-  return `${month}, ${day}`;
-}
 
 export const DailyChartsUI = () => {
   const dailyForecast = useSelector(getDailyForcast);

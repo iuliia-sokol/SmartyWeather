@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const CurrentState = styled.div`
-  padding: 10px;
+  padding: 10px 24px;
   margin-bottom: 20px;
   color: ${p => p.theme.colors.mainLight};
   font-family: ${p => p.theme.fonts.main};

@@ -11,32 +11,14 @@ import o3 from '../../images/air/o3-min.png';
 import so2 from '../../images/air/so2-min.png';
 import pm25 from '../../images/air/pm25-min.png';
 import pm10 from '../../images/air/pm10-min.png';
-
-const formatIndex = index => {
-  switch (index) {
-    case 1:
-      return 'Good';
-    case 2:
-      return 'Moderate';
-    case 3:
-      return 'Unhealthy for sensitive group';
-    case 4:
-      return 'Unhealthy';
-    case 5:
-      return 'Very unhealthy';
-    case 6:
-      return 'Hazardous';
-    default:
-      return;
-  }
-};
+import { formatIndex } from 'utils/formatAirIndex';
 
 const AirUI = () => {
   const air = useSelector(getAirData);
   const index = formatIndex(air['us-epa-index']);
   return (
     <WrapperBox>
-      <CurrentState index={index}>{index}</CurrentState>
+      <CurrentState index={index}>Air quality: {index}</CurrentState>
       <IndicatorsWrapper>
         <IndicatorUI
           src={co}
