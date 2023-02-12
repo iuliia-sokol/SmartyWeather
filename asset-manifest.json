@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/smartyWeather/static/css/main.622d3fb8.css",
-    "main.js": "/smartyWeather/static/js/main.d94af2fe.js",
-    "static/js/636.036341c5.chunk.js": "/smartyWeather/static/js/636.036341c5.chunk.js",
+    "main.js": "/smartyWeather/static/js/main.dbbf3354.js",
+    "static/js/288.ded00e53.chunk.js": "/smartyWeather/static/js/288.ded00e53.chunk.js",
     "static/js/128.3916ba9e.chunk.js": "/smartyWeather/static/js/128.3916ba9e.chunk.js",
     "static/media/lightining.png": "/smartyWeather/static/media/lightining.3503a307e703e460c6ce.png",
     "static/media/day-snow-min.png": "/smartyWeather/static/media/day-snow-min.b3f7b30faf8d8e44f0a2.png",
@@ -19,17 +19,19 @@
     "static/media/night-rain-min.png": "/smartyWeather/static/media/night-rain-min.753119edfeefd098305f.png",
     "static/media/night-clouds-min.png": "/smartyWeather/static/media/night-clouds-min.2a7a47e316e4d0cf39fc.png",
     "static/media/night-moon-min.png": "/smartyWeather/static/media/night-moon-min.af8740f0edb561d454dd.png",
+    "static/media/fog1.png": "/smartyWeather/static/media/fog1.dfce18a6003ddc572574.png",
+    "static/media/fog2.png": "/smartyWeather/static/media/fog2.96b9efa74b129a16c3d4.png",
     "static/media/thermomater-max-min.png": "/smartyWeather/static/media/thermomater-max-min.5cb386569b105d9a400b.png",
     "static/media/thermomater-min-min.png": "/smartyWeather/static/media/thermomater-min-min.7f6139665f74752f3887.png",
     "static/media/icons_sprite.svg": "/smartyWeather/static/media/icons_sprite.02cc2f8955730bd3e8e88dc8da49a653.svg",
     "index.html": "/smartyWeather/index.html",
     "main.622d3fb8.css.map": "/smartyWeather/static/css/main.622d3fb8.css.map",
-    "main.d94af2fe.js.map": "/smartyWeather/static/js/main.d94af2fe.js.map",
-    "636.036341c5.chunk.js.map": "/smartyWeather/static/js/636.036341c5.chunk.js.map",
+    "main.dbbf3354.js.map": "/smartyWeather/static/js/main.dbbf3354.js.map",
+    "288.ded00e53.chunk.js.map": "/smartyWeather/static/js/288.ded00e53.chunk.js.map",
     "128.3916ba9e.chunk.js.map": "/smartyWeather/static/js/128.3916ba9e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.622d3fb8.css",
-    "static/js/main.d94af2fe.js"
+    "static/js/main.dbbf3354.js"
   ]
 }
