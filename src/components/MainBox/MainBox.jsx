@@ -49,8 +49,6 @@ export const MainBoxUI = () => {
   const city = useSelector(getCityName);
   const country = useSelector(getCountry);
 
-  //   console.log(forecast[0].day.daily_chance_of_rain);
-
   const [showWeather, setShowWeather] = useState(false);
   const [showAstro, setShowAstro] = useState(false);
   const [showAir, setShowAir] = useState(false);

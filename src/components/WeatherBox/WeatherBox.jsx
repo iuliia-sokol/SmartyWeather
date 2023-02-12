@@ -3,10 +3,15 @@ import { useSelector } from 'react-redux';
 import {
   getAdditionalCurrentWeather,
   getCurrentWeather,
+  getForcast,
 } from 'redux/location/locSelectors';
-import { IndicatorUI } from 'components/Indicator/Indicator';
 
-import { IndicatorsWrapper } from './WeatherBox.styled';
+import { IndicatorUI } from 'components/Indicator/Indicator';
+import { DailyChartsUI } from 'components/ChartBox/DailyCharts';
+import { Subheader } from 'components/BoxSubheader/Subheader';
+import { WrapperBox } from 'components/BoxWrapper/Wrapper';
+import { ForecastUI } from 'components/ForecastBox/Forecast';
+import { ForecastWrapper, IndicatorsWrapper } from './WeatherBox.styled';
 
 import hot from '../../images/hot-min.png';
 import cold from '../../images/cold-min.png';
@@ -17,13 +22,12 @@ import windSocket from '../../images/windsock-min.png';
 import pressure from '../../images/pressure-min.png';
 import uv from '../../images/uv-index-min.png';
 import radio from '../../images/optical-radiation-min.png';
-import { DailyChartsUI } from 'components/ChartBox/DailyCharts';
-import { Subheader } from 'components/BoxSubheader/Subheader';
-import { WrapperBox } from 'components/BoxWrapper/Wrapper';
 
 const WeatherUI = () => {
   const weather = useSelector(getCurrentWeather);
   const extraWeather = useSelector(getAdditionalCurrentWeather);
+  const forecast = useSelector(getForcast);
+  console.log(forecast);
 
   return weather && extraWeather ? (
     <WrapperBox>
@@ -71,6 +75,23 @@ const WeatherUI = () => {
         />
         <IndicatorUI src={uv} text="UV:" source={`Index ${extraWeather.uv}`} />
       </IndicatorsWrapper>
+      <Subheader text="Next days forecast" />
+      <ForecastWrapper>
+        {forecast.map(el => {
+          return (
+            <ForecastUI
+              key={el.date}
+              date={el.date}
+              wind={el.day.avgvis_km}
+              humidity={el.day.avghumidity}
+              percipitation={el.day.daily_will_it_rain}
+              condition={el.day.condition.text}
+              icon={el.day.condition.icon}
+              temperature={el.day.avgtemp_c}
+            />
+          );
+        })}
+      </ForecastWrapper>
       <Subheader text="7-day forecast" />
       <DailyChartsUI />
     </WrapperBox>
