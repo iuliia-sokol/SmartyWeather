@@ -14,6 +14,7 @@ import {
 import { useMediaQuery } from 'hooks/useMedia';
 import bgImgMob from '../../images/umbrella-red-wallpaper-mob.jpg';
 import bgImg from '../../images/umbrella-red-wallpaper.jpg'; // 'https://www.wallpaperflare.com/static/79/210/459/nature-sky-umbrella-red-wallpaper-preview.jpg';
+import { Storm } from 'components/StormAnimation/Storm';
 
 export const CardUI = ({ children }) => {
   const isRowBased = useMediaQuery('(min-width: 500px)');
@@ -27,6 +28,7 @@ export const CardUI = ({ children }) => {
   const [showSnow, setShowSnow] = useState(false);
   const [showRain, setShowRain] = useState(false);
   const [showDrizzle, setShowDrizzle] = useState(false);
+  const [showStorm, setShowStorm] = useState(false);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -50,7 +52,7 @@ export const CardUI = ({ children }) => {
   useEffect(() => {
     if (weather) {
       // setWeatherCode(weather.current_weather.weathercode);
-      setWeatherCode(53);
+      setWeatherCode(95);
     }
     if (
       weatherCode === 77 ||
@@ -63,6 +65,7 @@ export const CardUI = ({ children }) => {
       setShowSnow(true);
       setShowRain(false);
       setShowDrizzle(false);
+      setShowStorm(false);
     } else if (
       weatherCode === 51 ||
       weatherCode === 53 ||
@@ -73,19 +76,30 @@ export const CardUI = ({ children }) => {
       setShowDrizzle(true);
       setShowRain(false);
       setShowSnow(false);
+      setShowStorm(false);
     } else if (
       weatherCode === 61 ||
       weatherCode === 63 ||
-      weatherCode === 65 ||
       weatherCode === 66 ||
-      weatherCode === 67 ||
       weatherCode === 80 ||
-      weatherCode === 81 ||
-      weatherCode === 82
+      weatherCode === 81
     ) {
       setShowRain(true);
       setShowDrizzle(false);
       setShowSnow(false);
+      setShowStorm(false);
+    } else if (
+      weatherCode === 95 ||
+      weatherCode === 96 ||
+      weatherCode === 99 ||
+      weatherCode === 82 ||
+      weatherCode === 65 ||
+      weatherCode === 67
+    ) {
+      setShowStorm(true);
+      setShowDrizzle(false);
+      setShowSnow(false);
+      setShowRain(false);
     }
   }, [weather, weatherCode]);
 
@@ -116,12 +130,18 @@ export const CardUI = ({ children }) => {
       )}
       {showRain && (
         <div id="Rain">
-          <Rainfall dropletsAmount={1500} />
+          <Rainfall dropletsAmount={1000} />
         </div>
       )}
       {showDrizzle && (
         <div id="Rain">
           <ObliqueRain dropletsAmount={300} amplitude={100} />
+        </div>
+      )}
+      {showStorm && (
+        <div id="Rain">
+          <Rainfall dropletsAmount={1500} />
+          <Storm />
         </div>
       )}
     </>
