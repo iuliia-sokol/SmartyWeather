@@ -18,7 +18,9 @@ const AirUI = () => {
   const index = formatIndex(air['us-epa-index']);
   return (
     <WrapperBox>
-      <CurrentState index={index}>Air quality: {index}</CurrentState>
+      <CurrentState index={index}>
+        Air quality: <span> {index}</span>
+      </CurrentState>
       <IndicatorsWrapper>
         <IndicatorUI
           src={co}

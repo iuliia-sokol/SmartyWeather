@@ -23,6 +23,14 @@ export const CurrentState = styled.div`
       ? '#ca3116'
       : '#5E4FC1'};
   border-radius: ${p => p.theme.radii.main};
+
+  & span {
+    font-weight: ${p => p.theme.fontWeights[1]};
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+  }
 `;
 
 export const IndicatorsWrapper = styled.ul`
