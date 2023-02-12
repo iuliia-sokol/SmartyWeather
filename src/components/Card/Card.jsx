@@ -15,6 +15,7 @@ import { useMediaQuery } from 'hooks/useMedia';
 import bgImgMob from '../../images/umbrella-red-wallpaper-mob.jpg';
 import bgImg from '../../images/umbrella-red-wallpaper.jpg'; // 'https://www.wallpaperflare.com/static/79/210/459/nature-sky-umbrella-red-wallpaper-preview.jpg';
 import { Storm } from 'components/StormAnimation/Storm';
+import { Fog } from 'components/FogAnimation/Fog';
 
 export const CardUI = ({ children }) => {
   const isRowBased = useMediaQuery('(min-width: 500px)');
@@ -30,6 +31,7 @@ export const CardUI = ({ children }) => {
   const [showDrizzle, setShowDrizzle] = useState(false);
   const [showStorm, setShowStorm] = useState(false);
   const [showBigSnow, setShowBigSnow] = useState(false);
+  const [showFog, setShowFog] = useState(false);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -52,8 +54,8 @@ export const CardUI = ({ children }) => {
 
   useEffect(() => {
     if (weather) {
-      // setWeatherCode(weather.current_weather.weathercode);
-      setWeatherCode(75);
+      setWeatherCode(weather.current_weather.weathercode);
+      // setWeatherCode(45);
     }
     if (
       weatherCode === 77 ||
@@ -66,6 +68,7 @@ export const CardUI = ({ children }) => {
       setShowDrizzle(false);
       setShowStorm(false);
       setShowBigSnow(false);
+      setShowFog(false);
     } else if (
       weatherCode === 51 ||
       weatherCode === 53 ||
@@ -78,6 +81,7 @@ export const CardUI = ({ children }) => {
       setShowSnow(false);
       setShowStorm(false);
       setShowBigSnow(false);
+      setShowFog(false);
     } else if (
       weatherCode === 61 ||
       weatherCode === 63 ||
@@ -90,6 +94,7 @@ export const CardUI = ({ children }) => {
       setShowSnow(false);
       setShowStorm(false);
       setShowBigSnow(false);
+      setShowFog(false);
     } else if (
       weatherCode === 95 ||
       weatherCode === 96 ||
@@ -103,16 +108,23 @@ export const CardUI = ({ children }) => {
       setShowSnow(false);
       setShowRain(false);
       setShowBigSnow(false);
+      setShowFog(false);
     } else if (weatherCode === 75 || weatherCode === 86) {
       setShowBigSnow(true);
       setShowStorm(false);
       setShowDrizzle(false);
       setShowSnow(false);
       setShowRain(false);
+      setShowFog(false);
+    } else if (weatherCode === 45 || weatherCode === 48) {
+      setShowFog(true);
+      setShowStorm(false);
+      setShowDrizzle(false);
+      setShowSnow(false);
+      setShowRain(false);
+      setShowBigSnow(false);
     }
   }, [weather, weatherCode]);
-
-  // console.log(weatherCode);
 
   return (
     <>
@@ -165,6 +177,7 @@ export const CardUI = ({ children }) => {
           <Storm />
         </div>
       )}
+      {showFog && <Fog />}
     </>
   );
 };
