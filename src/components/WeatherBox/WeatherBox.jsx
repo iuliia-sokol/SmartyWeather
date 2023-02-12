@@ -82,7 +82,6 @@ const WeatherUI = () => {
             <ForecastUI
               key={el.date}
               date={el.date}
-              wind={el.day.avgvis_km}
               humidity={el.day.avghumidity}
               percipitation={el.day.daily_will_it_rain}
               condition={el.day.condition.text}

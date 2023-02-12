@@ -9,12 +9,17 @@ import {
   TextRain,
 } from './Forecast.styled';
 
+import tempPng from '../../images/celsius-min.png';
+import humidPng from '../../images/hydrometer-min.png';
+import yes from '../../images/yes-min.png';
+import no from '../../images/no-min.png';
+
 export const ForecastUI = ({
   icon,
   date,
   temperature,
   humidity,
-  wind,
+
   condition,
   percipitation,
 }) => {
@@ -30,17 +35,20 @@ export const ForecastUI = ({
       </ConditionText>
       <TextWrapper>
         <Text>
-          <span>Temperature: {temperature} °C</span>
+          <img src={tempPng} alt="Temperature" />
+          <span>Temperature:</span> {temperature} °C
         </Text>
         <Text>
-          <span>Humidity: {humidity} %</span>
-        </Text>
-        <Text>
-          <span>Windspeed: {wind} km/h</span>
+          <img src={humidPng} alt="Humidity" />
+          <span>Humidity:</span> {humidity} %
         </Text>
         <TextRain>
-          Will it rain?
-          {percipitation ? 'yes' : 'no'}
+          <span>Rain:</span>
+          {percipitation ? (
+            <img src={yes} alt="yes" />
+          ) : (
+            <img src={no} alt="no" />
+          )}
         </TextRain>
       </TextWrapper>
     </ForecastWrapper>

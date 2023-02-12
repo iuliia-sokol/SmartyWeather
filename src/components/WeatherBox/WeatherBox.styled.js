@@ -2,15 +2,15 @@ import styled from 'styled-components';
 
 export const ForecastWrapper = styled.ul`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
+  width: 100%;
+  align-items: stretch;
+  gap: 6px;
   margin-bottom: 16px;
 
   @media screen and (min-width: 768px) {
     flex-direction: row;
     justify-content: space-between;
+    gap: 16px;
   }
 `;
 

@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
 export const ForecastWrapper = styled.li`
-  width: 80%;
-  position: relative;
+  /* width: 80%; */
+  width: calc(100% / 3 - 16px);
   display: flex;
   flex-direction: column;
   justify-content: stretch;
   align-items: center;
-  padding: 16px;
+  padding: 16px 8px;
   background: rgba(255, 255, 255, 0.28);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -16,11 +16,16 @@ export const ForecastWrapper = styled.li`
   border-radius: ${p => p.theme.radii.main};
   font-family: ${p => p.theme.fonts.main};
   font-weight: ${p => p.theme.fontWeights[0]};
-  font-size: 20px;
+  font-size: 16px;
   line-height: ${p => p.theme.lineHeights.main};
 
   @media screen and (min-width: 768px) {
+    font-size: 20px;
+  }
+
+  @media screen and (min-width: 1280px) {
     width: calc(100% / 3 - 16px);
+    padding: 16px;
   }
 `;
 
@@ -49,11 +54,11 @@ export const DateText = styled.div`
   align-items: center;
   font-family: ${p => p.theme.fonts.main};
   font-weight: ${p => p.theme.fontWeights[1]};
-  font-size: 28px;
+  font-size: 24px;
   line-height: ${p => p.theme.lineHeights.main};
   color: ${p => p.theme.colors.mainDark};
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1280px) {
     font-size: 46px;
   }
 `;
@@ -63,8 +68,9 @@ export const ConditionText = styled.div`
   flex-direction: column;
   /* justify-content: center; */
   align-items: center;
-  gap: 8px;
-  margin-bottom: 12px;
+  gap: 6px;
+  margin-bottom: 8px;
+  flex-grow: 1;
 
   & span {
     display: flex;
@@ -74,11 +80,11 @@ export const ConditionText = styled.div`
     border-radius: ${p => p.theme.radii.main};
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1280px) {
     flex-direction: row;
     gap: 16px;
+    margin-bottom: 12px;
     justify-content: space-between;
-    flex-grow: 1;
   }
 `;
 
@@ -86,6 +92,28 @@ export const Text = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  & img {
+    width: 30px;
+  }
+
+  & span {
+    display: none;
+  }
+
+  @media screen and (min-width: 1280px) {
+    & span {
+      display: inline-flex;
+    }
+  }
 `;
 
-export const TextRain = styled.div``;
+export const TextRain = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & img {
+    width: 20px;
+  }
+`;
