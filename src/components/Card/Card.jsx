@@ -29,6 +29,7 @@ export const CardUI = ({ children }) => {
   const [showRain, setShowRain] = useState(false);
   const [showDrizzle, setShowDrizzle] = useState(false);
   const [showStorm, setShowStorm] = useState(false);
+  const [showBigSnow, setShowBigSnow] = useState(false);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -52,20 +53,19 @@ export const CardUI = ({ children }) => {
   useEffect(() => {
     if (weather) {
       // setWeatherCode(weather.current_weather.weathercode);
-      setWeatherCode(95);
+      setWeatherCode(75);
     }
     if (
       weatherCode === 77 ||
       weatherCode === 85 ||
-      weatherCode === 86 ||
       weatherCode === 71 ||
-      weatherCode === 73 ||
-      weatherCode === 75
+      weatherCode === 73
     ) {
       setShowSnow(true);
       setShowRain(false);
       setShowDrizzle(false);
       setShowStorm(false);
+      setShowBigSnow(false);
     } else if (
       weatherCode === 51 ||
       weatherCode === 53 ||
@@ -77,6 +77,7 @@ export const CardUI = ({ children }) => {
       setShowRain(false);
       setShowSnow(false);
       setShowStorm(false);
+      setShowBigSnow(false);
     } else if (
       weatherCode === 61 ||
       weatherCode === 63 ||
@@ -88,6 +89,7 @@ export const CardUI = ({ children }) => {
       setShowDrizzle(false);
       setShowSnow(false);
       setShowStorm(false);
+      setShowBigSnow(false);
     } else if (
       weatherCode === 95 ||
       weatherCode === 96 ||
@@ -97,6 +99,13 @@ export const CardUI = ({ children }) => {
       weatherCode === 67
     ) {
       setShowStorm(true);
+      setShowDrizzle(false);
+      setShowSnow(false);
+      setShowRain(false);
+      setShowBigSnow(false);
+    } else if (weatherCode === 75 || weatherCode === 86) {
+      setShowBigSnow(true);
+      setShowStorm(false);
       setShowDrizzle(false);
       setShowSnow(false);
       setShowRain(false);
@@ -128,6 +137,18 @@ export const CardUI = ({ children }) => {
           snowflakeCount={200}
         />
       )}
+      {showBigSnow && (
+        <Snowfall
+          style={{
+            position: 'fixed',
+            width: '100vw',
+            height: '100vh',
+          }}
+          snowflakeCount={750}
+          wind={[2.5, 6.5]}
+          speed={[1.5, 5.5]}
+        />
+      )}
       {showRain && (
         <div id="Rain">
           <Rainfall dropletsAmount={1000} />
@@ -140,7 +161,7 @@ export const CardUI = ({ children }) => {
       )}
       {showStorm && (
         <div id="Rain">
-          <Rainfall dropletsAmount={1500} />
+          <Rainfall dropletsAmount={1000} />
           <Storm />
         </div>
       )}
