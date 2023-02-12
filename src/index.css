@@ -30,3 +30,48 @@ ul {
   padding: 0;
   margin: 0;
 }
+
+#Rain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 100vw;
+  height: 200vh;
+  z-index: -1;
+}
+
+.drop {
+  background: rgba(251, 251, 251, 0.75);
+  width: 1px;
+  height: 32px;
+  position: absolute;
+  animation: falling 1.5s linear infinite;
+}
+
+.droplet {
+  background: rgba(251, 251, 251, 0.5);
+  width: 1px;
+  height: 20px;
+  position: absolute;
+  animation: fall 2.5s linear infinite;
+}
+
+@keyframes falling {
+  0% {
+    transform: translate(0, -100vh);
+  }
+  100% {
+    transform: translate(0, 100vh);
+  }
+}
+
+@keyframes fall {
+  0% {
+    transform: translate(0, 0) rotate(15deg);
+  }
+
+  100% {
+    transform: translate(-100vw, 100vh) rotate(15deg);
+  }
+}
