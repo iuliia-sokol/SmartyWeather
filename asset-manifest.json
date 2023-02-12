@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/smartyWeather/static/css/main.622d3fb8.css",
-    "main.js": "/smartyWeather/static/js/main.dee4d246.js",
-    "static/js/100.f19ad90d.chunk.js": "/smartyWeather/static/js/100.f19ad90d.chunk.js",
+    "main.js": "/smartyWeather/static/js/main.a360c10b.js",
+    "static/js/100.b6545e68.chunk.js": "/smartyWeather/static/js/100.b6545e68.chunk.js",
     "static/js/128.3916ba9e.chunk.js": "/smartyWeather/static/js/128.3916ba9e.chunk.js",
     "static/media/lightining.png": "/smartyWeather/static/media/lightining.3503a307e703e460c6ce.png",
     "static/media/day-snow-min.png": "/smartyWeather/static/media/day-snow-min.b3f7b30faf8d8e44f0a2.png",
@@ -24,14 +24,18 @@
     "static/media/thermomater-max-min.png": "/smartyWeather/static/media/thermomater-max-min.5cb386569b105d9a400b.png",
     "static/media/thermomater-min-min.png": "/smartyWeather/static/media/thermomater-min-min.7f6139665f74752f3887.png",
     "static/media/icons_sprite.svg": "/smartyWeather/static/media/icons_sprite.02cc2f8955730bd3e8e88dc8da49a653.svg",
+    "static/media/hydrometer-min.png": "/smartyWeather/static/media/hydrometer-min.dd41e537d78ed62303e8.png",
+    "static/media/celsius-min.png": "/smartyWeather/static/media/celsius-min.356db875e36ca27a7c3b.png",
+    "static/media/hot-min.png": "/smartyWeather/static/media/hot-min.bfc35ff7c0a7de45d34e.png",
+    "static/media/cold-min.png": "/smartyWeather/static/media/cold-min.21527126ed636176495d.png",
     "index.html": "/smartyWeather/index.html",
     "main.622d3fb8.css.map": "/smartyWeather/static/css/main.622d3fb8.css.map",
-    "main.dee4d246.js.map": "/smartyWeather/static/js/main.dee4d246.js.map",
-    "100.f19ad90d.chunk.js.map": "/smartyWeather/static/js/100.f19ad90d.chunk.js.map",
+    "main.a360c10b.js.map": "/smartyWeather/static/js/main.a360c10b.js.map",
+    "100.b6545e68.chunk.js.map": "/smartyWeather/static/js/100.b6545e68.chunk.js.map",
     "128.3916ba9e.chunk.js.map": "/smartyWeather/static/js/128.3916ba9e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.622d3fb8.css",
-    "static/js/main.dee4d246.js"
+    "static/js/main.a360c10b.js"
   ]
 }
