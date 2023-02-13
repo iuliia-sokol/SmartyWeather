@@ -7,7 +7,10 @@ export const Card = styled.div`
   z-index: -1;
   width: 100%;
   height: 100%;
-  background-image: ${p => p.image};
+  background-image: ${p =>
+    p.image
+      ? p.image
+      : 'linear-gradient(47.75deg, #082276 7.07%, #030f34 97.3%), #082276;'};
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

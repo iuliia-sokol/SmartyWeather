@@ -50,6 +50,8 @@ export const CardUI = ({ children }) => {
     }
   }, [images]);
 
+  // console.log(images);
+
   useEffect(() => {
     if (currentWeather) {
       // setWeatherCode(weather.current_weather.weathercode);
@@ -211,13 +213,10 @@ export const CardUI = ({ children }) => {
     }
   }, [currentWeather, weatherCode]);
 
-  console.log(images, images.length);
-
   return (
     <>
       {images && (
         <Card image={!isRowBased ? `url(${imageMob})` : `url(${image})`}>
-          <p>{image}</p>
           {children}
         </Card>
       )}
