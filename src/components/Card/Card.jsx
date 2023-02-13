@@ -19,7 +19,7 @@ import { Storm } from 'components/StormAnimation/Storm';
 import { Fog } from 'components/FogAnimation/Fog';
 
 export const CardUI = ({ children }) => {
-  const isRowBased = useMediaQuery('(min-width: 1280px)');
+  const isRowBased = useMediaQuery('(min-width: 768px)');
 
   const images = useSelector(getCityImages);
   // const weather = useSelector(getCurrentWeather);
@@ -218,12 +218,11 @@ export const CardUI = ({ children }) => {
     <>
       <Card
         style={{
-          backgroundImage: isRowBased && `url(${image})`,
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: 'cover',
+          backgroundImage: !isRowBased ? `url(${imageMob})` : `url(${image})`,
         }}
       >
-        {!isRowBased && <img src={imageMob} alt="background" />}
+        <p>{image}</p>
+        <p>{images.length}</p>
         {children}
       </Card>
       {showSnow && (

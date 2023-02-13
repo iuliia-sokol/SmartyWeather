@@ -7,8 +7,14 @@ export const Card = styled.div`
   z-index: -1;
   width: 100%;
   height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  -moz-background-size: cover;
 
-  & img {
+  /* & img {
     width: 100%;
     height: 100%;
   }
@@ -16,5 +22,5 @@ export const Card = styled.div`
   & p {
     color: black;
     font-size: 20px;
-  }
+  } */
 `;
