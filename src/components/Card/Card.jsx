@@ -223,6 +223,7 @@ export const CardUI = ({ children }) => {
           backgroundSize: 'cover',
         }}
       >
+        <p>{image}</p>
         {children}
       </Card>
       {showSnow && (

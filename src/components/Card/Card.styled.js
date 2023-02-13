@@ -8,4 +8,9 @@ export const Card = styled.div`
   width: 100%;
   height: 100%;
   box-sizing: border-box;
+
+  & p {
+    color: white;
+    font-size: 20px;
+  }
 `;

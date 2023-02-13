@@ -87,30 +87,32 @@ const Homepage = () => {
   }, [city, dispatch]);
 
   return (
-    <main
-      style={{
-        minHeight: '70vh',
-      }}
-    >
-      <CardUI />
-      {!isGeolocationAvailable && (
-        <TextLine text="Due to your browser does not support geolocation, the default location data is being shown. Please update your browser, allow the location access and turn on geolocation on your device." />
-      )}
-      {!isGeolocationEnabled && (
-        <TextLine text="Due to the geolocation is not enabled on your device, the default location data is being shown. Please enable geolocation on your device to see your current location data." />
-      )}
-      <Container>
-        {latitude && longitude ? (
-          <>
-            <MainBoxUI />
-          </>
-        ) : (
-          <div>
-            <Loader />
-          </div>
+    city && (
+      <main
+        style={{
+          minHeight: '70vh',
+        }}
+      >
+        <CardUI />
+        {!isGeolocationAvailable && (
+          <TextLine text="Due to your browser does not support geolocation, the default location data is being shown. Please update your browser, allow the location access and turn on geolocation on your device." />
         )}
-      </Container>
-    </main>
+        {!isGeolocationEnabled && (
+          <TextLine text="Due to the geolocation is not enabled on your device, the default location data is being shown. Please enable geolocation on your device to see your current location data." />
+        )}
+        <Container>
+          {latitude && longitude ? (
+            <>
+              <MainBoxUI />
+            </>
+          ) : (
+            <div>
+              <Loader />
+            </div>
+          )}
+        </Container>
+      </main>
+    )
   );
 };
 
