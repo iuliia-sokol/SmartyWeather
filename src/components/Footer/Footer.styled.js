@@ -8,16 +8,24 @@ export const ContentWrapper = styled.div`
   color: ${p => p.theme.colors.mainLight};
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  margin-top: 16px;
+
+  @media screen and (min-width: 1280px) {
+    align-items: center;
+    margin-top: 0;
+  }
 `;
 
 export const CopyrightWrapper = styled.div`
   display: flex;
-  gap: 16px;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
   width: calc(100% / 3 - 32px);
+
+  @media screen and (min-width: 1280px) {
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 export const LogoWrapper = styled.div`
@@ -27,14 +35,18 @@ export const LogoWrapper = styled.div`
 
 export const LinksWrapper = styled.div`
   display: flex;
-  gap: 16px;
+  gap: 8px;
   flex-direction: column;
   width: calc(100% / 3 - 32px);
   align-items: flex-end;
 
   & div {
     display: flex;
-    gap: 16px;
+    gap: 8px;
+
+    @media screen and (min-width: 1280px) {
+      gap: 16px;
+    }
 
     & a {
       display: flex;
@@ -49,7 +61,14 @@ export const LinksWrapper = styled.div`
 
       & img,
       & svg {
-        height: 30px;
+        height: 20px;
+      }
+
+      @media screen and (min-width: 1280px) {
+        & img,
+        & svg {
+          height: 30px;
+        }
       }
     }
   }
