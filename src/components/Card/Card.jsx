@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { Card } from './Card.styled';
 import {
   getAdditionalCurrentWeather,
-  getCityImages,
+  // getCityImages,
   // getCityName,
   // getCurrentWeather,
 } from 'redux/location/locSelectors';
