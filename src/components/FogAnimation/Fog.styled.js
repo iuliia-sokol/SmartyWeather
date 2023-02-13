@@ -29,8 +29,8 @@ export const FogWrapper = styled.div`
     left: 0;
     height: 100%;
     width: 300%;
-    background-size: contain;
-    background-position: center;
+    background-size: cover;
+    /* background-position: center; */
     background-repeat: repeat-x;
   }
   &:before {
