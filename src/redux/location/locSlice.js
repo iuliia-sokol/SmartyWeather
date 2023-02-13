@@ -31,7 +31,7 @@ export const locationSlice = createSlice({
     astrodata: null,
     daytime: false,
     airdata: null,
-    image: '',
+    image: [],
     isLoading: false,
     error: null,
   },
