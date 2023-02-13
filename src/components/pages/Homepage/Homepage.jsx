@@ -88,6 +88,7 @@ const Homepage = () => {
   }, [city, dispatch]);
 
   const images = useSelector(getCityImages);
+  // console.log(images);
 
   return (
     <main

@@ -24,8 +24,8 @@ export const CardUI = ({ children, images }) => {
   // const weather = useSelector(getCurrentWeather);
   const currentWeather = useSelector(getAdditionalCurrentWeather);
 
-  const [image, setImage] = useState(bgImg);
-  const [imageMob, setImageMob] = useState(bgImgMob);
+  const [image, setImage] = useState('');
+  const [imageMob, setImageMob] = useState('');
   const [weatherCode, setWeatherCode] = useState('');
   const [showSnow, setShowSnow] = useState(false);
   const [showRain, setShowRain] = useState(false);
@@ -211,6 +211,8 @@ export const CardUI = ({ children, images }) => {
       setShowThunderSnow(false);
     }
   }, [currentWeather, weatherCode]);
+
+  console.log(images, images.length);
 
   return (
     <>

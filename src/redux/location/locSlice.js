@@ -31,8 +31,7 @@ export const locationSlice = createSlice({
     astrodata: null,
     daytime: false,
     airdata: null,
-    image:
-      'https://www.wallpaperflare.com/static/79/210/459/nature-sky-umbrella-red-wallpaper-preview.jpg',
+    image: '',
     isLoading: false,
     error: null,
   },

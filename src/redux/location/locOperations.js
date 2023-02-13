@@ -66,11 +66,10 @@ export const fetchPixabayImage = createAsyncThunk(
 
 export const fetchPexelsImage = createAsyncThunk(
   'getCityImagePexels',
-  async (city, { getState, rejectWithValue }) => {
+  async (city, { rejectWithValue }) => {
     try {
       const data = await getCityImagePexels(city);
       if (data) {
-        console.log(data);
         const pics = [];
         data.forEach(el => pics.push(el.src));
         return pics;
