@@ -17,7 +17,7 @@ export const FogWrapper = styled.div`
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
   pointer-events: none;
 
@@ -31,7 +31,7 @@ export const FogWrapper = styled.div`
     width: 300%;
     background-size: cover;
     /* background-position: center; */
-    background-repeat: repeat-x;
+    background-repeat: repeat;
   }
   &:before {
     background-image: url(${fog1});
