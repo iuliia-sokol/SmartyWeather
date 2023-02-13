@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/smartyWeather/static/css/main.622d3fb8.css",
-    "main.js": "/smartyWeather/static/js/main.3d1de5b8.js",
-    "static/js/795.45da7f4f.chunk.js": "/smartyWeather/static/js/795.45da7f4f.chunk.js",
+    "main.js": "/smartyWeather/static/js/main.46cebb77.js",
+    "static/js/795.ae0c0f29.chunk.js": "/smartyWeather/static/js/795.ae0c0f29.chunk.js",
     "static/js/128.3916ba9e.chunk.js": "/smartyWeather/static/js/128.3916ba9e.chunk.js",
     "static/media/lightining.png": "/smartyWeather/static/media/lightining.3503a307e703e460c6ce.png",
     "static/media/day-snow-min.png": "/smartyWeather/static/media/day-snow-min.b3f7b30faf8d8e44f0a2.png",
@@ -34,12 +34,12 @@
     "static/media/weatherapi_logo.webp": "/smartyWeather/static/media/weatherapi_logo.af450c6284e707be9279.webp",
     "index.html": "/smartyWeather/index.html",
     "main.622d3fb8.css.map": "/smartyWeather/static/css/main.622d3fb8.css.map",
-    "main.3d1de5b8.js.map": "/smartyWeather/static/js/main.3d1de5b8.js.map",
-    "795.45da7f4f.chunk.js.map": "/smartyWeather/static/js/795.45da7f4f.chunk.js.map",
+    "main.46cebb77.js.map": "/smartyWeather/static/js/main.46cebb77.js.map",
+    "795.ae0c0f29.chunk.js.map": "/smartyWeather/static/js/795.ae0c0f29.chunk.js.map",
     "128.3916ba9e.chunk.js.map": "/smartyWeather/static/js/128.3916ba9e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.622d3fb8.css",
-    "static/js/main.3d1de5b8.js"
+    "static/js/main.46cebb77.js"
   ]
 }
