@@ -82,7 +82,7 @@ const Homepage = () => {
 
   useEffect(() => {
     if (city) {
-      dispatch(fetchPexelsImage());
+      dispatch(fetchPexelsImage(city));
     }
   }, [city, dispatch]);
 

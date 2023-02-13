@@ -9,6 +9,10 @@ export const Header = () => {
         <LogoWrapper>
           <Logo />
         </LogoWrapper>
+        <img
+          src="https://images.pexels.com/photos/13200289/pexels-photo-13200289.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
+          alt="pic"
+        />
       </Container>
     </HeaderWrapper>
   );
