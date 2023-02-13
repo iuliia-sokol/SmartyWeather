@@ -12,12 +12,10 @@ import {
   fetchCity,
   fetchCurrentWeather,
   fetchCurrentWeatherFromWeatherApi,
-  fetchPexelsImage,
   fetchWeatherForecastFromWeatherApi,
 } from 'redux/location/locOperations';
 import {
   getAdditionalCurrentWeather,
-  getCityImages,
   getCityName,
   getCurrentLatitude,
   getCurrentLongitude,
@@ -40,8 +38,8 @@ const Homepage = () => {
   const dispatch = useDispatch();
   const latitude = useSelector(getCurrentLatitude);
   const longitude = useSelector(getCurrentLongitude);
-  const city = useSelector(getCityName);
   const timezone = useSelector(getTimezone);
+  const city = useSelector(getCityName);
   const weather = useSelector(getCurrentWeather);
   const extraWeather = useSelector(getAdditionalCurrentWeather);
 
@@ -81,13 +79,6 @@ const Homepage = () => {
     }
   }, [dispatch, timezone, weather]);
 
-  useEffect(() => {
-    if (city) {
-      dispatch(fetchPexelsImage(city));
-    }
-  }, [city, dispatch]);
-
-  const images = useSelector(getCityImages);
   // console.log(images);
 
   return (
@@ -96,12 +87,12 @@ const Homepage = () => {
         minHeight: '70vh',
       }}
     >
-      {city && <CardUI images={images} />}
+      {city && <CardUI />}
       {!isGeolocationAvailable && (
         <TextLine text="Due to your browser does not support geolocation, the default location data is being shown. Please update your browser, allow the location access and turn on geolocation on your device." />
       )}
       {!isGeolocationEnabled && (
-        <TextLine text="Due to the geolocation is not enabled on your device, the default location data is being shown. Please enable geolocation on your device to see your current location data." />
+        <TextLine text="Due to the geolocation is not enabled on your device, the default location data is being shown. Please enable geolocation on your device to get your current location data." />
       )}
       <Container>
         {latitude && longitude ? (

@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Snowfall from 'react-snowfall';
 import Rainfall from 'react-rainfall-animation/src/Rain';
 import ObliqueRain from 'react-rainfall-animation/src/ObliqueRain';
-// import { fetchPexelsImage } from 'redux/location/locOperations';
+import { fetchPexelsImage } from 'redux/location/locOperations';
 import { useState } from 'react';
 import { Card } from './Card.styled';
 import {
   getAdditionalCurrentWeather,
-  // getCityImages,
-  // getCityName,
+  getCityImages,
+  getCityName,
   // getCurrentWeather,
 } from 'redux/location/locSelectors';
 import { useMediaQuery } from 'hooks/useMedia';
@@ -18,11 +18,13 @@ import bgImg from '../../images/umbrella-red-wallpaper.jpg'; // 'https://www.wal
 import { Storm } from 'components/StormAnimation/Storm';
 import { Fog } from 'components/FogAnimation/Fog';
 
-export const CardUI = ({ children, images }) => {
+export const CardUI = ({ children }) => {
   const isRowBased = useMediaQuery('(min-width: 768px)');
-
+  const images = useSelector(getCityImages);
+  const city = useSelector(getCityName);
   // const weather = useSelector(getCurrentWeather);
   const currentWeather = useSelector(getAdditionalCurrentWeather);
+  const dispatch = useDispatch();
 
   const [image, setImage] = useState('');
   const [imageMob, setImageMob] = useState('');
@@ -35,6 +37,12 @@ export const CardUI = ({ children, images }) => {
   const [showBigSnow, setShowBigSnow] = useState(false);
   const [showFog, setShowFog] = useState(false);
   const [showThunderSnow, setShowThunderSnow] = useState(false);
+
+  useEffect(() => {
+    if (city) {
+      dispatch(fetchPexelsImage(city));
+    }
+  }, [city, dispatch]);
 
   useEffect(() => {
     if (images.length === 0) {
