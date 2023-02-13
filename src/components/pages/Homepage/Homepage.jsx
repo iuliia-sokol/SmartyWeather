@@ -17,6 +17,7 @@ import {
 } from 'redux/location/locOperations';
 import {
   getAdditionalCurrentWeather,
+  getCityImages,
   getCityName,
   getCurrentLatitude,
   getCurrentLongitude,
@@ -86,33 +87,33 @@ const Homepage = () => {
     }
   }, [city, dispatch]);
 
+  const images = useSelector(getCityImages);
+
   return (
-    city && (
-      <main
-        style={{
-          minHeight: '70vh',
-        }}
-      >
-        <CardUI />
-        {!isGeolocationAvailable && (
-          <TextLine text="Due to your browser does not support geolocation, the default location data is being shown. Please update your browser, allow the location access and turn on geolocation on your device." />
+    <main
+      style={{
+        minHeight: '70vh',
+      }}
+    >
+      {city && <CardUI images={images} />}
+      {!isGeolocationAvailable && (
+        <TextLine text="Due to your browser does not support geolocation, the default location data is being shown. Please update your browser, allow the location access and turn on geolocation on your device." />
+      )}
+      {!isGeolocationEnabled && (
+        <TextLine text="Due to the geolocation is not enabled on your device, the default location data is being shown. Please enable geolocation on your device to see your current location data." />
+      )}
+      <Container>
+        {latitude && longitude ? (
+          <>
+            <MainBoxUI />
+          </>
+        ) : (
+          <div>
+            <Loader />
+          </div>
         )}
-        {!isGeolocationEnabled && (
-          <TextLine text="Due to the geolocation is not enabled on your device, the default location data is being shown. Please enable geolocation on your device to see your current location data." />
-        )}
-        <Container>
-          {latitude && longitude ? (
-            <>
-              <MainBoxUI />
-            </>
-          ) : (
-            <div>
-              <Loader />
-            </div>
-          )}
-        </Container>
-      </main>
-    )
+      </Container>
+    </main>
   );
 };
 
