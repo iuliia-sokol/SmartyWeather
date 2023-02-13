@@ -27,6 +27,7 @@ export const RunningText = styled.div`
   width: max-content;
   display: inline-flex;
   animation: ${text} 25s linear infinite;
+  text-shadow: 2px 2px 2px #fbfff3;
 
   @media screen and (min-width: 768px) {
     font-size: 24px;

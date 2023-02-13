@@ -44,21 +44,24 @@ export const CardUI = ({ children }) => {
     }
   }, [city, dispatch]);
 
-  useEffect(() => {
-    if (images.length === 0) {
-      setImage(bgImg);
-      setImageMob(bgImgMob);
-    }
-    if (images.length === 1) {
-      setImage(images[0].landscape);
-      setImageMob(images[0].portrait);
-    }
-    if (images.length > 1) {
-      const random = Math.floor(Math.random() * images.length);
-      setImage(images[random].landscape);
-      setImageMob(images[random].portrait);
-    }
-  }, [images]);
+  setTimeout(
+    useEffect(() => {
+      if (images.length === 0) {
+        setImage(bgImg);
+        setImageMob(bgImgMob);
+      }
+      if (images.length === 1) {
+        setImage(images[0].landscape);
+        setImageMob(images[0].portrait);
+      }
+      if (images.length > 1) {
+        const random = Math.floor(Math.random() * images.length);
+        setImage(images[random].landscape);
+        setImageMob(images[random].portrait);
+      }
+    }, [images]),
+    0
+  );
 
   useEffect(() => {
     if (currentWeather) {
@@ -225,7 +228,7 @@ export const CardUI = ({ children }) => {
 
   return (
     <>
-      {images && (
+      {image && (
         <Card image={!isRowBased ? `url(${imageMob})` : `url(${image})`}>
           <p>{image}</p>
           {children}
