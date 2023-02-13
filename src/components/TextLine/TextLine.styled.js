@@ -11,6 +11,7 @@ from {
   `;
 
 export const TextContainer = styled.div`
+  /* position: absolute; */
   border-radius: 5px;
   overflow: hidden;
   margin-bottom: 16px;
