@@ -9,11 +9,14 @@ import waningCrescent from '../images/moonPhases/waning-crescent-min.png';
 
 export const moonPhasesPng = [
   { phase: 'New', png: newMoon },
+  { phase: 'New moon', png: newMoon },
   { phase: 'Waxing Crescent', png: waxingCrescent },
   { phase: 'First Quarter', png: firstQuarter },
   { phase: 'Waxing Gibbous', png: waxingGibbous },
-  { phase: 'Full' || 'Full moon', png: fullMoon },
+  { phase: 'Full moon', png: fullMoon },
+  { phase: 'Full', png: fullMoon },
   { phase: 'Waning Gibbous', png: waningGibbous },
-  { phase: 'Third Quarter' || 'Last quarter', png: lastQuarter },
+  { phase: 'Last Quarter', png: lastQuarter },
+  { phase: 'Third Quarter', png: lastQuarter },
   { phase: 'Waning Crescent', png: waningCrescent },
 ];

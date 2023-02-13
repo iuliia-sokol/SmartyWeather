@@ -32,6 +32,7 @@ function AstroUI() {
       const moonImg = moonPhasesPng.find(
         cond => cond.phase.toLowerCase() === moonPhase.toLowerCase()
       ).png;
+
       setMoonPng(moonImg);
       return;
     }
