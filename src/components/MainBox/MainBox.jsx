@@ -40,6 +40,7 @@ import windImg from '../../images/wind-min.png';
 import humidityImg from '../../images/humidity-min.png';
 import rain from '../../images/rain-min.png';
 import snow from '../../images/snow-min.png';
+import { useMediaQuery } from 'hooks/useMedia';
 
 export const MainBoxUI = () => {
   const weather = useSelector(getCurrentWeather);
@@ -48,6 +49,7 @@ export const MainBoxUI = () => {
   const dayTime = useSelector(getDayTime);
   const city = useSelector(getCityName);
   const country = useSelector(getCountry);
+  const isRowBased = useMediaQuery('(min-width: 768px)');
 
   const [showWeather, setShowWeather] = useState(false);
   const [showAstro, setShowAstro] = useState(false);
@@ -173,7 +175,7 @@ export const MainBoxUI = () => {
                 <ButtonUI
                   type="button"
                   onClick={onShowAirBtnClick}
-                  text="Air quality"
+                  text={isRowBased ? 'Air quality' : 'Air'}
                   selected={showAir}
                 />
               </li>
