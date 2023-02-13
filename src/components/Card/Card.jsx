@@ -225,10 +225,12 @@ export const CardUI = ({ children }) => {
 
   return (
     <>
-      <Card image={!isRowBased ? `url(${imageMob})` : `url(${image})`}>
-        <p>{image}</p>
-        {children}
-      </Card>
+      {images && (
+        <Card image={!isRowBased ? `url(${imageMob})` : `url(${image})`}>
+          <p>{image}</p>
+          {children}
+        </Card>
+      )}
       {showSnow && (
         <Snowfall
           style={{
