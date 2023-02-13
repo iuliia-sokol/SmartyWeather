@@ -12,6 +12,7 @@ import {
   fetchCity,
   fetchCurrentWeather,
   fetchCurrentWeatherFromWeatherApi,
+  fetchPexelsImage,
   fetchWeatherForecastFromWeatherApi,
 } from 'redux/location/locOperations';
 import {
@@ -79,6 +80,11 @@ const Homepage = () => {
     }
   }, [dispatch, timezone, weather]);
 
+  useEffect(() => {
+    if (city) {
+      dispatch(fetchPexelsImage(city));
+    }
+  }, [city, dispatch]);
   // console.log(images);
 
   return (

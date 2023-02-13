@@ -1,15 +1,13 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import Snowfall from 'react-snowfall';
 import Rainfall from 'react-rainfall-animation/src/Rain';
 import ObliqueRain from 'react-rainfall-animation/src/ObliqueRain';
-import { fetchPexelsImage } from 'redux/location/locOperations';
-import { useState } from 'react';
+
 import { Card } from './Card.styled';
 import {
   getAdditionalCurrentWeather,
   getCityImages,
-  getCityName,
   // getCurrentWeather,
 } from 'redux/location/locSelectors';
 import { useMediaQuery } from 'hooks/useMedia';
@@ -21,13 +19,12 @@ import { Fog } from 'components/FogAnimation/Fog';
 export const CardUI = ({ children }) => {
   const isRowBased = useMediaQuery('(min-width: 768px)');
   const images = useSelector(getCityImages);
-  const city = useSelector(getCityName);
+
   // const weather = useSelector(getCurrentWeather);
   const currentWeather = useSelector(getAdditionalCurrentWeather);
-  const dispatch = useDispatch();
 
-  const [image, setImage] = useState('');
-  const [imageMob, setImageMob] = useState('');
+  const [image, setImage] = useState(bgImg);
+  const [imageMob, setImageMob] = useState(bgImgMob);
   const [weatherCode, setWeatherCode] = useState('');
   const [showSnow, setShowSnow] = useState(false);
   const [showRain, setShowRain] = useState(false);
@@ -39,29 +36,19 @@ export const CardUI = ({ children }) => {
   const [showThunderSnow, setShowThunderSnow] = useState(false);
 
   useEffect(() => {
-    if (city) {
-      dispatch(fetchPexelsImage(city));
+    if (images.length === 0) {
+      return;
     }
-  }, [city, dispatch]);
-
-  setTimeout(
-    useEffect(() => {
-      if (images.length === 0) {
-        setImage(bgImg);
-        setImageMob(bgImgMob);
-      }
-      if (images.length === 1) {
-        setImage(images[0].landscape);
-        setImageMob(images[0].portrait);
-      }
-      if (images.length > 1) {
-        const random = Math.floor(Math.random() * images.length);
-        setImage(images[random].landscape);
-        setImageMob(images[random].portrait);
-      }
-    }, [images]),
-    0
-  );
+    if (images.length === 1) {
+      setImage(images[0].landscape);
+      setImageMob(images[0].portrait);
+    }
+    if (images.length > 1) {
+      const random = Math.floor(Math.random() * images.length);
+      setImage(images[random].landscape);
+      setImageMob(images[random].portrait);
+    }
+  }, [images]);
 
   useEffect(() => {
     if (currentWeather) {
@@ -228,7 +215,7 @@ export const CardUI = ({ children }) => {
 
   return (
     <>
-      {image && (
+      {images && (
         <Card image={!isRowBased ? `url(${imageMob})` : `url(${image})`}>
           <p>{image}</p>
           {children}
