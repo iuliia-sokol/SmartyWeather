@@ -19,7 +19,7 @@ import { Storm } from 'components/StormAnimation/Storm';
 import { Fog } from 'components/FogAnimation/Fog';
 
 export const CardUI = ({ children }) => {
-  const isRowBased = useMediaQuery('(min-width: 500px)');
+  const isRowBased = useMediaQuery('(min-width: 768px)');
   const city = useSelector(getCityName);
   const images = useSelector(getCityImages);
   // const weather = useSelector(getCurrentWeather);
