@@ -10,7 +10,7 @@ export const Card = styled.div`
   box-sizing: border-box;
 
   & p {
-    color: white;
+    color: black;
     font-size: 20px;
   }
 `;
