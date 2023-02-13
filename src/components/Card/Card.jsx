@@ -215,61 +215,27 @@ export const CardUI = ({ children }) => {
   }, [currentWeather, weatherCode]);
 
   return (
-    <>
-      <Card
-        style={{
-          backgroundImage: !isRowBased ? `url(${imageMob})` : `url(${image})`,
-        }}
-      >
-        <p>{images.length}</p>
-        {children}
-      </Card>
-      {showSnow && (
-        <Snowfall
+    images && (
+      <>
+        <Card
           style={{
-            position: 'fixed',
-            width: '100vw',
-            height: '100vh',
+            backgroundImage: !isRowBased ? `url(${imageMob})` : `url(${image})`,
           }}
-          snowflakeCount={200}
-        />
-      )}
-      {showBigSnow && (
-        <Snowfall
-          style={{
-            position: 'fixed',
-            width: '100vw',
-            height: '100vh',
-          }}
-          snowflakeCount={750}
-          wind={[2.5, 6.5]}
-          speed={[1.5, 5.5]}
-        />
-      )}
-      {showRain && (
-        <div id="Rain">
-          <Rainfall dropletsAmount={1000} />
-        </div>
-      )}
-      {showDrizzle && (
-        <div id="Rain">
-          <ObliqueRain dropletsAmount={300} amplitude={100} />
-        </div>
-      )}
-      {showHeavyDrizzle && (
-        <div id="Rain">
-          <ObliqueRain dropletsAmount={1000} amplitude={100} />
-        </div>
-      )}
-      {showStorm && (
-        <div id="Rain">
-          <Rainfall dropletsAmount={1000} />
-          <Storm />
-        </div>
-      )}
-      {showFog && <Fog />}
-      {showThunderSnow && (
-        <>
+        >
+          <p>{images.length}</p>
+          {children}
+        </Card>
+        {showSnow && (
+          <Snowfall
+            style={{
+              position: 'fixed',
+              width: '100vw',
+              height: '100vh',
+            }}
+            snowflakeCount={200}
+          />
+        )}
+        {showBigSnow && (
           <Snowfall
             style={{
               position: 'fixed',
@@ -280,9 +246,45 @@ export const CardUI = ({ children }) => {
             wind={[2.5, 6.5]}
             speed={[1.5, 5.5]}
           />
-          <Storm />
-        </>
-      )}
-    </>
+        )}
+        {showRain && (
+          <div id="Rain">
+            <Rainfall dropletsAmount={1000} />
+          </div>
+        )}
+        {showDrizzle && (
+          <div id="Rain">
+            <ObliqueRain dropletsAmount={300} amplitude={100} />
+          </div>
+        )}
+        {showHeavyDrizzle && (
+          <div id="Rain">
+            <ObliqueRain dropletsAmount={1000} amplitude={100} />
+          </div>
+        )}
+        {showStorm && (
+          <div id="Rain">
+            <Rainfall dropletsAmount={1000} />
+            <Storm />
+          </div>
+        )}
+        {showFog && <Fog />}
+        {showThunderSnow && (
+          <>
+            <Snowfall
+              style={{
+                position: 'fixed',
+                width: '100vw',
+                height: '100vh',
+              }}
+              snowflakeCount={750}
+              wind={[2.5, 6.5]}
+              speed={[1.5, 5.5]}
+            />
+            <Storm />
+          </>
+        )}
+      </>
+    )
   );
 };
