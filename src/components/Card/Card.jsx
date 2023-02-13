@@ -217,11 +217,7 @@ export const CardUI = ({ children }) => {
   return (
     images && (
       <>
-        <Card
-          style={{
-            backgroundImage: !isRowBased ? `url(${imageMob})` : `url(${image})`,
-          }}
-        >
+        <Card image={!isRowBased ? `url(${imageMob})` : `url(${image})`}>
           <p>{images.length}</p>
           {children}
         </Card>

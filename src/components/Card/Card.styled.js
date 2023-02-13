@@ -7,6 +7,7 @@ export const Card = styled.div`
   z-index: -1;
   width: 100%;
   height: 100%;
+  background-image: ${p => p.image};
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
