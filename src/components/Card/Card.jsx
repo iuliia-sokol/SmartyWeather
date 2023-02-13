@@ -13,8 +13,8 @@ import {
   // getCurrentWeather,
 } from 'redux/location/locSelectors';
 import { useMediaQuery } from 'hooks/useMedia';
-// import bgImgMob from '../../images/umbrella-red-wallpaper-mob.jpg';
-// import bgImg from '../../images/umbrella-red-wallpaper.jpg'; // 'https://www.wallpaperflare.com/static/79/210/459/nature-sky-umbrella-red-wallpaper-preview.jpg';
+import bgImgMob from '../../images/umbrella-red-wallpaper-mob.jpg';
+import bgImg from '../../images/umbrella-red-wallpaper.jpg'; // 'https://www.wallpaperflare.com/static/79/210/459/nature-sky-umbrella-red-wallpaper-preview.jpg';
 import { Storm } from 'components/StormAnimation/Storm';
 import { Fog } from 'components/FogAnimation/Fog';
 
@@ -38,7 +38,8 @@ export const CardUI = ({ children, images }) => {
 
   useEffect(() => {
     if (images.length === 0) {
-      return;
+      setImage(bgImg);
+      setImageMob(bgImgMob);
     }
     if (images.length === 1) {
       setImage(images[0].landscape);
