@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Snowfall from 'react-snowfall';
 import Rainfall from 'react-rainfall-animation/src/Rain';
 import ObliqueRain from 'react-rainfall-animation/src/ObliqueRain';
-import { fetchPexelsImage } from 'redux/location/locOperations';
+// import { fetchPexelsImage } from 'redux/location/locOperations';
 import { useState } from 'react';
 import { Card } from './Card.styled';
 import {
   getAdditionalCurrentWeather,
   getCityImages,
-  getCityName,
+  // getCityName,
   // getCurrentWeather,
 } from 'redux/location/locSelectors';
 import { useMediaQuery } from 'hooks/useMedia';
@@ -20,13 +20,13 @@ import { Fog } from 'components/FogAnimation/Fog';
 
 export const CardUI = ({ children }) => {
   const isRowBased = useMediaQuery('(min-width: 768px)');
-  const city = useSelector(getCityName);
+
   const images = useSelector(getCityImages);
   // const weather = useSelector(getCurrentWeather);
   const currentWeather = useSelector(getAdditionalCurrentWeather);
 
-  const [image, setImage] = useState('');
-  const [imageMob, setImageMob] = useState('');
+  const [image, setImage] = useState(bgImg);
+  const [imageMob, setImageMob] = useState(bgImgMob);
   const [weatherCode, setWeatherCode] = useState('');
   const [showSnow, setShowSnow] = useState(false);
   const [showRain, setShowRain] = useState(false);
@@ -37,14 +37,10 @@ export const CardUI = ({ children }) => {
   const [showFog, setShowFog] = useState(false);
   const [showThunderSnow, setShowThunderSnow] = useState(false);
 
-  const dispatch = useDispatch();
   useEffect(() => {
-    if (city) {
-      dispatch(fetchPexelsImage());
+    if (images.length === 0) {
+      return;
     }
-  }, [city, dispatch]);
-
-  useEffect(() => {
     if (images.length === 1) {
       setImage(images[0].landscape);
       setImageMob(images[0].portrait);
@@ -56,6 +52,7 @@ export const CardUI = ({ children }) => {
     }
   }, [images]);
 
+  console.log(image);
   useEffect(() => {
     if (currentWeather) {
       // setWeatherCode(weather.current_weather.weathercode);
@@ -221,9 +218,7 @@ export const CardUI = ({ children }) => {
     <>
       <Card
         style={{
-          backgroundImage: !isRowBased
-            ? `url(${imageMob ?? bgImgMob})`
-            : `url(${image ?? bgImg})`,
+          backgroundImage: !isRowBased ? `url(${imageMob})` : `url(${image})`,
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
         }}

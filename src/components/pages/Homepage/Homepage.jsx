@@ -12,10 +12,12 @@ import {
   fetchCity,
   fetchCurrentWeather,
   fetchCurrentWeatherFromWeatherApi,
+  fetchPexelsImage,
   fetchWeatherForecastFromWeatherApi,
 } from 'redux/location/locOperations';
 import {
   getAdditionalCurrentWeather,
+  getCityName,
   getCurrentLatitude,
   getCurrentLongitude,
   getCurrentWeather,
@@ -37,7 +39,7 @@ const Homepage = () => {
   const dispatch = useDispatch();
   const latitude = useSelector(getCurrentLatitude);
   const longitude = useSelector(getCurrentLongitude);
-
+  const city = useSelector(getCityName);
   const timezone = useSelector(getTimezone);
   const weather = useSelector(getCurrentWeather);
   const extraWeather = useSelector(getAdditionalCurrentWeather);
@@ -77,6 +79,12 @@ const Homepage = () => {
       dispatch(fetchCurrentWeather());
     }
   }, [dispatch, timezone, weather]);
+
+  useEffect(() => {
+    if (city) {
+      dispatch(fetchPexelsImage());
+    }
+  }, [city, dispatch]);
 
   return (
     <main

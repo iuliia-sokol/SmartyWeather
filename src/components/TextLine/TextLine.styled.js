@@ -16,10 +16,6 @@ export const TextContainer = styled.div`
   overflow: hidden;
   margin-bottom: 16px;
   padding: 8px;
-  /* background-color: rgba(255, 255, 255, 0.23); */
-  /* box-shadow: -5px -5px 70px #fff; */
-  backdrop-filter: blur(0.3px);
-  -webkit-backdrop-filter: blur(0.3px);
 `;
 
 export const RunningText = styled.div`
