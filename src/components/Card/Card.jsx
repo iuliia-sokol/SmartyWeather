@@ -4,7 +4,7 @@ import Snowfall from 'react-snowfall';
 import Rainfall from 'react-rainfall-animation/src/Rain';
 import ObliqueRain from 'react-rainfall-animation/src/ObliqueRain';
 
-import { Card } from './Card.styled';
+import { Card, View } from './Card.styled';
 import {
   getAdditionalCurrentWeather,
   getCityImages,
@@ -217,6 +217,7 @@ export const CardUI = ({ children }) => {
     <>
       {images && (
         <Card image={!isRowBased ? `url(${imageMob})` : `url(${image})`}>
+          <View />
           {children}
         </Card>
       )}
