@@ -1,7 +1,9 @@
 import { CardUI } from 'components/Card/Card';
+import { DEFAULT_LATITUDE, DEFAULT_LONGITUDE } from 'components/consts/consts';
 import { Container } from 'components/Container/Container';
 import { Loader } from 'components/Loader/Loader';
 import { MainBoxUI } from 'components/MainBox/MainBox';
+import { TextLine } from 'components/TextLine/TextLine';
 import { useEffect } from 'react';
 import { useGeolocated } from 'react-geolocated';
 import { useDispatch, useSelector } from 'react-redux';
@@ -46,25 +48,26 @@ const Homepage = () => {
       dispatch(setLongitude(coords.longitude));
       dispatch(fetchCity());
 
-      // ----------check exact coordinates
-      // dispatch(setLatitude(48.33));
-      // dispatch(setLongitude(34.77));
-
       // dispatch(fetchTimezone());
     }
+    if (!isGeolocationAvailable || !isGeolocationEnabled) {
+      dispatch(setLatitude(DEFAULT_LATITUDE));
+      dispatch(setLongitude(DEFAULT_LONGITUDE));
+      dispatch(fetchCity());
+    }
     return;
-  }, [coords, dispatch]);
+  }, [coords, dispatch, isGeolocationAvailable, isGeolocationEnabled]);
 
   useEffect(() => {
     if (extraWeather) {
       return;
     }
-    if (coords) {
+    if (latitude && longitude) {
       dispatch(fetchAstroDataFromWeatherApi());
       dispatch(fetchCurrentWeatherFromWeatherApi());
       dispatch(fetchWeatherForecastFromWeatherApi());
     }
-  }, [dispatch, extraWeather, coords]);
+  }, [dispatch, extraWeather, latitude, longitude]);
 
   useEffect(() => {
     if (weather) {
@@ -76,15 +79,23 @@ const Homepage = () => {
   }, [dispatch, timezone, weather]);
 
   return (
-    <main>
+    <main
+      style={{
+        minHeight: '70vh',
+      }}
+    >
       <CardUI />
+      {!isGeolocationAvailable && (
+        <TextLine text="Due to your browser does not support geolocation, the default location data is being shown. Please update your browser, allow the location access and turn on geolocation on your device." />
+      )}
+      {!isGeolocationEnabled && (
+        <TextLine text="Due to the geolocation is not enabled on your device, the default location data is being shown. Please enable geolocation on your device to see your current location data." />
+      )}
       <Container>
-        {!isGeolocationAvailable ? (
-          <div>Your browser does not support Geolocation</div>
-        ) : !isGeolocationEnabled ? (
-          <div>Geolocation is not enabled</div>
-        ) : latitude && longitude ? (
-          <MainBoxUI />
+        {latitude && longitude ? (
+          <>
+            <MainBoxUI />
+          </>
         ) : (
           <div>
             <Loader />

@@ -9,7 +9,7 @@ export const DataWrapper = styled.div`
   margin: 0 auto;
   border-radius: 30px;
   padding: 32px 16px;
-  background: rgba(255, 255, 255, 0.63);
+  background-color: rgba(255, 255, 255, 0.63);
   /* box-shadow: inset -5px -5px 9px rgba(255, 255, 255, 0.45),
     inset 5px 5px 9px rgba(94, 104, 121, 0.3); */
   box-shadow: -5px -5px 80px #fff, 5px 5px 20px #babecc;
@@ -44,8 +44,6 @@ export const WeatherInfoWrapper = styled.div`
   border-radius: 30px;
   background: rgba(255, 255, 255, 0.28);
   border-radius: 16px;
-  /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
-  /* box-shadow: -2px -2px 5px white, 3px 3px 5px rgba(0, 0, 0, 0.1); */
   box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
