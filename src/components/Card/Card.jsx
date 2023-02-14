@@ -8,6 +8,7 @@ import { Card, View } from './Card.styled';
 import {
   getAdditionalCurrentWeather,
   getCityImages,
+  getDayTime,
   // getCurrentWeather,
 } from 'redux/location/locSelectors';
 import { useMediaQuery } from 'hooks/useMedia';
@@ -17,8 +18,10 @@ import { Storm } from 'components/StormAnimation/Storm';
 import { Fog } from 'components/FogAnimation/Fog';
 
 export const CardUI = ({ children }) => {
-  const isRowBased = useMediaQuery('(min-width: 768px)');
+  const isRowBased = useMediaQuery('(min-width: 1280px)');
   const images = useSelector(getCityImages);
+  const dayTime = useSelector(getDayTime);
+  // console.log(dayTime);
 
   // const weather = useSelector(getCurrentWeather);
   const currentWeather = useSelector(getAdditionalCurrentWeather);
@@ -49,8 +52,6 @@ export const CardUI = ({ children }) => {
       setImageMob(images[random].portrait);
     }
   }, [images]);
-
-  // console.log(images);
 
   useEffect(() => {
     if (currentWeather) {
@@ -217,7 +218,7 @@ export const CardUI = ({ children }) => {
     <>
       {images && (
         <Card image={!isRowBased ? `url(${imageMob})` : `url(${image})`}>
-          <View />
+          <View dayTime={dayTime} />
           {children}
         </Card>
       )}

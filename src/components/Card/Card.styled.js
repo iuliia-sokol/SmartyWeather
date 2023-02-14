@@ -27,11 +27,17 @@ export const View = styled.div`
   left: 0;
   background-size: cover;
   z-index: -2;
-  background: linear-gradient(
+  /* background: linear-gradient(
     45deg,
     rgba(245, 70, 66, 0.45),
     rgba(8, 83, 156, 0.45)
-  );
+  ); */
+
+  background: ${p =>
+    p.dayTime
+      ? 'linear-gradient(45deg, rgba(245, 70, 66, 0.45), rgba(8, 83, 156, 0.45))'
+      : 'linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(117, 19, 93, 0.73))'};
+
   /* background: linear-gradient(
     to bottom,
     rgba(0, 47, 75, 0.5) 0%,
