@@ -74,7 +74,11 @@ export const HourlyChartsAirUI = () => {
             </>
           )}
           <XAxis dataKey="time" xAxisId="0" />
-          <ReferenceLine x={currentTime} stroke="rgba(212, 66, 111, 0.5)" />
+          <ReferenceLine
+            x={currentTime}
+            strokeDasharray="5 5"
+            stroke="rgba(212, 66, 111, 0.5)"
+          />
           <Line dataKey="dust" stroke="rgba(21, 144, 165, 0.454)" />
           <Line
             dataKey="usAQI"
