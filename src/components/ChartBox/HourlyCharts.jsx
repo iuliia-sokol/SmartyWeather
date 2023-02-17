@@ -7,6 +7,7 @@ import {
   YAxis,
   Tooltip,
   ResponsiveContainer,
+  ReferenceLine,
 } from 'recharts';
 import { getHourlyForcast } from 'redux/location/locSelectors';
 import { renderCustomAxisTick } from 'utils/customAxis';
@@ -45,6 +46,11 @@ export const HourlyChartsUI = () => {
             bottom: 5,
           }}
         >
+          <ReferenceLine
+            y={0}
+            strokeDasharray="5 5"
+            stroke="rgba(51, 40, 33, 0.7)"
+          />
           <Tooltip />
           {isRowBased && (
             <>

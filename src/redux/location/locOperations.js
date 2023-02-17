@@ -127,7 +127,6 @@ export const fetchAirQuality = createAsyncThunk(
         +location.longitude,
         location.timezone
       );
-      console.log(result);
       return result;
     } catch (error) {
       console.log(error);

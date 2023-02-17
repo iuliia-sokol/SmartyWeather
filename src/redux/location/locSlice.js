@@ -10,6 +10,7 @@ import {
   fetchCurrentWeatherFromWeatherApi,
   fetchWeatherForecastFromWeatherApi,
   fetchAstroDataFromWeatherApi,
+  fetchAirQuality,
 } from './locOperations';
 
 const onPending = state => {
@@ -104,7 +105,7 @@ export const locationSlice = createSlice({
           state.weatherAdditional = payload.current;
           state.timezone = payload.location.tz_id;
           state.daytime = payload.current.is_day;
-          state.airdata = payload.current.air_quality;
+          state.airdata = { ...state.airdata, ...payload.current.air_quality };
         }
       )
       .addCase(
@@ -144,6 +145,15 @@ export const locationSlice = createSlice({
         state.astrodata = payload;
       })
       .addCase(fetchAstroDataFromWeatherApi.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      })
+      .addCase(fetchAirQuality.pending, onPending)
+      .addCase(fetchAirQuality.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.airdata = { ...state.airdata, ...payload };
+      })
+      .addCase(fetchAirQuality.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
       });

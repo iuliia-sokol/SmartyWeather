@@ -8,6 +8,7 @@ import {
   Tooltip,
   ResponsiveContainer,
   Legend,
+  ReferenceLine,
 } from 'recharts';
 import { getDailyForcast } from 'redux/location/locSelectors';
 import { renderCustomAxisTick } from 'utils/customAxis';
@@ -59,7 +60,11 @@ export const DailyChartsUI = () => {
           }}
         >
           <Tooltip />
-
+          <ReferenceLine
+            y={0}
+            strokeDasharray="5 5"
+            stroke="rgba(51, 40, 33, 0.7)"
+          />
           {isRowBased ? (
             <>
               <YAxis />
@@ -96,6 +101,7 @@ export const DailyChartsUI = () => {
             dot={{ r: 2 }}
           />
           <Line
+            type="monotone"
             stackId="1"
             dataKey="precipitation"
             stroke="rgba(51, 40, 33, 0.4)"

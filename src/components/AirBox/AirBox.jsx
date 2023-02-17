@@ -12,6 +12,7 @@ import so2 from '../../images/air/so2-min.png';
 import pm25 from '../../images/air/pm25-min.png';
 import pm10 from '../../images/air/pm10-min.png';
 import { formatIndex } from 'utils/formatAirIndex';
+import { HourlyChartsAirUI } from 'components/ChartBox/HourlyChartsAir';
 
 const AirUI = () => {
   const air = useSelector(getAirData);
@@ -53,6 +54,7 @@ const AirUI = () => {
           source={`${air.pm10.toFixed(2)} μg/m3`}
         />
       </IndicatorsWrapper>
+      <HourlyChartsAirUI />
     </WrapperBox>
   );
 };

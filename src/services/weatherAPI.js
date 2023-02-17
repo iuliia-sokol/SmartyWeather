@@ -58,9 +58,8 @@ export const getAirQuality = async (lat, long, timezone) => {
   axios.defaults.baseURL = 'https://air-quality-api.open-meteo.com/v1/';
   try {
     const { data } = await axios.get(
-      `air-quality?latitude=${lat}&longitude=${long}&timezone=${timezone}&hourly=dust,uv_index_clear_sky,ammonia,alder_pollen,birch_pollen,grass_pollen,mugwort_pollen,olive_pollen,ragweed_pollen,european_aqi,us_aqi`
+      `air-quality?latitude=${lat}&longitude=${long}&timezone=${timezone}&hourly=dust,alder_pollen,birch_pollen,grass_pollen,mugwort_pollen,olive_pollen,ragweed_pollen,european_aqi,us_aqi`
     );
-    console.log(data);
     return data;
   } catch (error) {
     console.log(error);

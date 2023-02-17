@@ -27,7 +27,6 @@ const WeatherUI = () => {
   const weather = useSelector(getCurrentWeather);
   const extraWeather = useSelector(getAdditionalCurrentWeather);
   const forecast = useSelector(getForcast);
-  console.log(forecast);
 
   return weather && extraWeather ? (
     <WrapperBox>
