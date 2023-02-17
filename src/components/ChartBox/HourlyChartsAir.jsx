@@ -10,7 +10,7 @@ import {
   LineChart,
   Line,
 } from 'recharts';
-import { getAirData } from 'redux/location/locSelectors';
+import { getAirData, getCurrentWeather } from 'redux/location/locSelectors';
 import { CustomizedDotEuAQI, CustomizedDotUsAQI } from 'utils/customDot';
 import { ChartsWrapper } from './HourlyChartsAir.styled';
 
@@ -32,6 +32,8 @@ export const HourlyChartsAirUI = () => {
     .slice(0, 24);
   const euAQI = airData.hourly.european_aqi.map(el => el).slice(0, 24);
   const usAQI = airData.hourly.us_aqi.map(el => el).slice(0, 24);
+  const weather = useSelector(getCurrentWeather);
+  const currentTime = weather.current_weather.time.slice(11);
 
   const hourlyData = hours.map((el, index) => {
     return {
@@ -48,7 +50,7 @@ export const HourlyChartsAirUI = () => {
     };
   });
 
-  console.log(hourlyData);
+  //   console.log(hourlyData);
 
   return (
     <ChartsWrapper>
@@ -72,24 +74,17 @@ export const HourlyChartsAirUI = () => {
             </>
           )}
           <XAxis dataKey="time" xAxisId="0" />
-          <ReferenceLine y={0} stroke="#000" />
-          <Line
-            dataKey="dust"
-            stroke="rgba(21, 144, 165, 0.454)"
-            // activeDot={<CustomizeActivedDot />}
-            // dot={<CustomizedDot />}
-          />
+          <ReferenceLine x={currentTime} stroke="rgba(212, 66, 111, 0.5)" />
+          <Line dataKey="dust" stroke="rgba(21, 144, 165, 0.454)" />
           <Line
             dataKey="usAQI"
             stroke="rgba(91, 138, 219, 0.763)"
-            // activeDot={<CustomizeActivedDot />}
             dot={<CustomizedDotUsAQI />}
           />
           <Line
             dataKey="euAQI"
             stackId="a"
             stroke="rgba(103, 225, 66, 0.664)"
-            // activeDot={<CustomizeActivedDot />}
             dot={<CustomizedDotEuAQI />}
           />
         </LineChart>
