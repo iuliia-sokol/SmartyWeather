@@ -23,7 +23,6 @@ export const getWeatherForecastFromWeatherApi = async (lat, long) => {
     const { data } = await axios.get(
       `/forecast.json?key=${WEATHER_KEY}&q=${lat},${long}&aqi=yes&days=3`
     );
-    // console.log(data);
     return data;
   } catch (error) {
     console.log(error);
@@ -36,7 +35,6 @@ export const getAstroDataFromWeatherApi = async (lat, long) => {
     const { data } = await axios.get(
       `/astronomy.json?key=${WEATHER_KEY}&q=${lat},${long}`
     );
-    // console.log(data);
     return data;
   } catch (error) {
     console.log(error);
@@ -50,6 +48,19 @@ export const getCurrentWeather = async (lat, long, timezone) => {
       `forecast?latitude=${lat}&longitude=${long}&timezone=${timezone}&hourly=temperature_2m,precipitation,rain,showers,snowfall,snow_depth,weathercode,surface_pressure,cloudcover,visibility,windspeed_10m,winddirection_10m&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,precipitation_sum,rain_sum,showers_sum,snowfall_sum,windspeed_10m_max,windgusts_10m_max,winddirection_10m_dominant,shortwave_radiation_sum&current_weather=true`
     );
     // console.log(data);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getAirQuality = async (lat, long, timezone) => {
+  axios.defaults.baseURL = 'https://air-quality-api.open-meteo.com/v1/';
+  try {
+    const { data } = await axios.get(
+      `air-quality?latitude=${lat}&longitude=${long}&timezone=${timezone}&hourly=dust,uv_index_clear_sky,ammonia,alder_pollen,birch_pollen,grass_pollen,mugwort_pollen,olive_pollen,ragweed_pollen,european_aqi,us_aqi`
+    );
+    console.log(data);
     return data;
   } catch (error) {
     console.log(error);

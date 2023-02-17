@@ -1,15 +1,13 @@
 import Geocode from 'react-geocode';
 import axios from 'axios';
 import Notiflix from 'notiflix';
-// import { createClient } from 'pexels';
 import { notifySettings } from 'utils/notifySettings';
 
 const PLACES_TOKEN = process.env.REACT_APP_MAP_API_KEY;
-// const PEXELS_KEY = process.env.REACT_APP_PEXELS_API_KEY;
+const PEXELS_KEY = process.env.REACT_APP_PEXELS_API_KEY;
 const PIXABAY_KEY = process.env.REACT_APP_PIXABAY_API_KEY;
 // const TIMEZONE_API = process.env.REACT_APP_TIMEZONE_API;
 
-// const client = createClient(PEXELS_KEY);
 Geocode.setApiKey(PLACES_TOKEN);
 
 // const proxy = 'https://cors-anywhere.herokuapp.com/';  ---- service currently has request limitations
@@ -81,15 +79,12 @@ export const getCityId = async (lat, long) => {
 
 export async function getCityImagePexels(query) {
   const { data } = await axios.get(
-    `https://api.codetabs.com/v1/proxy?quest=https://api.pexels.com/v1/search?query=${query}&orientation=landscape`
+    `https://api.pexels.com/v1/search?query=${query}&orientation=landscape,{
+  headers: {
+    Authorization: ${PEXELS_KEY}
+  }
+}`
   );
-
-  // client.photos.search({ query, orientation: 'landscape' })
-  // .then(photos => {
-  //   const result = photos.photos;
-  //   // console.log(result);
-  //   return result;
-  // });
 
   return data.photos;
 }

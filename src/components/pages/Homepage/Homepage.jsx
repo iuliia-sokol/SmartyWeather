@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 import { useGeolocated } from 'react-geolocated';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  fetchAirQuality,
   fetchAstroDataFromWeatherApi,
   fetchCity,
   fetchCurrentWeather,
@@ -77,6 +78,7 @@ const Homepage = () => {
     }
     if (timezone) {
       dispatch(fetchCurrentWeather());
+      dispatch(fetchAirQuality());
     }
   }, [dispatch, timezone, weather]);
 

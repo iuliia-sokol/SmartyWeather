@@ -11,6 +11,7 @@ import {
   // getTimezone,
 } from 'services/currentLocationAPI';
 import {
+  getAirQuality,
   getAstroDataFromWeatherApi,
   getCurrentWeather,
   getCurrentWeatherFromWeatherApi,
@@ -108,6 +109,25 @@ export const fetchCurrentWeather = createAsyncThunk(
         location.timezone
       );
       // console.log(result.current_weather);
+      return result;
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const fetchAirQuality = createAsyncThunk(
+  'getAirData',
+  async (_, { getState, rejectWithValue }) => {
+    try {
+      const { location } = getState();
+      const result = await getAirQuality(
+        +location.latitude,
+        +location.longitude,
+        location.timezone
+      );
+      console.log(result);
       return result;
     } catch (error) {
       console.log(error);
