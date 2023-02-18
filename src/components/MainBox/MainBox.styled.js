@@ -86,6 +86,7 @@ export const CityName = styled.p`
   font-size: 20px;
   line-height: ${p => p.theme.lineHeights.main};
   color: ${p => p.theme.colors.mainDark};
+  z-index: 10;
 
   @media screen and (min-width: 768px) {
     font-size: 32px;
