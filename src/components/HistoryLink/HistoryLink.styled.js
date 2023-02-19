@@ -46,7 +46,7 @@ const sandFillup = keyframes`
     100%    { opacity: 1; height: 17px; }
 `;
 
-const sandDeplete = keyframes` 
+const sandDeplete = keyframes`
     0%      { opacity: 0; top: 45px; height: 17px; width: 38px; left: 6px; } // prevents flickering
     1%      { opacity: 1; top: 45px; height: 17px; width: 38px; left: 6px; }
     24%     { opacity: 1; top: 45px; height: 17px; width: 38px; left: 6px; }
@@ -68,20 +68,19 @@ const sandDepletemob = keyframes`
 
 export const HourglassBackground = styled.div`
   position: relative;
-  background-color: ${p => p.theme.colors.mainDark};
+  /* background-color: ${p => p.theme.colors.mainDark}; */
+  background-color: rgba(0, 0, 0, 0.48);
   height: 65px;
   width: 65px;
   border-radius: 50%;
-  margin: 15px auto;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
 
-  @media screen and (min-width: 1280px) {
+  /* @media screen and (min-width: 1280px) {
     height: 130px;
     width: 130px;
-    margin: 30px auto;
-  }
+  } */
 `;
 
 export const HourglassContainer = styled.div`
@@ -94,12 +93,12 @@ export const HourglassContainer = styled.div`
   transform-style: preserve-3d;
   perspective: 1000px;
 
-  @media screen and (min-width: 1280px) {
+  /* @media screen and (min-width: 1280px) {
     top: 30px;
     left: 40px;
     width: 50px;
     height: 70px;
-  }
+  } */
 
   div,
   div:before,
@@ -115,10 +114,10 @@ export const HourglassCapTop = styled.div`
   width: 25px;
   background-color: ${p => p.theme.colors.mainLight};
 
-  @media screen and (min-width: 1280px) {
+  /* @media screen and (min-width: 1280px) {
     height: 5px;
     width: 50px;
-  }
+  } */
 
   &:before,
   &:after {
@@ -131,26 +130,26 @@ export const HourglassCapTop = styled.div`
     transform: rotateX(90deg);
     background-color: ${p => p.theme.colors.mainLight};
 
-    @media screen and (min-width: 1280px) {
+    /* @media screen and (min-width: 1280px) {
       width: 50px;
       height: 50px;
-    }
+    } */
   }
   top: 0;
 
   &:before {
     top: -12.5px;
 
-    @media screen and (min-width: 1280px) {
+    /* @media screen and (min-width: 1280px) {
       top: -25px;
-    }
+    } */
   }
   &:after {
     top: -10px;
 
-    @media screen and (min-width: 1280px) {
+    /* @media screen and (min-width: 1280px) {
       top: -20px;
-    }
+    } */
   }
 `;
 
@@ -161,10 +160,10 @@ export const HourglassCapBottom = styled.div`
   width: 25px;
   background-color: ${p => p.theme.colors.mainLight};
 
-  @media screen and (min-width: 1280px) {
+  /* @media screen and (min-width: 1280px) {
     height: 5px;
     width: 50px;
-  }
+  } */
 
   &:before,
   &:after {
@@ -177,26 +176,26 @@ export const HourglassCapBottom = styled.div`
     transform: rotateX(90deg);
     background-color: ${p => p.theme.colors.mainLight};
 
-    @media screen and (min-width: 1280px) {
+    /* @media screen and (min-width: 1280px) {
       width: 50px;
       height: 50px;
-    }
+    } */
   }
   bottom: 0;
 
   &:before {
     bottom: -12.5px;
 
-    @media screen and (min-width: 1280px) {
+    /* @media screen and (min-width: 1280px) {
       bottom: -25px;
-    }
+    } */
   }
   &:after {
     bottom: -10px;
 
-    @media screen and (min-width: 1280px) {
+    /* @media screen and (min-width: 1280px) {
       bottom: -20px;
-    }
+    } */
   }
 `;
 export const HourglassGlassTop = styled.div`
@@ -209,12 +208,12 @@ export const HourglassGlassTop = styled.div`
   height: 22px;
   background-color: rgba(51, 40, 33, 0.7);
 
-  @media screen and (min-width: 1280px) {
+  /* @media screen and (min-width: 1280px) {
     top: -16px;
     left: 3px;
     width: 44px;
     height: 44px;
-  }
+  } */
 `;
 
 export const HourglassGlass = styled.div`
@@ -226,12 +225,12 @@ export const HourglassGlass = styled.div`
   height: 3px;
   background-color: ${p => p.theme.colors.iconTransparent};
 
-  @media screen and (min-width: 1280px) {
+  /* @media screen and (min-width: 1280px) {
     top: 32px;
     left: 20px;
     width: 10px;
     height: 6px;
-  }
+  } */
 
   &:before,
   &:after {
@@ -243,27 +242,27 @@ export const HourglassGlass = styled.div`
     width: 22px;
     height: 14px;
 
-    @media screen and (min-width: 1280px) {
+    /* @media screen and (min-width: 1280px) {
       left: -17px;
       width: 44px;
       height: 28px;
-    }
+    } */
   }
   &:before {
     top: -13.5px;
     border-radius: 0 0 25px 25px;
 
-    @media screen and (min-width: 1280px) {
+    /* @media screen and (min-width: 1280px) {
       top: -27px;
-    }
+    } */
   }
   &:after {
     bottom: -13.5px;
     border-radius: 25px 25px 0 0;
 
-    @media screen and (min-width: 1280px) {
+    /* @media screen and (min-width: 1280px) {
       bottom: -27px;
-    }
+    } */
   }
 `;
 
@@ -280,25 +279,25 @@ export const HourglassCurves = styled.div`
     background-color: ${p => p.theme.colors.mainDark};
     animation: ${hideCurves} 3s ease-in 0s infinite;
 
-    @media screen and (min-width: 1280px) {
+    /* @media screen and (min-width: 1280px) {
       top: 32px;
       width: 6px;
       height: 6px;
-    }
+    } */
   }
   &:before {
     left: 7.5px;
 
-    @media screen and (min-width: 1280px) {
+    /* @media screen and (min-width: 1280px) {
       left: 15px;
-    }
+    } */
   }
   &:after {
     left: 14.5px;
 
-    @media screen and (min-width: 1280px) {
+    /* @media screen and (min-width: 1280px) {
       left: 29px;
-    }
+    } */
   }
 `;
 
@@ -312,11 +311,11 @@ export const HourglassSandStream = styled.div`
     background-color: ${p => p.theme.colors.bgYellow};
     animation: ${sandStream1mob} 3s ease-in 0s infinite;
 
-    @media screen and (min-width: 1280px) {
+    /* @media screen and (min-width: 1280px) {
       left: 24px;
       width: 3px;
       animation: ${sandStream1} 3s ease-in 0s infinite;
-    }
+    } */
   }
   &:after {
     content: '';
@@ -329,10 +328,10 @@ export const HourglassSandStream = styled.div`
     border-bottom: 6px solid ${p => p.theme.colors.bgYellow};
     animation: ${sandStream2} 3s ease-in 0s infinite;
 
-    @media screen and (min-width: 1280px) {
+    /* @media screen and (min-width: 1280px) {
       top: 36px;
       left: 19px;
-    }
+    } */
   }
 `;
 
@@ -346,9 +345,9 @@ export const HourglassSand = styled.div`
     background-color: ${p => p.theme.colors.accentYellow};
     perspective: 500px;
 
-    @media screen and (min-width: 1280px) {
+    /* @media screen and (min-width: 1280px) {
       left: 6px;
-    }
+    } */
   }
 
   &:before {
@@ -357,17 +356,22 @@ export const HourglassSand = styled.div`
     border-radius: 3px 3px 30px 30px;
     animation: ${sandFillup} 3s ease-in 0s infinite;
 
-    @media screen and (min-width: 1280px) {
+    /* @media screen and (min-width: 1280px) {
       top: 8px;
       width: 39px;
-    }
+    } */
   }
   &:after {
     border-radius: 30px 30px 3px 3px;
     animation: ${sandDepletemob} 3s ease-in 0s infinite;
 
-    @media screen and (min-width: 1280px) {
+    /* @media screen and (min-width: 1280px) {
       animation: ${sandDeplete} 3s ease-in 0s infinite;
-    }
+    } */
   }
+`;
+
+export const Elipse = styled.svg`
+  width: 100%;
+  height: 100%;
 `;
