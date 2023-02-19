@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getHistory } from 'redux/location/locSelectors';
-import { ContentWrapper, EventsWrapper } from './HistoryBox.styled';
+import { ContentWrapper, Event, EventsWrapper } from './HistoryBox.styled';
 
 function HistoryUI() {
   const historyEvents = useSelector(getHistory);
@@ -19,9 +19,9 @@ function HistoryUI() {
       <EventsWrapper>
         {events.map(el => {
           return (
-            <li key={el.description} year={el.year}>
+            <Event key={el.description} year={el.year}>
               <span>{el.year}</span> {el.description}
-            </li>
+            </Event>
           );
         })}
       </EventsWrapper>

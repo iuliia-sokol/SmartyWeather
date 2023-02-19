@@ -95,3 +95,15 @@ export const EventsWrapper = styled.ul`
     background: #8bba98;
   }
 `;
+
+export const Event = styled.li`
+  & span {
+    font-weight: ${p => p.theme.fontWeights[1]};
+    font-size: 32px;
+    margin-right: 12px;
+
+    @media screen and (min-width: 768px) {
+      font-size: 46px;
+    }
+  }
+`;
