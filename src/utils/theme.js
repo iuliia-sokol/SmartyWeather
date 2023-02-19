@@ -5,6 +5,7 @@ export const theme = {
     mainLight: '#FFFFFF',
     textGrey: 'rgba(51, 40, 33, 0.7)',
     logoTransparent: 'rgba(251, 251, 251, 0.75)',
+    iconTransparent: 'rgba(251, 251, 251, 0.35)',
 
     accentViolet: '#5E4FC1',
     accentPink: '#D86191',
