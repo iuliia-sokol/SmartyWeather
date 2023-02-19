@@ -96,7 +96,7 @@ export const EventsWrapper = styled.ul`
   }
 `;
 
-export const Event = styled.li`
+export const Event = styled.div`
   & span {
     font-weight: ${p => p.theme.fontWeights[1]};
     font-size: 32px;

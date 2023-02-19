@@ -1,3 +1,4 @@
+import { FadeInSection } from 'components/FadingList/FadingList';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getHistory } from 'redux/location/locSelectors';
@@ -19,9 +20,11 @@ function HistoryUI() {
       <EventsWrapper>
         {events.map(el => {
           return (
-            <Event key={el.description} year={el.year}>
-              <span>{el.year}</span> {el.description}
-            </Event>
+            <FadeInSection key={el.description}>
+              <Event>
+                <span>{el.year}</span> {el.description}
+              </Event>
+            </FadeInSection>
           );
         })}
       </EventsWrapper>
