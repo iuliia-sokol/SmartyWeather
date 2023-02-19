@@ -135,7 +135,7 @@ export const locationSlice = createSlice({
       .addCase(fetchHistory.pending, onPending)
       .addCase(fetchHistory.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.history = payload.data.Events;
+        state.history = payload;
       })
       .addCase(fetchHistory.rejected, (state, { payload }) => {
         state.isLoading = false;

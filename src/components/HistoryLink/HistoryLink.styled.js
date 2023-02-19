@@ -74,9 +74,6 @@ export const HourglassBackground = styled.div`
   width: 65px;
   border-radius: 50%;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
-
   /* @media screen and (min-width: 1280px) {
     height: 130px;
     width: 130px;

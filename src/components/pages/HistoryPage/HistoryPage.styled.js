@@ -4,7 +4,6 @@ export const HeaderText = styled.h3`
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
   margin-bottom: 32px;
   margin-top: -32px;
   font-family: ${p => p.theme.fonts.main};
@@ -19,8 +18,6 @@ export const HeaderText = styled.h3`
 
   @media screen and (min-width: 1280px) {
     justify-content: flex-start;
-    align-items: center;
-    text-align: center;
     font-size: 72px;
   }
 `;

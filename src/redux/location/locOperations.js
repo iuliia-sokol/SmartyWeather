@@ -159,7 +159,6 @@ export const fetchHistoryImage = createAsyncThunk(
       if (data) {
         const pics = [];
         data.forEach(el => pics.push(el.src));
-        console.log(pics);
         return pics;
       }
       return;

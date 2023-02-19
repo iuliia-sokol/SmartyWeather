@@ -21,7 +21,6 @@ export const EventsWrapper = styled.ul`
   background-position: center right;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: flex-start;
   gap: 16px;
   padding: 32px 24px 80px 24px;

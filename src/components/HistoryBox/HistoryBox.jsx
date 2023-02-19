@@ -19,8 +19,8 @@ function HistoryUI() {
       <EventsWrapper>
         {events.map(el => {
           return (
-            <li key={el.text} year={el.year}>
-              {el.text}
+            <li key={el.description} year={el.year}>
+              <span>{el.year}</span> {el.description}
             </li>
           );
         })}
