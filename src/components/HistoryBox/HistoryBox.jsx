@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getHistory } from 'redux/location/locSelectors';
-import { WrapperBox } from 'components/BoxWrapper/Wrapper';
-import { EventsWrapper } from './HistoryBox.styled';
+import { ContentWrapper, EventsWrapper } from './HistoryBox.styled';
 
 function HistoryUI() {
   const historyEvents = useSelector(getHistory);
@@ -16,7 +15,7 @@ function HistoryUI() {
   }, [dispatch, historyEvents]);
 
   return events ? (
-    <WrapperBox>
+    <ContentWrapper>
       <EventsWrapper>
         {events.map(el => {
           return (
@@ -26,7 +25,7 @@ function HistoryUI() {
           );
         })}
       </EventsWrapper>
-    </WrapperBox>
+    </ContentWrapper>
   ) : (
     <div>No history data available</div>
   );
