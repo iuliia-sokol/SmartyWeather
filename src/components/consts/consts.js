@@ -1,3 +1,0 @@
-// DNIPRO, UKRAINE
-export const DEFAULT_LATITUDE = '48.464717';
-export const DEFAULT_LONGITUDE = '35.046183';

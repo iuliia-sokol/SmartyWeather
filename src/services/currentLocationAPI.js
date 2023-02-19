@@ -1,16 +1,12 @@
 import Geocode from 'react-geocode';
-import axios from 'axios';
-import Notiflix from 'notiflix';
-import { notifySettings } from 'utils/notifySettings';
+import {
+  PLACES_KEY,
+  // GOOGLE_MAPS_URL,
+  // ABSTRACT_API_URL,
+  // TIMEZONE_API_KEY
+} from 'utils/consts/consts';
 
-const PLACES_TOKEN = process.env.REACT_APP_MAP_API_KEY;
-const PEXELS_KEY = process.env.REACT_APP_PEXELS_API_KEY;
-const PIXABAY_KEY = process.env.REACT_APP_PIXABAY_API_KEY;
-// const TIMEZONE_API = process.env.REACT_APP_TIMEZONE_API;
-
-Geocode.setApiKey(PLACES_TOKEN);
-
-// const proxy = 'https://cors-anywhere.herokuapp.com/';  ---- service currently has request limitations
+Geocode.setApiKey(PLACES_KEY);
 
 export const getCity = async (lat, long) => {
   let city = {
@@ -52,20 +48,22 @@ export const getCity = async (lat, long) => {
 
 // ANOTHER WAY TO GET PLACE ID FROM GOOGLE
 
-export const getCityId = async (lat, long) => {
-  const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${long}&radius=10000&key=${PLACES_TOKEN}`;
-  try {
-    const data = await fetch(url);
-    const jsondata = await data.json();
-    // console.log(jsondata);
-    return jsondata;
-  } catch (err) {
-    console.log(err);
-  }
-};
+// export const getCityId = async (lat, long) => {
+//   const url = `${GOOGLE_MAPS_URL}place/nearbysearch/json?location=${lat},${long}&radius=10000&key=${PLACES_KEY}`;
+//   try {
+//     const data = await fetch(url);
+//     const jsondata = await data.json();
+//     // console.log(jsondata);
+//     return jsondata;
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
+
+// GET TIMEZONE
 
 // export const getTimezone = async (lat, long) => {
-//   const url = `https://timezone.abstractapi.com/v1/current_time?api_key=${TIMEZONE_API}&location=${lat},${long}`;
+//   const url = `${ABSTRACT_API_URL}current_time?api_key=${TIMEZONE_API}&location=${lat},${long}`;
 //   try {
 //     const { data } = await axios.get(url);
 //     // console.log(data);
@@ -74,42 +72,3 @@ export const getCityId = async (lat, long) => {
 //     console.log(err);
 //   }
 // };
-
-// USED IMAGES API
-
-export async function getCityImagePexels(query) {
-  const { data } = await axios.get(
-    `https://api.pexels.com/v1/search?query=${query}&orientation=landscape,{
-  headers: {
-    Authorization: ${PEXELS_KEY}
-  }
-}`
-  );
-
-  return data.photos;
-}
-
-// ALTERNATIVE API FOR FETCHING IMAGES
-
-export async function getCityImagePixabay(searchQuery) {
-  const searchParams = new URLSearchParams({
-    key: PIXABAY_KEY,
-    q: searchQuery,
-    image_type: 'photo',
-    orientation: 'horizontal',
-    safesearch: true,
-    category: 'travel',
-    page: 1,
-    per_page: 12,
-  });
-  const url = `https://pixabay.com/api/?${searchParams}`;
-  const response = await axios.get(url);
-  if (response.status === 404) {
-    Notiflix.Notify.failure(
-      'Oops, no pics found. Please try again',
-      notifySettings
-    );
-    return Promise.reject();
-  }
-  return response;
-}

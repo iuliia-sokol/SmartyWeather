@@ -1,15 +1,15 @@
 // import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-// import Notiflix from 'notiflix';
-// import { notifySettings } from '../../utils/notifySettings';
 import {
   getCity,
-  getCityId,
-  getCityImagePexels,
-  getCityImagePixabay,
+  // getCityId,
   // getTimezone,
 } from 'services/currentLocationAPI';
+import {
+  getCityImagePexels,
+  // getCityImagePixabay,
+} from 'services/fetchPicture';
 import {
   getAirQuality,
   getAstroDataFromWeatherApi,
@@ -25,39 +25,6 @@ export const fetchCity = createAsyncThunk(
       const { location } = getState();
       const data = await getCity(location.latitude, location.longitude);
       return data;
-    } catch (error) {
-      console.log(error);
-      return rejectWithValue(error);
-    }
-  }
-);
-
-export const fetchCityID = createAsyncThunk(
-  'getCityID',
-  async (_, { getState, rejectWithValue }) => {
-    try {
-      const { location } = getState();
-      const result = await getCityId(location.latitude, location.longitude);
-      console.log(result.results);
-      return result;
-    } catch (error) {
-      console.log(error);
-      return rejectWithValue(error);
-    }
-  }
-);
-
-export const fetchPixabayImage = createAsyncThunk(
-  'getCityImagePixabay',
-  async (_, { getState, rejectWithValue }) => {
-    try {
-      const { location } = getState();
-      const { data } = await getCityImagePixabay(`${location.city}`);
-      const images = data.hits;
-      const cityImg = images.find(
-        img => img.tags.includes('city') || img.tags.includes('nature')
-      );
-      return cityImg.largeImageURL;
     } catch (error) {
       console.log(error);
       return rejectWithValue(error);
@@ -83,21 +50,6 @@ export const fetchPexelsImage = createAsyncThunk(
   }
 );
 
-// export const fetchTimezone = createAsyncThunk(
-//   'getTimezone',
-//   async (_, { getState, rejectWithValue }) => {
-//     try {
-//       const { location } = getState();
-//       const result = await getTimezone(location.latitude, location.longitude);
-//       // console.log(result);
-//       return result.timezone_location;
-//     } catch (error) {
-//       console.log(error);
-//       return rejectWithValue(error);
-//     }
-//   }
-// );
-
 export const fetchCurrentWeather = createAsyncThunk(
   'getCurrentWeather',
   async (_, { getState, rejectWithValue }) => {
@@ -108,7 +60,6 @@ export const fetchCurrentWeather = createAsyncThunk(
         +location.longitude,
         location.timezone
       );
-      // console.log(result.current_weather);
       return result;
     } catch (error) {
       console.log(error);
@@ -140,12 +91,10 @@ export const fetchCurrentWeatherFromWeatherApi = createAsyncThunk(
   async (_, { getState, rejectWithValue }) => {
     try {
       const { location } = getState();
-      // console.log(location);
       const result = await getCurrentWeatherFromWeatherApi(
         location.latitude,
         location.longitude
       );
-      // console.log(result);
       return result;
     } catch (error) {
       console.log(error);
@@ -163,7 +112,6 @@ export const fetchWeatherForecastFromWeatherApi = createAsyncThunk(
         location.latitude,
         location.longitude
       );
-      // console.log('forecast', result);
       return result.forecast.forecastday;
     } catch (error) {
       console.log(error);
@@ -181,7 +129,6 @@ export const fetchAstroDataFromWeatherApi = createAsyncThunk(
         location.latitude,
         location.longitude
       );
-      // console.log('astro', result);
       return result.astronomy.astro;
     } catch (error) {
       console.log(error);
@@ -189,3 +136,51 @@ export const fetchAstroDataFromWeatherApi = createAsyncThunk(
     }
   }
 );
+
+// export const fetchCityID = createAsyncThunk(
+//   'getCityID',
+//   async (_, { getState, rejectWithValue }) => {
+//     try {
+//       const { location } = getState();
+//       const result = await getCityId(location.latitude, location.longitude);
+//       console.log(result.results);
+//       return result;
+//     } catch (error) {
+//       console.log(error);
+//       return rejectWithValue(error);
+//     }
+//   }
+// );
+
+// export const fetchTimezone = createAsyncThunk(
+//   'getTimezone',
+//   async (_, { getState, rejectWithValue }) => {
+//     try {
+//       const { location } = getState();
+//       const result = await getTimezone(location.latitude, location.longitude);
+//       // console.log(result);
+//       return result.timezone_location;
+//     } catch (error) {
+//       console.log(error);
+//       return rejectWithValue(error);
+//     }
+//   }
+// );
+
+// export const fetchPixabayImage = createAsyncThunk(
+//   'getCityImagePixabay',
+//   async (_, { getState, rejectWithValue }) => {
+//     try {
+//       const { location } = getState();
+//       const { data } = await getCityImagePixabay(`${location.city}`);
+//       const images = data.hits;
+//       const cityImg = images.find(
+//         img => img.tags.includes('city') || img.tags.includes('nature')
+//       );
+//       return cityImg.largeImageURL;
+//     } catch (error) {
+//       console.log(error);
+//       return rejectWithValue(error);
+//     }
+//   }
+// );

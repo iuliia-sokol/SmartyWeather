@@ -2,15 +2,15 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import {
   fetchCity,
-  fetchCityID,
   fetchPexelsImage,
-  fetchPixabayImage,
   fetchCurrentWeather,
-  // fetchTimezone,
   fetchCurrentWeatherFromWeatherApi,
   fetchWeatherForecastFromWeatherApi,
   fetchAstroDataFromWeatherApi,
   fetchAirQuality,
+  // fetchCityID,
+  // fetchTimezone,
+  // fetchPixabayImage,
 } from './locOperations';
 
 const onPending = state => {
@@ -50,32 +50,12 @@ export const locationSlice = createSlice({
     builder
       .addCase(fetchCity.pending, onPending)
       .addCase(fetchCity.fulfilled, (state, { payload }) => {
-        // console.log(payload);
         state.isLoading = false;
         state.city = payload.cityName;
         state.cityID = payload.placeId;
         state.country = payload.country;
       })
       .addCase(fetchCity.rejected, (state, { payload }) => {
-        state.isLoading = false;
-        state.error = payload;
-      })
-      .addCase(fetchCityID.pending, onPending)
-      .addCase(fetchCityID.fulfilled, (state, { payload }) => {
-        console.log(payload);
-        state.isLoading = false;
-        state.cityID = payload;
-      })
-      .addCase(fetchCityID.rejected, (state, { payload }) => {
-        state.isLoading = false;
-        state.error = payload;
-      })
-      .addCase(fetchPixabayImage.pending, onPending)
-      .addCase(fetchPixabayImage.fulfilled, (state, { payload }) => {
-        state.isLoading = false;
-        state.image = payload;
-      })
-      .addCase(fetchPixabayImage.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
       })
@@ -130,15 +110,6 @@ export const locationSlice = createSlice({
           state.error = payload;
         }
       )
-      // .addCase(fetchTimezone.pending, onPending)
-      // .addCase(fetchTimezone.fulfilled, (state, { payload }) => {
-      //   state.isLoading = false;
-      //   state.timezone = payload;
-      // })
-      // .addCase(fetchTimezone.rejected, (state, { payload }) => {
-      //   state.isLoading = false;
-      //   state.error = payload;
-      // })
       .addCase(fetchAstroDataFromWeatherApi.pending, onPending)
       .addCase(fetchAstroDataFromWeatherApi.fulfilled, (state, { payload }) => {
         state.isLoading = false;
@@ -164,3 +135,32 @@ export const { setLongitude } = locationSlice.actions;
 export const { setLatitude } = locationSlice.actions;
 
 export default locationSlice.reducer;
+
+// .addCase(fetchCityID.pending, onPending)
+// .addCase(fetchCityID.fulfilled, (state, { payload }) => {
+//   console.log(payload);
+//   state.isLoading = false;
+//   state.cityID = payload;
+// })
+// .addCase(fetchCityID.rejected, (state, { payload }) => {
+//   state.isLoading = false;
+//   state.error = payload;
+// })
+// .addCase(fetchPixabayImage.pending, onPending)
+// .addCase(fetchPixabayImage.fulfilled, (state, { payload }) => {
+//   state.isLoading = false;
+//   state.image = payload;
+// })
+// .addCase(fetchPixabayImage.rejected, (state, { payload }) => {
+//   state.isLoading = false;
+//   state.error = payload;
+// })
+// .addCase(fetchTimezone.pending, onPending)
+// .addCase(fetchTimezone.fulfilled, (state, { payload }) => {
+//   state.isLoading = false;
+//   state.timezone = payload;
+// })
+// .addCase(fetchTimezone.rejected, (state, { payload }) => {
+//   state.isLoading = false;
+//   state.error = payload;
+// })
