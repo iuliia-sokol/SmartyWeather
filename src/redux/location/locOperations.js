@@ -10,6 +10,7 @@ import {
   getCityImagePexels,
   // getCityImagePixabay,
 } from 'services/fetchPicture';
+import { getHistoricalData } from 'services/historyAPI';
 import {
   getAirQuality,
   getAstroDataFromWeatherApi,
@@ -130,6 +131,19 @@ export const fetchAstroDataFromWeatherApi = createAsyncThunk(
         location.longitude
       );
       return result.astronomy.astro;
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const fetchHistory = createAsyncThunk(
+  'getHistory',
+  async (_, { rejectWithValue }) => {
+    try {
+      const result = await getHistoricalData();
+      return result;
     } catch (error) {
       console.log(error);
       return rejectWithValue(error);

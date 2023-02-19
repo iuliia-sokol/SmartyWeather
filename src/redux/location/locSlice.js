@@ -8,6 +8,7 @@ import {
   fetchWeatherForecastFromWeatherApi,
   fetchAstroDataFromWeatherApi,
   fetchAirQuality,
+  fetchHistory,
   // fetchCityID,
   // fetchTimezone,
   // fetchPixabayImage,
@@ -33,6 +34,7 @@ export const locationSlice = createSlice({
     daytime: false,
     airdata: null,
     image: [],
+    history: [],
     isLoading: false,
     error: null,
   },
@@ -125,6 +127,15 @@ export const locationSlice = createSlice({
         state.airdata = { ...state.airdata, ...payload };
       })
       .addCase(fetchAirQuality.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      })
+      .addCase(fetchHistory.pending, onPending)
+      .addCase(fetchHistory.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.history = payload.data.Events;
+      })
+      .addCase(fetchHistory.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
       });

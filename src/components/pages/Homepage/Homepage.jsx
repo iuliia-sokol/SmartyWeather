@@ -13,6 +13,7 @@ import {
   fetchCity,
   fetchCurrentWeather,
   fetchCurrentWeatherFromWeatherApi,
+  fetchHistory,
   fetchPexelsImage,
   fetchWeatherForecastFromWeatherApi,
 } from 'redux/location/locOperations';
@@ -85,6 +86,7 @@ const Homepage = () => {
   useEffect(() => {
     if (city) {
       dispatch(fetchPexelsImage(city));
+      dispatch(fetchHistory());
     }
   }, [city, dispatch]);
   // console.log(images);
