@@ -159,6 +159,7 @@ export const FeelsLike = styled.span`
   line-height: ${p => p.theme.lineHeights.main};
   color: ${p => p.theme.colors.textGrey};
 `;
+
 export const Temperature = styled.div`
   display: inline-flex;
   justify-content: center;

@@ -21,13 +21,13 @@ export const HistoryLink = () => {
           <use href={sprite + `#elipse`} />
         </Elipse>
         <HourglassContainer>
-          <HourglassCurves></HourglassCurves>
-          <HourglassCapTop></HourglassCapTop>
-          <HourglassGlassTop></HourglassGlassTop>
-          <HourglassSand></HourglassSand>
-          <HourglassSandStream></HourglassSandStream>
-          <HourglassCapBottom></HourglassCapBottom>
-          <HourglassGlass></HourglassGlass>
+          <HourglassCurves />
+          <HourglassCapTop />
+          <HourglassGlassTop />
+          <HourglassSand />
+          <HourglassSandStream />
+          <HourglassCapBottom />
+          <HourglassGlass />
         </HourglassContainer>
       </HourglassBackground>
     </NavLink>

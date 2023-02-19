@@ -4,6 +4,7 @@ import { fetchHistory, fetchHistoryImage } from 'redux/location/locOperations';
 import { Container } from 'components/Container/Container';
 import HistoryBox from 'components/HistoryBox/HistoryBox';
 import { HistoryCardUI } from 'components/Card/HistoryCard';
+import { HeaderText } from './HistoryPage.styled';
 
 const HistoryPage = () => {
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ const HistoryPage = () => {
     >
       <HistoryCardUI />
       <Container>
+        <HeaderText>This day in history</HeaderText>
         <HistoryBox />
       </Container>
     </main>
