@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchHistory } from 'redux/location/locOperations';
 import { getHistory } from 'redux/location/locSelectors';
 import { WrapperBox } from 'components/BoxWrapper/Wrapper';
 import { EventsWrapper } from './HistoryBox.styled';
@@ -11,8 +10,7 @@ function HistoryUI() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchHistory());
-    if (historyEvents) {
+    if (historyEvents.length > 0) {
       setEvents(historyEvents);
     }
   }, [dispatch, historyEvents]);
