@@ -10,7 +10,7 @@ import {
 // import Notiflix from 'notiflix';
 // import { notifySettings } from 'utils/notifySettings';
 
-export async function getCityImagePexels(query) {
+export async function getImagePexels(query) {
   const searchParams = new URLSearchParams({
     query: query,
     orientation: 'landscape',

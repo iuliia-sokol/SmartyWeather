@@ -7,7 +7,7 @@ import {
   // getTimezone,
 } from 'services/currentLocationAPI';
 import {
-  getCityImagePexels,
+  getImagePexels,
   // getCityImagePixabay,
 } from 'services/fetchPicture';
 import { getHistoricalData } from 'services/historyAPI';
@@ -37,7 +37,7 @@ export const fetchPexelsImage = createAsyncThunk(
   'getCityImagePexels',
   async (city, { rejectWithValue }) => {
     try {
-      const data = await getCityImagePexels(city);
+      const data = await getImagePexels(city);
       if (data) {
         const pics = [];
         data.forEach(el => pics.push(el.src));
@@ -144,6 +144,25 @@ export const fetchHistory = createAsyncThunk(
     try {
       const result = await getHistoricalData();
       return result;
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const fetchHistoryImage = createAsyncThunk(
+  'getHistoryImage',
+  async (_, { rejectWithValue }) => {
+    try {
+      const data = await getImagePexels('history');
+      if (data) {
+        const pics = [];
+        data.forEach(el => pics.push(el.src));
+        console.log(pics);
+        return pics;
+      }
+      return;
     } catch (error) {
       console.log(error);
       return rejectWithValue(error);
