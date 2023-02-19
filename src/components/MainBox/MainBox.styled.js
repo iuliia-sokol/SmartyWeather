@@ -9,6 +9,7 @@ export const DataWrapper = styled.div`
   margin: 0 auto;
   border-radius: 30px;
   padding: 32px 16px;
+  z-index: 10;
   background-color: rgba(255, 255, 255, 0.63);
   /* box-shadow: inset -5px -5px 9px rgba(255, 255, 255, 0.45),
     inset 5px 5px 9px rgba(94, 104, 121, 0.3); */
@@ -159,7 +160,6 @@ export const FeelsLike = styled.span`
   line-height: ${p => p.theme.lineHeights.main};
   color: ${p => p.theme.colors.textGrey};
 `;
-
 export const Temperature = styled.div`
   display: inline-flex;
   justify-content: center;

@@ -12,5 +12,5 @@ export async function getHistoricalData() {
     console.log('No data found for this date', response);
     return Promise.reject();
   }
-  return response.data.events;
+  return response.data;
 }

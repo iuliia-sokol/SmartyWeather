@@ -212,6 +212,16 @@ export const CardUI = ({ children }) => {
       setShowFog(false);
       setShowThunderSnow(false);
     }
+    else {
+          setShowHeavyDrizzle(false);
+          setShowStorm(false);
+          setShowDrizzle(false);
+          setShowSnow(false);
+          setShowRain(false);
+          setShowBigSnow(false);
+          setShowFog(false);
+          setShowThunderSnow(false);
+    }
   }, [currentWeather, weatherCode]);
 
   return (

@@ -14,6 +14,17 @@ export const ContentWrapper = styled.div`
   }
 `;
 
+export const Date = styled.h4`
+  font-weight: ${p => p.theme.fontWeights[1]};
+  font-size: 32px;
+  margin-right: 12px;
+  align-self: flex-end;
+
+  @media screen and (min-width: 768px) {
+    font-size: 46px;
+  }
+`;
+
 export const EventsWrapper = styled.ul`
   position: relative;
   background: url('https://i.imgur.com/0kjMcUe.png');

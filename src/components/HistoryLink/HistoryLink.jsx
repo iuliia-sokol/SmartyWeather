@@ -17,7 +17,7 @@ export const HistoryLink = () => {
   return (
     <NavLink to="/history">
       <HourglassBackground>
-        <Elipse width={46} height={42} viewBox="0 0 36 36">
+        <Elipse>
           <use href={sprite + `#elipse`} />
         </Elipse>
         <HourglassContainer>
