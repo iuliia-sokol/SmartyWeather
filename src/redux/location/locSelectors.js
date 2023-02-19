@@ -16,3 +16,4 @@ export const getHourlyForcast = state => state.location.weather.hourly;
 export const getAirData = state => state.location.airdata;
 export const getHistory = state => state.location.history;
 export const getHistoryImages = state => state.location.historyImages;
+export const getDate = state => state.location.date;

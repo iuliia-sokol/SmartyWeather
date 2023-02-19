@@ -35,6 +35,7 @@ export const locationSlice = createSlice({
     daytime: false,
     airdata: null,
     image: [],
+    date: null,
     historyImages: [],
     history: [],
     isLoading: false,
@@ -135,7 +136,8 @@ export const locationSlice = createSlice({
       .addCase(fetchHistory.pending, onPending)
       .addCase(fetchHistory.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.history = payload;
+        state.history = payload.events;
+        state.date = payload.date;
       })
       .addCase(fetchHistory.rejected, (state, { payload }) => {
         state.isLoading = false;

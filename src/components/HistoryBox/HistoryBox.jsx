@@ -1,7 +1,7 @@
 // import { FadeInSection } from 'components/FadingList/FadingList';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getHistory } from 'redux/location/locSelectors';
+import { getDate, getHistory } from 'redux/location/locSelectors';
 import {
   ContentWrapper,
   Date,
@@ -11,16 +11,13 @@ import {
 
 function HistoryUI() {
   const historyEvents = useSelector(getHistory);
+  const date = useSelector(getDate);
   const [events, setEvents] = useState(null);
-  const [date, setDate] = useState(null);
   const dispatch = useDispatch();
 
-  console.log(events);
-
   useEffect(() => {
-    if (historyEvents.events.length > 0) {
-      setEvents(historyEvents.events);
-      setDate(historyEvents.date);
+    if (historyEvents.length > 0) {
+      setEvents(historyEvents);
     }
   }, [dispatch, historyEvents]);
 
