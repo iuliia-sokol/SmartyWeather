@@ -22,7 +22,7 @@ export const Footer = () => {
       <Container>
         <ContentWrapper>
           <LogoWrapper>
-            <Logo />
+            <Logo position="footer" />
           </LogoWrapper>
           <CopyrightWrapper>
             <Text>

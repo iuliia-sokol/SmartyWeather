@@ -13,7 +13,7 @@ export const Header = () => {
       <Container>
         <HeaderContentWrapper>
           <LogoWrapper>
-            <Logo />
+            <Logo position="header" />
           </LogoWrapper>
           <HistoryLink />
         </HeaderContentWrapper>

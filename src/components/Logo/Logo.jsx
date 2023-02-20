@@ -2,10 +2,10 @@ import { NavLink } from 'react-router-dom';
 import sprite from '../../images/icons_sprite.svg';
 import { Elipse, LogoText, LogoWrapper } from './Logo.styled';
 
-export const Logo = () => {
+export const Logo = ({ position }) => {
   return (
     <NavLink to="/">
-      <LogoWrapper>
+      <LogoWrapper position={position}>
         <Elipse width={46} height={42} viewBox="0 0 36 36">
           <use href={sprite + `#elipse`} />
         </Elipse>
