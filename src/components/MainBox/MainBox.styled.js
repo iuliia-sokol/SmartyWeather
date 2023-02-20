@@ -11,12 +11,7 @@ export const DataWrapper = styled.div`
   padding: 32px 16px;
   z-index: 10;
   background-color: rgba(255, 255, 255, 0.63);
-  /* box-shadow: inset -5px -5px 9px rgba(255, 255, 255, 0.45),
-    inset 5px 5px 9px rgba(94, 104, 121, 0.3); */
   box-shadow: -5px -5px 80px #fff, 5px 5px 20px #babecc;
-  backdrop-filter: blur(2.3px);
-  -webkit-backdrop-filter: blur(2.3px);
-  /* border: 1px solid rgba(255, 255, 255, 0.77); */
 
   @media screen and (min-width: 768px) {
     padding: 32px 56px;

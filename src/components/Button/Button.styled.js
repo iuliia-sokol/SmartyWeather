@@ -50,6 +50,7 @@ export const ButtonMain = styled.button`
   &:before {
     bottom: 0;
     left: 0;
+
     background-color: ${p =>
       p.selected ? p.theme.colors.bgYellow : 'rgba(255, 255, 255, 0.23)'};
     transition: transform 0.3s, background-color 0.3s;
