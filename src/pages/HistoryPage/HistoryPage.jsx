@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchHistory, fetchHistoryImage } from 'redux/location/locOperations';
 import { Container } from 'components/Container/Container';
 import HistoryBox from 'components/HistoryBox/HistoryBox';
-import { HistoryCardUI } from 'components/Card/HistoryCard';
 import { HeaderText } from './HistoryPage.styled';
 import { getHistoryImages } from 'redux/location/locSelectors';
+import { CardUI } from 'components/Card/Card';
 
 const HistoryPage = () => {
   const historyImages = useSelector(getHistoryImages);
@@ -24,7 +24,7 @@ const HistoryPage = () => {
         minHeight: '70vh',
       }}
     >
-      <HistoryCardUI />
+      <CardUI selector={getHistoryImages} page="history" />
       <Container>
         <HeaderText>This day in history</HeaderText>
         <HistoryBox />

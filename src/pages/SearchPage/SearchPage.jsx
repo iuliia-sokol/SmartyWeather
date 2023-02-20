@@ -1,4 +1,4 @@
-import { SearchCardUI } from 'components/Card/SearchCard';
+import { CardUI } from 'components/Card/Card';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchGeoImage } from 'redux/location/locOperations';
@@ -23,7 +23,7 @@ const SearchPage = () => {
         minHeight: '70vh',
       }}
     >
-      <SearchCardUI />
+      <CardUI selector={getGeoImages} page="search" />
       <Container></Container>
     </main>
   );

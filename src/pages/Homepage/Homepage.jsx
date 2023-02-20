@@ -96,7 +96,7 @@ const Homepage = () => {
         minHeight: '70vh',
       }}
     >
-      {city && <CardUI />}
+      {city && <CardUI selector={getCityImages} page="home" />}
       {!isGeolocationAvailable && (
         <TextLine text="Due to your browser does not support geolocation, the default location data is being shown. Please update your browser, allow the location access and turn on geolocation on your device." />
       )}

@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 
+import paper from '../../images/old-paper.jpg';
+import compass from '../../images/compass.jpg';
+
 export const Card = styled.div`
   position: absolute;
   top: 0;
@@ -25,14 +28,17 @@ export const View = styled.div`
   right: 0;
   bottom: 0;
   left: 0;
-  background-size: cover;
+  background-size: ${p =>
+    p.page === 'home' ? 'cover' : p.page === 'history' ? 'contain' : 'cover'};
   z-index: -2;
-
   background: ${p =>
-    p.dayTime
+    p.page === 'home'
       ? 'linear-gradient(45deg, rgba(245, 70, 66, 0.45), rgba(8, 83, 156, 0.45))'
-      : 'linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(117, 19, 93, 0.73))'};
+      : p.page === 'history'
+      ? `url(${paper})`
+      : `url(${compass})`};
 
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002f4b', endColorstr='#00000000',GradientType=0 );
-  opacity: 0.8;
+  opacity: ${p =>
+    p.page === 'home' ? '0.8' : p.page === 'history' ? '0.5' : '0.1'};
 `;

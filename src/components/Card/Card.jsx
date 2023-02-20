@@ -7,9 +7,7 @@ import ObliqueRain from 'react-rainfall-animation/src/ObliqueRain';
 import { Card, View } from './Card.styled';
 import {
   getAdditionalCurrentWeather,
-  getCityImages,
   getDayTime,
-  // getCurrentWeather,
 } from 'redux/location/locSelectors';
 import { useMediaQuery } from 'hooks/useMedia';
 import bgImgMob from '../../images/umbrella-red-wallpaper-mob.jpg';
@@ -17,13 +15,11 @@ import bgImg from '../../images/umbrella-red-wallpaper.jpg'; // 'https://www.wal
 import { Storm } from 'components/StormAnimation/Storm';
 import { Fog } from 'components/FogAnimation/Fog';
 
-export const CardUI = ({ children }) => {
+export const CardUI = ({ selector, page }) => {
   const isRowBased = useMediaQuery('(min-width: 1280px)');
-  const images = useSelector(getCityImages);
+  const images = useSelector(selector);
   const dayTime = useSelector(getDayTime);
-  // console.log(dayTime);
 
-  // const weather = useSelector(getCurrentWeather);
   const currentWeather = useSelector(getAdditionalCurrentWeather);
 
   const [image, setImage] = useState(bgImg);
@@ -54,16 +50,13 @@ export const CardUI = ({ children }) => {
   }, [images]);
 
   useEffect(() => {
+    if (page !== 'home' || page !== 'search') {
+      return;
+    }
     if (currentWeather) {
-      // setWeatherCode(weather.current_weather.weathercode);
       setWeatherCode(currentWeather.condition.code);
     }
     if (
-      // weatherCode === 77 ||
-      // weatherCode === 85 ||
-      // weatherCode === 71 ||
-      // weatherCode === 73
-
       weatherCode === 1066 ||
       weatherCode === 1210 ||
       weatherCode === 1213 ||
@@ -89,12 +82,6 @@ export const CardUI = ({ children }) => {
       weatherCode === 1168 ||
       weatherCode === 1204 ||
       weatherCode === 1249
-
-      // weatherCode === 51 ||
-      // weatherCode === 53 ||
-      // weatherCode === 55 ||
-      // weatherCode === 56 ||
-      // weatherCode === 57
     ) {
       setShowDrizzle(true);
       setShowRain(false);
@@ -114,12 +101,6 @@ export const CardUI = ({ children }) => {
       weatherCode === 1198 ||
       weatherCode === 1201 ||
       weatherCode === 1240
-
-      // weatherCode === 61 ||
-      // weatherCode === 63 ||
-      // weatherCode === 66 ||
-      // weatherCode === 80 ||
-      // weatherCode === 81
     ) {
       setShowRain(true);
       setShowDrizzle(false);
@@ -135,13 +116,6 @@ export const CardUI = ({ children }) => {
       weatherCode === 1243 ||
       weatherCode === 1273 ||
       weatherCode === 1276
-
-      // weatherCode === 95 ||
-      // weatherCode === 96 ||
-      // weatherCode === 99 ||
-      // weatherCode === 82 ||
-      // weatherCode === 65 ||
-      // weatherCode === 67
     ) {
       setShowStorm(true);
       setShowDrizzle(false);
@@ -159,9 +133,6 @@ export const CardUI = ({ children }) => {
       weatherCode === 1237 ||
       weatherCode === 1264 ||
       weatherCode === 1258
-
-      // weatherCode === 75 ||
-      // weatherCode === 86
     ) {
       setShowBigSnow(true);
       setShowStorm(false);
@@ -172,9 +143,6 @@ export const CardUI = ({ children }) => {
       setShowThunderSnow(false);
       setShowHeavyDrizzle(false);
     } else if (
-      // weatherCode === 45 ||
-      // weatherCode === 48
-
       weatherCode === 1009 ||
       weatherCode === 1030 ||
       weatherCode === 1006 ||
@@ -211,25 +179,23 @@ export const CardUI = ({ children }) => {
       setShowBigSnow(false);
       setShowFog(false);
       setShowThunderSnow(false);
+    } else {
+      setShowHeavyDrizzle(false);
+      setShowStorm(false);
+      setShowDrizzle(false);
+      setShowSnow(false);
+      setShowRain(false);
+      setShowBigSnow(false);
+      setShowFog(false);
+      setShowThunderSnow(false);
     }
-    else {
-          setShowHeavyDrizzle(false);
-          setShowStorm(false);
-          setShowDrizzle(false);
-          setShowSnow(false);
-          setShowRain(false);
-          setShowBigSnow(false);
-          setShowFog(false);
-          setShowThunderSnow(false);
-    }
-  }, [currentWeather, weatherCode]);
+  }, [currentWeather, page, weatherCode]);
 
   return (
     <>
       {images && (
         <Card image={!isRowBased ? `url(${imageMob})` : `url(${image})`}>
-          <View dayTime={dayTime} />
-          {children}
+          <View dayTime={dayTime} page={page} />
         </Card>
       )}
       {showSnow && (
