@@ -3,7 +3,11 @@ import { SearchForm } from 'components/SearchForm/SearchForm';
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchGeoImage } from 'redux/location/locOperations';
-import { getCityName, getGeoImages } from 'redux/location/locSelectors';
+import {
+  getCityImages,
+  getCityName,
+  getGeoImages,
+} from 'redux/location/locSelectors';
 
 const { Container } = require('components/Container/Container');
 
@@ -13,6 +17,7 @@ const SearchPage = () => {
   const dispatch = useDispatch();
   const elementRef = useRef();
   const [isHideSuggs, setIsHideSuggs] = useState(false);
+  const [selection, setSelection] = useState(false);
 
   useEffect(() => {
     if (city && images.length === 0) {
@@ -35,13 +40,18 @@ const SearchPage = () => {
       }}
       onClick={onBackdropClick}
     >
-      <CardUI selector={getGeoImages} page="search" />
+      <CardUI
+        selector={selection ? getCityImages : getGeoImages}
+        page="search"
+      />
       <Container>
         <SearchForm
           elementRef={elementRef}
           isHideSuggs={isHideSuggs}
           setIsHideSuggs={setIsHideSuggs}
           hideSuggs={hideSuggs}
+          selection={selection}
+          setSelection={setSelection}
         />
       </Container>
     </main>

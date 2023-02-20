@@ -21,10 +21,15 @@ import {
 
 export const fetchCity = createAsyncThunk(
   'getCity',
-  async (_, { getState, rejectWithValue }) => {
+  async ({ lat, long }, { getState, rejectWithValue }) => {
     try {
+      if (lat && long) {
+        const data = await getCity(lat, long);
+        return data;
+      }
       const { location } = getState();
       const data = await getCity(location.latitude, location.longitude);
+
       return data;
     } catch (error) {
       console.log(error);
@@ -174,6 +179,24 @@ export const fetchGeoImage = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const data = await getImagePexels('city');
+      if (data) {
+        const pics = [];
+        data.forEach(el => pics.push(el.src));
+        return pics;
+      }
+      return;
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const fetchSearchedCityImage = createAsyncThunk(
+  'getSearchedCityImage',
+  async (city, { rejectWithValue }) => {
+    try {
+      const data = await getImagePexels(city);
       if (data) {
         const pics = [];
         data.forEach(el => pics.push(el.src));

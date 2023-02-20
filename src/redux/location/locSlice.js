@@ -11,10 +11,34 @@ import {
   fetchHistory,
   fetchHistoryImage,
   fetchGeoImage,
+  fetchSearchedCityImage,
   // fetchCityID,
   // fetchTimezone,
   // fetchPixabayImage,
 } from './locOperations';
+
+const initialState = {
+  latitude: null,
+  longitude: null,
+  city: null,
+  country: null,
+  cityID: null,
+  timezone: null,
+  weather: null,
+  weatherAdditional: null,
+  weatherForecast: null,
+  astrodata: null,
+  daytime: false,
+  airdata: null,
+  image: [],
+  date: null,
+  historyImages: [],
+  history: [],
+  geoImages: [],
+  searchedCityImages: [],
+  isLoading: false,
+  error: null,
+};
 
 const onPending = state => {
   state.isLoading = true;
@@ -22,27 +46,7 @@ const onPending = state => {
 
 export const locationSlice = createSlice({
   name: 'location',
-  initialState: {
-    latitude: null,
-    longitude: null,
-    city: null,
-    country: null,
-    cityID: null,
-    timezone: null,
-    weather: null,
-    weatherAdditional: null,
-    weatherForecast: null,
-    astrodata: null,
-    daytime: false,
-    airdata: null,
-    image: [],
-    date: null,
-    historyImages: [],
-    history: [],
-    geoImages: [],
-    isLoading: false,
-    error: null,
-  },
+  initialState: initialState,
   reducers: {
     setLatitude: (state, { payload }) => ({
       ...state,
@@ -51,6 +55,9 @@ export const locationSlice = createSlice({
     setLongitude: (state, { payload }) => ({
       ...state,
       longitude: payload,
+    }),
+    setInitState: (state, { payload }) => ({
+      ...initialState,
     }),
   },
   extraReducers: builder => {
@@ -162,12 +169,22 @@ export const locationSlice = createSlice({
       .addCase(fetchGeoImage.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
+      })
+      .addCase(fetchSearchedCityImage.pending, onPending)
+      .addCase(fetchSearchedCityImage.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.searchedCityImages = payload;
+      })
+      .addCase(fetchSearchedCityImage.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
       });
   },
 });
 
 export const { setLongitude } = locationSlice.actions;
 export const { setLatitude } = locationSlice.actions;
+export const { setInitState } = locationSlice.actions;
 
 export default locationSlice.reducer;
 

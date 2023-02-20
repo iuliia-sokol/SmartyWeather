@@ -25,9 +25,19 @@ import {
   getCurrentWeather,
   getTimezone,
 } from 'redux/location/locSelectors';
-import { setLatitude, setLongitude } from 'redux/location/locSlice';
+import {
+  setInitState,
+  setLatitude,
+  setLongitude,
+} from 'redux/location/locSlice';
 
 const Homepage = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setInitState());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const { coords, isGeolocationAvailable, isGeolocationEnabled } =
     useGeolocated({
       positionOptions: {
@@ -38,7 +48,6 @@ const Homepage = () => {
       suppressLocationOnMount: false,
     });
 
-  const dispatch = useDispatch();
   const latitude = useSelector(getCurrentLatitude);
   const longitude = useSelector(getCurrentLongitude);
   const timezone = useSelector(getTimezone);
@@ -51,14 +60,12 @@ const Homepage = () => {
     if (coords) {
       dispatch(setLatitude(coords.latitude));
       dispatch(setLongitude(coords.longitude));
-      dispatch(fetchCity());
-
-      // dispatch(fetchTimezone());
+      dispatch(fetchCity(coords.latitude, coords.longitude));
     }
     if (!isGeolocationAvailable || !isGeolocationEnabled || !city) {
       dispatch(setLatitude(DEFAULT_LATITUDE));
       dispatch(setLongitude(DEFAULT_LONGITUDE));
-      dispatch(fetchCity());
+      dispatch(fetchCity({ DEFAULT_LATITUDE, DEFAULT_LONGITUDE }));
     }
     return;
   }, [city, coords, dispatch, isGeolocationAvailable, isGeolocationEnabled]);
@@ -78,11 +85,11 @@ const Homepage = () => {
     if (weather) {
       return;
     }
-    if (timezone) {
+    if (extraWeather && timezone) {
       dispatch(fetchCurrentWeather());
       dispatch(fetchAirQuality());
     }
-  }, [dispatch, timezone, weather]);
+  }, [dispatch, extraWeather, timezone, weather]);
 
   useEffect(() => {
     if (city && images.length === 0) {

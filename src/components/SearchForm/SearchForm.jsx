@@ -1,5 +1,16 @@
 import { ButtonUI } from 'components/Button/Button';
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import {
+  fetchAirQuality,
+  fetchAstroDataFromWeatherApi,
+  fetchCity,
+  fetchCurrentWeather,
+  fetchCurrentWeatherFromWeatherApi,
+  fetchPexelsImage,
+  fetchWeatherForecastFromWeatherApi,
+} from 'redux/location/locOperations';
+import { setLatitude, setLongitude } from 'redux/location/locSlice';
 import { fetchCityByName } from 'services/citySearchAPI';
 import {
   CityName,
@@ -19,13 +30,17 @@ export const SearchForm = ({
   hideSuggs,
   isHideSuggs,
   setIsHideSuggs,
+  selection,
+  setSelection,
 }) => {
   const [city, setCity] = useState('');
+  const [selectedCity, setSelectedCity] = useState('');
+  const [lat, setLat] = useState('');
+  const [long, setLong] = useState('');
   const [autocompleteCities, setAutocompleteCities] = useState([]);
   const [autocompleteErr, setAutocompleteErr] = useState('');
-  const [selection, setSelection] = useState(false);
 
-  //   console.log(city);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (!city) {
@@ -35,8 +50,20 @@ export const SearchForm = ({
 
   const handleSubmit = event => {
     event.preventDefault();
-    if (selection) {
-      //    dispatch(addContact({ name, number }));
+    if (!selectedCity) {
+      console.log('Select city');
+    }
+    if (selectedCity) {
+      dispatch(setLatitude(lat));
+      dispatch(setLongitude(long));
+      dispatch(fetchCity({ lat, long }));
+      dispatch(fetchAstroDataFromWeatherApi());
+      dispatch(fetchCurrentWeatherFromWeatherApi());
+      dispatch(fetchWeatherForecastFromWeatherApi());
+      dispatch(fetchCurrentWeather());
+      dispatch(fetchAirQuality());
+      dispatch(fetchPexelsImage(city));
+      setSelection(true);
     }
 
     resetForm();
@@ -59,12 +86,16 @@ export const SearchForm = ({
               city: place.name,
               region: place.admin1,
               country: place.country_code.toLowerCase(),
+              latitude: place.latitude,
+              longitude: place.longitude,
             };
           }
           return {
             city: place.name,
             region: '',
             country: place.country_code.toLowerCase(),
+            latitude: place.latitude,
+            longitude: place.longitude,
           };
         })
       );
@@ -109,7 +140,9 @@ export const SearchForm = ({
                 onClick={() => {
                   hideSuggs(item.city);
                   setCity(item.city);
-                  setSelection(true);
+                  setLat(item.latitude);
+                  setLong(item.longitude);
+                  setSelectedCity(true);
                 }}
               >
                 <img
