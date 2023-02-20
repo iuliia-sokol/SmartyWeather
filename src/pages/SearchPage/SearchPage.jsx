@@ -1,4 +1,5 @@
 import { CardUI } from 'components/Card/Card';
+import { SearchForm } from 'components/SearchForm/SearchForm';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchGeoImage } from 'redux/location/locOperations';
@@ -24,7 +25,9 @@ const SearchPage = () => {
       }}
     >
       <CardUI selector={getGeoImages} page="search" />
-      <Container></Container>
+      <Container>
+        <SearchForm />
+      </Container>
     </main>
   );
 };
