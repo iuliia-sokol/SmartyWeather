@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { ButtonUI } from 'components/Button/Button';
+import { useEffect, useState } from 'react';
 import { fetchCityByName } from 'services/citySearchAPI';
 import {
   CityName,
   DataList,
+  Form,
   Input,
   InputError,
   InputWrap,
@@ -17,10 +19,19 @@ export const SearchForm = () => {
   const [flag, setFlag] = useState('');
   const [autocompleteCities, setAutocompleteCities] = useState([]);
   const [autocompleteErr, setAutocompleteErr] = useState('');
-
   const [isHideSuggs, setIsHideSuggs] = useState(false);
 
-  console.log(autocompleteCities);
+  useEffect(() => {
+    if (!city) {
+      hideSuggs();
+    }
+  }, [city]);
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    //    dispatch(addContact({ name, number }));
+    resetForm();
+  };
 
   const handleCityChange = async e => {
     setCity(e.target.value);
@@ -30,22 +41,33 @@ export const SearchForm = () => {
 
     const res = await fetchCityByName(city);
 
-    console.log(res);
-
     !autocompleteCities.includes(e.target.value) &&
       res &&
-      setAutocompleteCities(res.map(place => place.name));
+      setAutocompleteCities(
+        res.map(place => {
+          if (place.admin1) {
+            return `${place.name}, ${place.admin1}`;
+          }
+          return `${place.name}`;
+        })
+      );
     setFlag(res.map(place => place.country_code.toLowerCase()));
     res.error ? setAutocompleteErr(res.error) : setAutocompleteErr('');
   };
 
   const hideSuggs = value => {
-    // onSelected(value);
     setIsHideSuggs(true);
   };
 
+  const resetForm = () => {
+    setCity('');
+    setAutocompleteCities([]);
+    setAutocompleteErr('');
+    hideSuggs();
+  };
+
   return (
-    <form>
+    <Form onSubmit={handleSubmit}>
       <PlacesAutocomplete>
         <InputWrap>
           <Label>
@@ -60,8 +82,8 @@ export const SearchForm = () => {
             onChange={handleCityChange}
             value={city}
             required
-            pattern={autocompleteCities.join('|')}
             autoComplete="off"
+            placeholder="Start typing your city name"
           />
           <DataList style={{ display: isHideSuggs ? 'none' : 'block' }}>
             {autocompleteCities.map((item, idx) => (
@@ -69,6 +91,7 @@ export const SearchForm = () => {
                 key={'' + item + idx}
                 onClick={() => {
                   hideSuggs(item);
+                  setCity(item);
                 }}
               >
                 <img
@@ -77,16 +100,16 @@ export const SearchForm = () => {
                   alt="flag"
                 />
 
-                <CityName>{item}</CityName>
+                <CityName>{item} </CityName>
               </Option>
             ))}
           </DataList>
           <PlacesAutocompleteHint>
             *start typing and choose your city from the given options
           </PlacesAutocompleteHint>
-          <button type="submit">Submit</button>
+          <ButtonUI type="submit" text="Submit" />
         </InputWrap>
       </PlacesAutocomplete>
-    </form>
+    </Form>
   );
 };
