@@ -1,8 +1,8 @@
 import { ButtonMain, ButtonText } from './Button.styled';
 
-export const ButtonUI = ({ text, type, onClick, selected }) => {
+export const ButtonUI = ({ text, type, onClick, selected, color }) => {
   return (
-    <ButtonMain selected={selected} type={type} onClick={onClick}>
+    <ButtonMain color={color} selected={selected} type={type} onClick={onClick}>
       <ButtonText>{text}</ButtonText>
     </ButtonMain>
   );

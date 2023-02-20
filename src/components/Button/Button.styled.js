@@ -12,7 +12,7 @@ export const ButtonMain = styled.button`
   font-size: 20px;
   line-height: ${p => p.theme.lineHeights.main};
   color: ${p =>
-    p.color === 'blue' ? p.theme.colors.accentBlue : p.theme.colors.textGrey};
+    p.color === 'white' ? p.theme.colors.mainLight : p.theme.colors.textGrey};
   text-align: center;
   text-transform: uppercase;
   border: none;
@@ -51,7 +51,7 @@ export const ButtonMain = styled.button`
     bottom: 0;
     left: 0;
     background-color: ${p =>
-      p.selected ? p.theme.colors.bgYellow : 'transparent'};
+      p.selected ? p.theme.colors.bgYellow : 'rgba(255, 255, 255, 0.23)'};
     transition: transform 0.3s, background-color 0.3s;
   }
 

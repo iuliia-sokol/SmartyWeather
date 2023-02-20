@@ -7,7 +7,7 @@ export const Form = styled.form`
   padding: 32px 16px;
   background: rgba(255, 255, 255, 0.23);
   border-radius: 30px;
-  gap: 16px;
+  gap: 32px;
   box-shadow: inset -5px -5px 9px rgba(255, 255, 255, 0.45),
     inset 5px 5px 9px rgba(94, 104, 121, 0.3);
   backdrop-filter: blur(5.3px);
@@ -52,6 +52,11 @@ export const Input = styled.input`
   padding: 12px 16px;
   width: 100%;
   background-color: rgba(255, 255, 255, 0.63);
+  font-size: 16px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 20px;
+  }
 `;
 
 export const DataList = styled.ul`
@@ -71,7 +76,14 @@ export const Option = styled.li`
 export const PlacesAutocompleteHint = styled.span`
   display: inline-block;
   font-size: 12px;
-  margin-top: 4px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
 `;
 
 export const CityName = styled.span``;
