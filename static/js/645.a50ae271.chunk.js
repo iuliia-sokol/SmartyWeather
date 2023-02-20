@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunksmarty_weather=self.webpackChunksmarty_weather||[]).push([[645],{1645:function(e,t,n){n.r(t);var r=n(2791),a=n(184),s=n(3623).Container,h=function(){return(0,a.jsx)("main",{style:{minHeight:"70vh"},children:(0,a.jsx)(s,{})})};t.default=r.memo(h)}}]);
+//# sourceMappingURL=645.a50ae271.chunk.js.map
