@@ -1,13 +1,13 @@
 import { Footer } from 'components/Footer/Footer';
 import { Header } from 'components/Header/Header';
 import { Loader } from 'components/Loader/Loader';
-import { Suspense } from 'react';
+import React, { Suspense } from 'react';
 import { Outlet } from 'react-router';
 import ScrollToTop from 'react-scroll-up';
 import { ScrollUpIndicator } from './SharedLayout.styled';
-import sprite from '../../../images/icons_sprite.svg';
+import sprite from '../../images/icons_sprite.svg';
 
-export const SharedLayout = () => {
+const SharedLayout = () => {
   return (
     <>
       <Header />
@@ -20,8 +20,6 @@ export const SharedLayout = () => {
           position: 'fixed',
           bottom: 20,
           right: 'auto',
-          // right: '50%',
-          // transform: 'translateX(50%)',
           cursor: 'pointer',
           transitionDuration: '0.2s',
           transitionTimingFunction: 'linear',
@@ -38,3 +36,5 @@ export const SharedLayout = () => {
     </>
   );
 };
+
+export default React.memo(SharedLayout);

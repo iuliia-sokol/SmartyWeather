@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchHistory, fetchHistoryImage } from 'redux/location/locOperations';
 import { Container } from 'components/Container/Container';
@@ -29,4 +29,4 @@ const HistoryPage = () => {
   );
 };
 
-export default HistoryPage;
+export default React.memo(HistoryPage);

@@ -4,7 +4,7 @@ import { Container } from 'components/Container/Container';
 import { Loader } from 'components/Loader/Loader';
 import { MainBoxUI } from 'components/MainBox/MainBox';
 import { TextLine } from 'components/TextLine/TextLine';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useGeolocated } from 'react-geolocated';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -116,4 +116,4 @@ const Homepage = () => {
   );
 };
 
-export default Homepage;
+export default React.memo(Homepage);

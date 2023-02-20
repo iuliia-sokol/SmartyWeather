@@ -1,6 +1,7 @@
 import { Container } from 'components/Container/Container';
 import { HistoryLink } from 'components/HistoryLink/HistoryLink';
 import { Logo } from 'components/Logo/Logo';
+import { SearchLink } from 'components/SearchLink/SearchLink';
 import {
   HeaderContentWrapper,
   HeaderWrapper,
@@ -15,6 +16,7 @@ export const Header = () => {
           <LogoWrapper>
             <Logo position="header" />
           </LogoWrapper>
+          <SearchLink />
           <HistoryLink />
         </HeaderContentWrapper>
       </Container>
