@@ -169,6 +169,24 @@ export const fetchHistoryImage = createAsyncThunk(
   }
 );
 
+export const fetchGeoImage = createAsyncThunk(
+  'getGeoImage',
+  async (_, { rejectWithValue }) => {
+    try {
+      const data = await getImagePexels('city');
+      if (data) {
+        const pics = [];
+        data.forEach(el => pics.push(el.src));
+        return pics;
+      }
+      return;
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error);
+    }
+  }
+);
+
 // export const fetchCityID = createAsyncThunk(
 //   'getCityID',
 //   async (_, { getState, rejectWithValue }) => {

@@ -18,6 +18,7 @@ import {
 } from 'redux/location/locOperations';
 import {
   getAdditionalCurrentWeather,
+  getCityImages,
   getCityName,
   getCurrentLatitude,
   getCurrentLongitude,
@@ -42,6 +43,7 @@ const Homepage = () => {
   const longitude = useSelector(getCurrentLongitude);
   const timezone = useSelector(getTimezone);
   const city = useSelector(getCityName);
+  const images = useSelector(getCityImages);
   const weather = useSelector(getCurrentWeather);
   const extraWeather = useSelector(getAdditionalCurrentWeather);
 
@@ -53,13 +55,13 @@ const Homepage = () => {
 
       // dispatch(fetchTimezone());
     }
-    if (!isGeolocationAvailable || !isGeolocationEnabled) {
+    if (!isGeolocationAvailable || !isGeolocationEnabled || !city) {
       dispatch(setLatitude(DEFAULT_LATITUDE));
       dispatch(setLongitude(DEFAULT_LONGITUDE));
       dispatch(fetchCity());
     }
     return;
-  }, [coords, dispatch, isGeolocationAvailable, isGeolocationEnabled]);
+  }, [city, coords, dispatch, isGeolocationAvailable, isGeolocationEnabled]);
 
   useEffect(() => {
     if (extraWeather) {
@@ -83,10 +85,10 @@ const Homepage = () => {
   }, [dispatch, timezone, weather]);
 
   useEffect(() => {
-    if (city) {
+    if (city && images.length === 0) {
       dispatch(fetchPexelsImage(city));
     }
-  }, [city, dispatch]);
+  }, [city, dispatch, images]);
 
   return (
     <main
