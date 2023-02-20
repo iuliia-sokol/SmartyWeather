@@ -10,6 +10,7 @@ import {
   fetchAirQuality,
   fetchHistory,
   fetchHistoryImage,
+  fetchGeoImage,
   // fetchCityID,
   // fetchTimezone,
   // fetchPixabayImage,
@@ -38,6 +39,7 @@ export const locationSlice = createSlice({
     date: null,
     historyImages: [],
     history: [],
+    geoImages: [],
     isLoading: false,
     error: null,
   },
@@ -149,6 +151,15 @@ export const locationSlice = createSlice({
         state.historyImages = payload;
       })
       .addCase(fetchHistoryImage.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      })
+      .addCase(fetchGeoImage.pending, onPending)
+      .addCase(fetchGeoImage.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.geoImages = payload;
+      })
+      .addCase(fetchGeoImage.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
       });

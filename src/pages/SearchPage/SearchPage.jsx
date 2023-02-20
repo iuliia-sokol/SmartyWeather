@@ -1,18 +1,29 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { getCityName } from 'redux/location/locSelectors';
+import { SearchCardUI } from 'components/Card/SearchCard';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchGeoImage } from 'redux/location/locOperations';
+import { getCityName, getGeoImages } from 'redux/location/locSelectors';
 
 const { Container } = require('components/Container/Container');
 
 const SearchPage = () => {
   const city = useSelector(getCityName);
-  console.log(city);
+  const images = useSelector(getGeoImages);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (city && images.length === 0) {
+      dispatch(fetchGeoImage());
+    }
+  }, [city, dispatch, images.length]);
+
   return (
     <main
       style={{
         minHeight: '70vh',
       }}
     >
+      <SearchCardUI />
       <Container></Container>
     </main>
   );

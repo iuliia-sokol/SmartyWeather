@@ -15,7 +15,15 @@ import { locationSlice } from './location/locSlice';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['city', 'image', 'latitude', 'longitude', 'timezone'],
+  whitelist: [
+    'city',
+    'image',
+    'latitude',
+    'longitude',
+    'timezone',
+    'historyImages',
+    'geoImages',
+  ],
 };
 
 const persistedReducer = persistReducer(persistConfig, locationSlice.reducer);
