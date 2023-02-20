@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-export const HeaderWrapper = styled.header``;
+export const HeaderWrapper = styled.header`
+  z-index: 20;
+`;
 
 export const HeaderContentWrapper = styled.div`
   width: 100%;

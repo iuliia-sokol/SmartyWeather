@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+export const FooterWrapper = styled.footer`
+  z-index: 20;
+`;
+
 export const ContentWrapper = styled.div`
   font-family: ${p => p.theme.fonts.main};
   font-weight: ${p => p.theme.fontWeights[0]};

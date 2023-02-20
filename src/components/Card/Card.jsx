@@ -50,9 +50,10 @@ export const CardUI = ({ selector, page }) => {
   }, [images]);
 
   useEffect(() => {
-    if (page !== 'home' || page !== 'search') {
+    if (page !== 'home' && page !== 'search') {
       return;
     }
+
     if (currentWeather) {
       setWeatherCode(currentWeather.condition.code);
     }

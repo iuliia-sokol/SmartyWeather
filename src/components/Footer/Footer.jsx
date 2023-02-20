@@ -13,12 +13,13 @@ import {
   LinksWrapper,
   LogoWrapper,
   Text,
+  FooterWrapper,
 } from './Footer.styled';
 import { Logo } from 'components/Logo/Logo';
 
 export const Footer = () => {
   return (
-    <footer>
+    <FooterWrapper>
       <Container>
         <ContentWrapper>
           <LogoWrapper>
@@ -74,6 +75,6 @@ export const Footer = () => {
           </LinksWrapper>
         </ContentWrapper>
       </Container>
-    </footer>
+    </FooterWrapper>
   );
 };
