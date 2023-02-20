@@ -5,6 +5,7 @@ import { SearchLink } from 'components/SearchLink/SearchLink';
 import {
   HeaderContentWrapper,
   HeaderWrapper,
+  LinksWrapper,
   LogoWrapper,
 } from './Header.styled';
 
@@ -16,8 +17,10 @@ export const Header = () => {
           <LogoWrapper>
             <Logo position="header" />
           </LogoWrapper>
-          <SearchLink />
-          <HistoryLink />
+          <LinksWrapper>
+            <SearchLink />
+            <HistoryLink />
+          </LinksWrapper>
         </HeaderContentWrapper>
       </Container>
     </HeaderWrapper>
