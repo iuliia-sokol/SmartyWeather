@@ -1,10 +1,10 @@
 {
   "files": {
     "main.css": "/smartyWeather/static/css/main.75163eca.css",
-    "main.js": "/smartyWeather/static/js/main.9206d7c4.js",
-    "static/js/647.5e2d1741.chunk.js": "/smartyWeather/static/js/647.5e2d1741.chunk.js",
-    "static/js/782.4c6aae56.chunk.js": "/smartyWeather/static/js/782.4c6aae56.chunk.js",
-    "static/js/645.e77c13a6.chunk.js": "/smartyWeather/static/js/645.e77c13a6.chunk.js",
+    "main.js": "/smartyWeather/static/js/main.20633070.js",
+    "static/js/647.3e507ef1.chunk.js": "/smartyWeather/static/js/647.3e507ef1.chunk.js",
+    "static/js/782.b7a1d95b.chunk.js": "/smartyWeather/static/js/782.b7a1d95b.chunk.js",
+    "static/js/907.7fb54e3c.chunk.js": "/smartyWeather/static/js/907.7fb54e3c.chunk.js",
     "static/js/68.f207d139.chunk.js": "/smartyWeather/static/js/68.f207d139.chunk.js",
     "static/js/753.20ba56dd.chunk.js": "/smartyWeather/static/js/753.20ba56dd.chunk.js",
     "static/media/lightining.png": "/smartyWeather/static/media/lightining.3503a307e703e460c6ce.png",
@@ -40,15 +40,15 @@
     "static/media/weatherapi_logo.webp": "/smartyWeather/static/media/weatherapi_logo.af450c6284e707be9279.webp",
     "index.html": "/smartyWeather/index.html",
     "main.75163eca.css.map": "/smartyWeather/static/css/main.75163eca.css.map",
-    "main.9206d7c4.js.map": "/smartyWeather/static/js/main.9206d7c4.js.map",
-    "647.5e2d1741.chunk.js.map": "/smartyWeather/static/js/647.5e2d1741.chunk.js.map",
-    "782.4c6aae56.chunk.js.map": "/smartyWeather/static/js/782.4c6aae56.chunk.js.map",
-    "645.e77c13a6.chunk.js.map": "/smartyWeather/static/js/645.e77c13a6.chunk.js.map",
+    "main.20633070.js.map": "/smartyWeather/static/js/main.20633070.js.map",
+    "647.3e507ef1.chunk.js.map": "/smartyWeather/static/js/647.3e507ef1.chunk.js.map",
+    "782.b7a1d95b.chunk.js.map": "/smartyWeather/static/js/782.b7a1d95b.chunk.js.map",
+    "907.7fb54e3c.chunk.js.map": "/smartyWeather/static/js/907.7fb54e3c.chunk.js.map",
     "68.f207d139.chunk.js.map": "/smartyWeather/static/js/68.f207d139.chunk.js.map",
     "753.20ba56dd.chunk.js.map": "/smartyWeather/static/js/753.20ba56dd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.75163eca.css",
-    "static/js/main.9206d7c4.js"
+    "static/js/main.20633070.js"
   ]
 }
