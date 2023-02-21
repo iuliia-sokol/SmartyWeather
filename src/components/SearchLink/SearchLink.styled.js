@@ -14,7 +14,7 @@ export const EarthContainer = styled.div`
   width: 65px;
   border-radius: 50%;
   /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
-  z-index: 10;
+  /* z-index: 10; */
 `;
 
 export const Elipse = styled.svg`
@@ -30,7 +30,7 @@ export const EarthAnimationBox = styled.div`
   border-radius: 50%;
   width: 65px;
   height: 65px;
-  z-index: 10;
+  /* z-index: 10; */
   animation: ${movimiento} 10s linear 0s infinite;
   transform: rotateX(6deg) rotateY(6deg) rotateZ(6deg);
 `;

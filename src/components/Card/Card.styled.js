@@ -33,13 +33,12 @@ export const View = styled.div`
   z-index: -2;
   background: ${p =>
     p.page === 'home'
-      ? /* ? 'linear-gradient(45deg, rgba(245, 70, 66, 0.45), rgba(8, 83, 156, 0.45))' */
-        ''
+      ? 'linear-gradient(45deg, rgba(245, 70, 66, 0.45), rgba(8, 83, 156, 0.45))'
       : p.page === 'history'
       ? `url(${paper})`
       : `url(${compass})`};
   /* background-repeat: no-repeat; */
-  background-position: top center;
+  /* background-position: top center; */
 
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002f4b', endColorstr='#00000000',GradientType=0 );
   opacity: ${p =>
