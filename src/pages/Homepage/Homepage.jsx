@@ -104,8 +104,6 @@ const Homepage = () => {
     }
   }, [city, dispatch]);
 
-  console.log(weather, extraWeather);
-
   return (
     <main
       style={{
