@@ -38,6 +38,7 @@ export const SearchForm = ({
   isHideSuggs,
   setIsHideSuggs,
   setSelection,
+  setShowForm,
 }) => {
   const [city, setCity] = useState('');
   const [country, setCountry] = useState('');
@@ -72,6 +73,7 @@ export const SearchForm = ({
       dispatch(fetchCurrentWeather({ lat, long, timezone }));
       dispatch(fetchAirQuality({ lat, long, timezone }));
       setSelection(true);
+      setShowForm(false);
       dispatch(fetchPexelsImage(city));
     }
 

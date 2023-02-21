@@ -13,6 +13,7 @@ import {
   getCurrentWeather,
   getForcast,
 } from 'redux/location/locSelectors';
+import { SearchMoreButton } from './SearchPage.styled';
 
 const { Container } = require('components/Container/Container');
 
@@ -27,6 +28,7 @@ const SearchPage = () => {
   const elementRef = useRef();
   const [isHideSuggs, setIsHideSuggs] = useState(false);
   const [selection, setSelection] = useState(false);
+  const [showForm, setShowForm] = useState(true);
 
   useEffect(() => {
     if (city && images.length === 0) {
@@ -43,7 +45,9 @@ const SearchPage = () => {
     setIsHideSuggs(true);
   };
 
-  // console.log(selection, weather, extraWeather);
+  const onSearchMoreBtnClick = () => {
+    setShowForm(!showForm);
+  };
 
   return (
     <main
@@ -57,20 +61,28 @@ const SearchPage = () => {
         page="search"
       />
       <Container>
-        <SearchForm
-          elementRef={elementRef}
-          isHideSuggs={isHideSuggs}
-          setIsHideSuggs={setIsHideSuggs}
-          hideSuggs={hideSuggs}
-          selection={selection}
-          setSelection={setSelection}
-        />
-        {selection && weather && extraWeather && forecast && (
+        {showForm ? (
+          <SearchForm
+            elementRef={elementRef}
+            isHideSuggs={isHideSuggs}
+            setIsHideSuggs={setIsHideSuggs}
+            hideSuggs={hideSuggs}
+            selection={selection}
+            setSelection={setSelection}
+            setShowForm={setShowForm}
+          />
+        ) : (
           <>
-            <ButtonUI text="Search other location" />
-            <MainBoxUI />
+            <SearchMoreButton
+              type="button"
+              text="Search other location"
+              onClick={onSearchMoreBtnClick}
+            >
+              Search other location
+            </SearchMoreButton>
           </>
         )}
+        {selection && weather && extraWeather && forecast && <MainBoxUI />}
       </Container>
     </main>
   );
