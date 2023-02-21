@@ -40,7 +40,7 @@ export const ButtonMain = styled.button`
           ? p.theme.colors.accentViolet
           : p.theme.colors.iconsFill};
     border-radius: 50px;
-    z-index: -10;
+    /* z-index: -10; */
 
     @media screen and (min-width: 768px) {
       width: calc(100%);

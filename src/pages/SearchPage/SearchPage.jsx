@@ -13,7 +13,7 @@ import {
   getCurrentWeather,
   getForcast,
 } from 'redux/location/locSelectors';
-import { SearchMoreButton } from './SearchPage.styled';
+import { ButtonWrapper } from './SearchPage.styled';
 
 const { Container } = require('components/Container/Container');
 
@@ -72,15 +72,13 @@ const SearchPage = () => {
             setShowForm={setShowForm}
           />
         ) : (
-          <>
-            <SearchMoreButton
+          <ButtonWrapper>
+            <ButtonUI
               type="button"
-              text="Search other location"
+              text="Check other location"
               onClick={onSearchMoreBtnClick}
-            >
-              Search other location
-            </SearchMoreButton>
-          </>
+            />
+          </ButtonWrapper>
         )}
         {selection && weather && extraWeather && forecast && <MainBoxUI />}
       </Container>
