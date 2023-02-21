@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-
+import { useMediaQuery } from 'hooks/useMedia';
 import { HourlyChartsUI } from 'components/ChartBox/HourlyCharts';
 import WeatherUI from 'components/WeatherBox/WeatherBox';
 import AstroUI from 'components/AstroBox/AstroBox';
@@ -40,7 +40,6 @@ import windImg from '../../images/wind-min.png';
 import humidityImg from '../../images/humidity-min.png';
 import rain from '../../images/rain-min.png';
 import snow from '../../images/snow-min.png';
-import { useMediaQuery } from 'hooks/useMedia';
 
 export const MainBoxUI = () => {
   const weather = useSelector(getCurrentWeather);
@@ -114,9 +113,6 @@ export const MainBoxUI = () => {
                 {extraWeather.temp_c} <span>°C</span>
               </Temperature>
               <FeelsLike>Feels like {extraWeather.feelslike_c} °C</FeelsLike>
-              {/* <FeelsLike>
-                Local time {weather.current_weather.time.slice(11)}
-              </FeelsLike> */}
             </TemperatureWrapper>
           </WeatherDataWrapper>
           <WeatherInfoWrapper>
@@ -125,12 +121,12 @@ export const MainBoxUI = () => {
                 <div>
                   <img src={rain} alt="rain" loading="lazy" />
                   <IndicatorText>Chance of rain:</IndicatorText>
-                  <span>{forecast[0].day.daily_chance_of_rain} %</span>
+                  <span>{forecast[0].day.daily_chance_of_rain ?? ''} %</span>
                 </div>
                 <div>
                   <img src={snow} alt="snow" loading="lazy" />
                   <IndicatorText>Chance of snow:</IndicatorText>
-                  <span>{forecast[0].day.daily_chance_of_snow} %</span>
+                  <span>{forecast[0].day.daily_chance_of_snow ?? ''} %</span>
                 </div>
               </ChanceOfIndicator>
               <IndicatorUI

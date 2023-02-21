@@ -23,6 +23,7 @@ import {
   getCurrentLatitude,
   getCurrentLongitude,
   getTimezone,
+  getCurrentWeather,
 } from 'redux/location/locSelectors';
 import {
   setInitState,
@@ -51,7 +52,7 @@ const Homepage = () => {
   const longitude = useSelector(getCurrentLongitude);
   const timezone = useSelector(getTimezone);
   const city = useSelector(getCityName);
-
+  const weather = useSelector(getCurrentWeather);
   const extraWeather = useSelector(getAdditionalCurrentWeather);
 
   useEffect(() => {
@@ -59,35 +60,51 @@ const Homepage = () => {
       dispatch(setLatitude(coords.latitude));
       dispatch(setLongitude(coords.longitude));
       dispatch(fetchCity(coords.latitude, coords.longitude));
+      dispatch(fetchAstroDataFromWeatherApi(coords.latitude, coords.longitude));
+      dispatch(
+        fetchCurrentWeatherFromWeatherApi(coords.latitude, coords.longitude)
+      );
+      dispatch(
+        fetchWeatherForecastFromWeatherApi(coords.latitude, coords.longitude)
+      );
     }
     if (!isGeolocationAvailable || !isGeolocationEnabled || !city) {
       dispatch(setLatitude(DEFAULT_LATITUDE));
       dispatch(setLongitude(DEFAULT_LONGITUDE));
       dispatch(fetchCity({ DEFAULT_LATITUDE, DEFAULT_LONGITUDE }));
+      dispatch(
+        fetchAstroDataFromWeatherApi({ DEFAULT_LATITUDE, DEFAULT_LONGITUDE })
+      );
+      dispatch(
+        fetchCurrentWeatherFromWeatherApi({
+          DEFAULT_LATITUDE,
+          DEFAULT_LONGITUDE,
+        })
+      );
+      dispatch(
+        fetchWeatherForecastFromWeatherApi({
+          DEFAULT_LATITUDE,
+          DEFAULT_LONGITUDE,
+        })
+      );
     }
     return;
   }, [city, coords, dispatch, isGeolocationAvailable, isGeolocationEnabled]);
 
   useEffect(() => {
-    if (latitude && longitude) {
-      dispatch(fetchAstroDataFromWeatherApi());
-      dispatch(fetchCurrentWeatherFromWeatherApi());
-      dispatch(fetchWeatherForecastFromWeatherApi());
-    }
-  }, [dispatch, latitude, longitude]);
-
-  useEffect(() => {
     if (extraWeather && timezone) {
-      dispatch(fetchCurrentWeather());
-      dispatch(fetchAirQuality());
+      dispatch(fetchCurrentWeather({ latitude, longitude, timezone }));
+      dispatch(fetchAirQuality({ latitude, longitude, timezone }));
     }
-  }, [dispatch, extraWeather, timezone]);
+  }, [dispatch, extraWeather, latitude, longitude, timezone]);
 
   useEffect(() => {
     if (city) {
       dispatch(fetchPexelsImage(city));
     }
   }, [city, dispatch]);
+
+  console.log(weather, extraWeather);
 
   return (
     <main
@@ -103,7 +120,7 @@ const Homepage = () => {
         <TextLine text="Due to the geolocation is not enabled on your device, the default location data is being shown. Please enable geolocation on your device to get your current location data." />
       )}
       <Container>
-        {latitude && longitude ? (
+        {latitude && longitude && weather ? (
           <>
             <MainBoxUI />
           </>

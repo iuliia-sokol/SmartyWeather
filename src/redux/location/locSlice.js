@@ -11,7 +11,7 @@ import {
   fetchHistory,
   fetchHistoryImage,
   fetchGeoImage,
-  fetchSearchedCityImage,
+
   // fetchCityID,
   // fetchTimezone,
   // fetchPixabayImage,
@@ -35,7 +35,6 @@ const initialState = {
   historyImages: [],
   history: [],
   geoImages: [],
-  searchedCityImages: [],
   isLoading: false,
   error: null,
 };
@@ -46,7 +45,7 @@ const onPending = state => {
 
 export const locationSlice = createSlice({
   name: 'location',
-  initialState: initialState,
+  initialState: { ...initialState },
   reducers: {
     setLatitude: (state, { payload }) => ({
       ...state,
@@ -95,6 +94,7 @@ export const locationSlice = createSlice({
       .addCase(
         fetchCurrentWeatherFromWeatherApi.fulfilled,
         (state, { payload }) => {
+          // console.log(payload.location.tz_id);
           state.isLoading = false;
           state.weatherAdditional = payload.current;
           state.timezone = payload.location.tz_id;
@@ -170,15 +170,7 @@ export const locationSlice = createSlice({
         state.isLoading = false;
         state.error = payload;
       })
-      .addCase(fetchSearchedCityImage.pending, onPending)
-      .addCase(fetchSearchedCityImage.fulfilled, (state, { payload }) => {
-        state.isLoading = false;
-        state.searchedCityImages = payload;
-      })
-      .addCase(fetchSearchedCityImage.rejected, (state, { payload }) => {
-        state.isLoading = false;
-        state.error = payload;
-      });
+     ;
   },
 });
 

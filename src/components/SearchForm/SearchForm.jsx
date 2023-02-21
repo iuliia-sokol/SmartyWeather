@@ -37,6 +37,7 @@ export const SearchForm = ({
   const [selectedCity, setSelectedCity] = useState('');
   const [lat, setLat] = useState('');
   const [long, setLong] = useState('');
+  const [timezone, setTimezone] = useState('');
   const [autocompleteCities, setAutocompleteCities] = useState([]);
   const [autocompleteErr, setAutocompleteErr] = useState('');
 
@@ -57,11 +58,11 @@ export const SearchForm = ({
       dispatch(setLatitude(lat));
       dispatch(setLongitude(long));
       dispatch(fetchCity({ lat, long }));
-      dispatch(fetchAstroDataFromWeatherApi());
-      dispatch(fetchCurrentWeatherFromWeatherApi());
-      dispatch(fetchWeatherForecastFromWeatherApi());
-      dispatch(fetchCurrentWeather());
-      dispatch(fetchAirQuality());
+      dispatch(fetchAstroDataFromWeatherApi({ lat, long }));
+      dispatch(fetchCurrentWeatherFromWeatherApi({ lat, long }));
+      dispatch(fetchWeatherForecastFromWeatherApi({ lat, long }));
+      dispatch(fetchCurrentWeather({ lat, long, timezone }));
+      dispatch(fetchAirQuality({ lat, long, timezone }));
       dispatch(fetchPexelsImage(city));
       setSelection(true);
     }
@@ -76,7 +77,7 @@ export const SearchForm = ({
     if (!city) return;
 
     const res = await fetchCityByName(city);
-
+    // console.log(res);
     !autocompleteCities.includes(e.target.value) &&
       res &&
       setAutocompleteCities(
@@ -88,6 +89,7 @@ export const SearchForm = ({
               country: place.country_code.toLowerCase(),
               latitude: place.latitude,
               longitude: place.longitude,
+              timezone: place.timezone,
             };
           }
           return {
@@ -96,6 +98,7 @@ export const SearchForm = ({
             country: place.country_code.toLowerCase(),
             latitude: place.latitude,
             longitude: place.longitude,
+            timezone: place.timezone,
           };
         })
       );
@@ -141,6 +144,7 @@ export const SearchForm = ({
                   setCity(item.city);
                   setLat(item.latitude);
                   setLong(item.longitude);
+                  setTimezone(item.timezone);
                   setSelectedCity(true);
                 }}
               >

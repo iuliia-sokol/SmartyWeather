@@ -58,8 +58,12 @@ export const fetchPexelsImage = createAsyncThunk(
 
 export const fetchCurrentWeather = createAsyncThunk(
   'getCurrentWeather',
-  async (_, { getState, rejectWithValue }) => {
+  async ({ lat, long, timezone }, { getState, rejectWithValue }) => {
     try {
+      if (lat && long && timezone) {
+        const result = await getCurrentWeather(+lat, +long, timezone);
+        return result;
+      }
       const { location } = getState();
       const result = await getCurrentWeather(
         +location.latitude,
@@ -76,8 +80,12 @@ export const fetchCurrentWeather = createAsyncThunk(
 
 export const fetchAirQuality = createAsyncThunk(
   'getAirData',
-  async (_, { getState, rejectWithValue }) => {
+  async ({ lat, long, timezone }, { getState, rejectWithValue }) => {
     try {
+      if (lat && long && timezone) {
+        const result = await getAirQuality(+lat, +long, timezone);
+        return result;
+      }
       const { location } = getState();
       const result = await getAirQuality(
         +location.latitude,
@@ -94,8 +102,12 @@ export const fetchAirQuality = createAsyncThunk(
 
 export const fetchCurrentWeatherFromWeatherApi = createAsyncThunk(
   'getCurrentWeatherAdditional',
-  async (_, { getState, rejectWithValue }) => {
+  async ({ lat, long }, { getState, rejectWithValue }) => {
     try {
+      if (lat && long) {
+        const result = await getCurrentWeatherFromWeatherApi(lat, long);
+        return result;
+      }
       const { location } = getState();
       const result = await getCurrentWeatherFromWeatherApi(
         location.latitude,
@@ -111,8 +123,12 @@ export const fetchCurrentWeatherFromWeatherApi = createAsyncThunk(
 
 export const fetchWeatherForecastFromWeatherApi = createAsyncThunk(
   'getWeatherForecast',
-  async (_, { getState, rejectWithValue }) => {
+  async ({ lat, long }, { getState, rejectWithValue }) => {
     try {
+      if (lat && long) {
+        const result = await getWeatherForecastFromWeatherApi(lat, long);
+        return result.forecast.forecastday;
+      }
       const { location } = getState();
       const result = await getWeatherForecastFromWeatherApi(
         location.latitude,
@@ -128,8 +144,12 @@ export const fetchWeatherForecastFromWeatherApi = createAsyncThunk(
 
 export const fetchAstroDataFromWeatherApi = createAsyncThunk(
   'getAstrodata',
-  async (_, { getState, rejectWithValue }) => {
+  async ({ lat, long }, { getState, rejectWithValue }) => {
     try {
+      if (lat && long) {
+        const result = await getAstroDataFromWeatherApi(lat, long);
+        return result.astronomy.astro;
+      }
       const { location } = getState();
       const result = await getAstroDataFromWeatherApi(
         location.latitude,
@@ -179,24 +199,6 @@ export const fetchGeoImage = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const data = await getImagePexels('city');
-      if (data) {
-        const pics = [];
-        data.forEach(el => pics.push(el.src));
-        return pics;
-      }
-      return;
-    } catch (error) {
-      console.log(error);
-      return rejectWithValue(error);
-    }
-  }
-);
-
-export const fetchSearchedCityImage = createAsyncThunk(
-  'getSearchedCityImage',
-  async (city, { rejectWithValue }) => {
-    try {
-      const data = await getImagePexels(city);
       if (data) {
         const pics = [];
         data.forEach(el => pics.push(el.src));
