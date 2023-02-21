@@ -1,6 +1,8 @@
 import { ButtonUI } from 'components/Button/Button';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import Notiflix from 'notiflix';
+import { notifySettings } from 'utils/notifySettings';
 import {
   fetchAirQuality,
   fetchAstroDataFromWeatherApi,
@@ -52,7 +54,7 @@ export const SearchForm = ({
   const handleSubmit = event => {
     event.preventDefault();
     if (!selectedCity) {
-      console.log('Select city');
+      Notiflix.Notify.info('You should select city', notifySettings);
     }
     if (selectedCity) {
       dispatch(setLatitude(lat));
@@ -63,8 +65,8 @@ export const SearchForm = ({
       dispatch(fetchWeatherForecastFromWeatherApi({ lat, long }));
       dispatch(fetchCurrentWeather({ lat, long, timezone }));
       dispatch(fetchAirQuality({ lat, long, timezone }));
-      dispatch(fetchPexelsImage(city));
       setSelection(true);
+      dispatch(fetchPexelsImage(city));
     }
 
     resetForm();
@@ -77,7 +79,7 @@ export const SearchForm = ({
     if (!city) return;
 
     const res = await fetchCityByName(city);
-    // console.log(res);
+
     !autocompleteCities.includes(e.target.value) &&
       res &&
       setAutocompleteCities(
@@ -122,7 +124,6 @@ export const SearchForm = ({
             {autocompleteErr && <InputError>{autocompleteErr}</InputError>}
           </Label>
           <Input
-            list="places"
             type="text"
             id="city"
             name="city"
