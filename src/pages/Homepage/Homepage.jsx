@@ -67,6 +67,9 @@ const Homepage = () => {
       dispatch(
         fetchWeatherForecastFromWeatherApi(coords.latitude, coords.longitude)
       );
+      if (city) {
+        dispatch(fetchPexelsImage(city));
+      }
     }
     if (!isGeolocationAvailable || !isGeolocationEnabled || !city) {
       dispatch(setLatitude(DEFAULT_LATITUDE));
@@ -87,6 +90,7 @@ const Homepage = () => {
           DEFAULT_LONGITUDE,
         })
       );
+      dispatch(fetchPexelsImage('Dnipro'));
     }
     return;
   }, [city, coords, dispatch, isGeolocationAvailable, isGeolocationEnabled]);
@@ -97,13 +101,6 @@ const Homepage = () => {
       dispatch(fetchAirQuality({ latitude, longitude, timezone }));
     }
   }, [dispatch, extraWeather, latitude, longitude, timezone]);
-
-  useEffect(() => {
-    console.log(city);
-    if (city) {
-      dispatch(fetchPexelsImage(city));
-    }
-  }, [city, dispatch]);
 
   return (
     <main

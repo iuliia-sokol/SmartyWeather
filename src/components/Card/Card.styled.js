@@ -37,10 +37,9 @@ export const View = styled.div`
       : p.page === 'history'
       ? `url(${paper})`
       : `url(${compass})`};
-  /* background-repeat: no-repeat; */
-  /* background-position: top center; */
+  background-position: ${p => (p.page === 'home' ? 'unset' : 'top center')};
 
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002f4b', endColorstr='#00000000',GradientType=0 );
+  /* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002f4b', endColorstr='#00000000',GradientType=0 ); */
   opacity: ${p =>
     p.page === 'home' ? '0.8' : p.page === 'history' ? '0.5' : '0.05'};
 `;

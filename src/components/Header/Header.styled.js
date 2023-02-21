@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const HeaderWrapper = styled.header`
-  z-index: 20;
+  z-index: 100;
 `;
 
 export const HeaderContentWrapper = styled.div`
@@ -15,7 +15,7 @@ export const LogoWrapper = styled.div`
 
 export const LinksWrapper = styled.div`
   min-width: 10vw;
-  gap: 16px;
+  gap: 20px;
   display: flex;
   justify-content: space-between;
 `;
