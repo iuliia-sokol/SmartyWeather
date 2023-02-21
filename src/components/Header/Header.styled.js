@@ -18,4 +18,5 @@ export const LinksWrapper = styled.div`
   gap: 20px;
   display: flex;
   justify-content: space-between;
+  z-index: 10;
 `;
