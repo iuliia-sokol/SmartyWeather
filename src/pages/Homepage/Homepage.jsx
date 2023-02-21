@@ -99,6 +99,7 @@ const Homepage = () => {
   }, [dispatch, extraWeather, latitude, longitude, timezone]);
 
   useEffect(() => {
+    console.log(city);
     if (city) {
       dispatch(fetchPexelsImage(city));
     }
