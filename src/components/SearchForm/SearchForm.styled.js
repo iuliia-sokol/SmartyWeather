@@ -75,11 +75,31 @@ export const Input = styled.input`
 
 export const DataList = styled.ul`
   border-radius: 16px;
-
   max-height: 30vh;
   max-width: 100%;
   overflow-y: scroll;
   background-color: rgba(255, 255, 255, 0.63);
+
+  /* ::-webkit-scrollbar {
+    width: 10px;
+
+    overflow: hidden;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: ${p => p.theme.colors.bgGrey};
+    border-radius: 30px;
+    max-height: 90%;
+    background-image: url('https://www.transparenttextures.com/patterns/black-paper.png');
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: ${p => p.theme.colors.textGrey};
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #8bba98;
+  } */
 `;
 
 export const Option = styled.li`

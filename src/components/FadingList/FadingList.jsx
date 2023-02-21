@@ -5,15 +5,9 @@ export function FadeInSection(props) {
   const domRef = React.useRef();
   React.useEffect(() => {
     const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setVisible(entry.isIntersecting);
-        }
-      });
+      entries.forEach(entry => setVisible(entry.isIntersecting));
     });
     observer.observe(domRef.current);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    return () => observer.unobserve(domRef.current);
   }, []);
   return (
     <li
