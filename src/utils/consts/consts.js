@@ -12,6 +12,7 @@ export const ABSTRACT_API_URL = 'https://timezone.abstractapi.com/v1/';
 export const HISTORY_API_URL = 'https://byabbe.se/on-this-day/';
 export const OPEN_METEO_SEARCH_URL =
   'https://geocoding-api.open-meteo.com/v1/search';
+export const FLAGS_URL = 'https://hatscripts.github.io/circle-flags/flags/';
 
 export const PLACES_KEY = process.env.REACT_APP_MAP_API_KEY;
 export const WEATHER_KEY = process.env.REACT_APP_WEATHER_API_KEY;

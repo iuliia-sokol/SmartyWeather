@@ -12,6 +12,7 @@ import {
 } from 'redux/location/locOperations';
 import { setLatitude, setLongitude } from 'redux/location/locSlice';
 import { fetchCityByName } from 'services/citySearchAPI';
+import { FLAGS_URL } from 'utils/consts/consts';
 import {
   CityName,
   DataList,
@@ -30,7 +31,6 @@ export const SearchForm = ({
   hideSuggs,
   isHideSuggs,
   setIsHideSuggs,
-  selection,
   setSelection,
 }) => {
   const [city, setCity] = useState('');
@@ -108,7 +108,6 @@ export const SearchForm = ({
     setCity('');
     setAutocompleteCities([]);
     setAutocompleteErr('');
-    setSelection(false);
     hideSuggs();
   };
 
@@ -146,7 +145,7 @@ export const SearchForm = ({
                 }}
               >
                 <img
-                  src={`https://hatscripts.github.io/circle-flags/flags/${item.country}.svg`}
+                  src={`${FLAGS_URL}${item.country}.svg`}
                   width="30"
                   alt="flag"
                 />

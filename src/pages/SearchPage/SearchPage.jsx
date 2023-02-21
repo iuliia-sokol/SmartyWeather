@@ -19,6 +19,8 @@ const SearchPage = () => {
   const [isHideSuggs, setIsHideSuggs] = useState(false);
   const [selection, setSelection] = useState(false);
 
+  console.log(selection);
+
   useEffect(() => {
     if (city && images.length === 0) {
       dispatch(fetchGeoImage());
