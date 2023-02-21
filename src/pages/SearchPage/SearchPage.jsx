@@ -11,17 +11,11 @@ import {
   getGeoImages,
   getCurrentWeather,
 } from 'redux/location/locSelectors';
-import { setInitState } from 'redux/location/locSlice';
 
 const { Container } = require('components/Container/Container');
 
 const SearchPage = () => {
   const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(setInitState());
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
 
   const city = useSelector(getCityName);
   const weather = useSelector(getCurrentWeather);
