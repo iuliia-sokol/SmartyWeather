@@ -1,10 +1,10 @@
 {
   "files": {
     "main.css": "/smartyWeather/static/css/main.75163eca.css",
-    "main.js": "/smartyWeather/static/js/main.3b612fa5.js",
+    "main.js": "/smartyWeather/static/js/main.d21d828b.js",
     "static/js/469.8feee578.chunk.js": "/smartyWeather/static/js/469.8feee578.chunk.js",
-    "static/js/782.b448ddd8.chunk.js": "/smartyWeather/static/js/782.b448ddd8.chunk.js",
-    "static/js/941.0f08ba81.chunk.js": "/smartyWeather/static/js/941.0f08ba81.chunk.js",
+    "static/js/782.c9743e51.chunk.js": "/smartyWeather/static/js/782.c9743e51.chunk.js",
+    "static/js/941.14f72b36.chunk.js": "/smartyWeather/static/js/941.14f72b36.chunk.js",
     "static/js/68.f207d139.chunk.js": "/smartyWeather/static/js/68.f207d139.chunk.js",
     "static/js/737.002a5876.chunk.js": "/smartyWeather/static/js/737.002a5876.chunk.js",
     "static/js/686.f6b4c26a.chunk.js": "/smartyWeather/static/js/686.f6b4c26a.chunk.js",
@@ -42,10 +42,10 @@
     "static/media/weatherapi_logo.webp": "/smartyWeather/static/media/weatherapi_logo.af450c6284e707be9279.webp",
     "index.html": "/smartyWeather/index.html",
     "main.75163eca.css.map": "/smartyWeather/static/css/main.75163eca.css.map",
-    "main.3b612fa5.js.map": "/smartyWeather/static/js/main.3b612fa5.js.map",
+    "main.d21d828b.js.map": "/smartyWeather/static/js/main.d21d828b.js.map",
     "469.8feee578.chunk.js.map": "/smartyWeather/static/js/469.8feee578.chunk.js.map",
-    "782.b448ddd8.chunk.js.map": "/smartyWeather/static/js/782.b448ddd8.chunk.js.map",
-    "941.0f08ba81.chunk.js.map": "/smartyWeather/static/js/941.0f08ba81.chunk.js.map",
+    "782.c9743e51.chunk.js.map": "/smartyWeather/static/js/782.c9743e51.chunk.js.map",
+    "941.14f72b36.chunk.js.map": "/smartyWeather/static/js/941.14f72b36.chunk.js.map",
     "68.f207d139.chunk.js.map": "/smartyWeather/static/js/68.f207d139.chunk.js.map",
     "737.002a5876.chunk.js.map": "/smartyWeather/static/js/737.002a5876.chunk.js.map",
     "686.f6b4c26a.chunk.js.map": "/smartyWeather/static/js/686.f6b4c26a.chunk.js.map",
@@ -53,6 +53,6 @@
   },
   "entrypoints": [
     "static/css/main.75163eca.css",
-    "static/js/main.3b612fa5.js"
+    "static/js/main.d21d828b.js"
   ]
 }
