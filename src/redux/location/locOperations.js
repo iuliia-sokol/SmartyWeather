@@ -127,6 +127,7 @@ export const fetchWeatherForecastFromWeatherApi = createAsyncThunk(
     try {
       if (lat && long) {
         const result = await getWeatherForecastFromWeatherApi(lat, long);
+
         return result.forecast.forecastday;
       }
       const { location } = getState();

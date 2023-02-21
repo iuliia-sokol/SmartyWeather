@@ -55,6 +55,14 @@ export const locationSlice = createSlice({
       ...state,
       longitude: payload,
     }),
+    setCityBySelection: (state, { payload }) => ({
+      ...state,
+      city: payload,
+    }),
+    setCountryBySelection: (state, { payload }) => ({
+      ...state,
+      country: payload,
+    }),
     setInitState: (state, { payload }) => ({
       ...initialState,
     }),
@@ -169,14 +177,15 @@ export const locationSlice = createSlice({
       .addCase(fetchGeoImage.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
-      })
-     ;
+      });
   },
 });
 
 export const { setLongitude } = locationSlice.actions;
 export const { setLatitude } = locationSlice.actions;
 export const { setInitState } = locationSlice.actions;
+export const { setCityBySelection } = locationSlice.actions;
+export const { setCountryBySelection } = locationSlice.actions;
 
 export default locationSlice.reducer;
 

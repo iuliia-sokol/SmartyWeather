@@ -1,3 +1,4 @@
+import { ButtonUI } from 'components/Button/Button';
 import { CardUI } from 'components/Card/Card';
 import { MainBoxUI } from 'components/MainBox/MainBox';
 import { SearchForm } from 'components/SearchForm/SearchForm';
@@ -40,6 +41,8 @@ const SearchPage = () => {
     setIsHideSuggs(true);
   };
 
+  // console.log(selection, weather, extraWeather);
+
   return (
     <main
       style={{
@@ -60,7 +63,12 @@ const SearchPage = () => {
           selection={selection}
           setSelection={setSelection}
         />
-        {selection && weather && extraWeather && <MainBoxUI />}
+        {selection && weather && extraWeather && (
+          <>
+            <ButtonUI text="Search other location" />
+            <MainBoxUI />
+          </>
+        )}
       </Container>
     </main>
   );

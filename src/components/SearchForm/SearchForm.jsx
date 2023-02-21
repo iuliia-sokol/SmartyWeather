@@ -6,13 +6,17 @@ import { notifySettings } from 'utils/notifySettings';
 import {
   fetchAirQuality,
   fetchAstroDataFromWeatherApi,
-  fetchCity,
   fetchCurrentWeather,
   fetchCurrentWeatherFromWeatherApi,
   fetchPexelsImage,
   fetchWeatherForecastFromWeatherApi,
 } from 'redux/location/locOperations';
-import { setLatitude, setLongitude } from 'redux/location/locSlice';
+import {
+  setLatitude,
+  setLongitude,
+  setCityBySelection,
+  setCountryBySelection,
+} from 'redux/location/locSlice';
 import { fetchCityByName } from 'services/citySearchAPI';
 import { FLAGS_URL } from 'utils/consts/consts';
 import {
@@ -36,6 +40,7 @@ export const SearchForm = ({
   setSelection,
 }) => {
   const [city, setCity] = useState('');
+  const [country, setCountry] = useState('');
   const [selectedCity, setSelectedCity] = useState('');
   const [lat, setLat] = useState('');
   const [long, setLong] = useState('');
@@ -59,7 +64,8 @@ export const SearchForm = ({
     if (selectedCity) {
       dispatch(setLatitude(lat));
       dispatch(setLongitude(long));
-      dispatch(fetchCity({ lat, long }));
+      dispatch(setCityBySelection(city));
+      dispatch(setCountryBySelection(country));
       dispatch(fetchAstroDataFromWeatherApi({ lat, long }));
       dispatch(fetchCurrentWeatherFromWeatherApi({ lat, long }));
       dispatch(fetchWeatherForecastFromWeatherApi({ lat, long }));
@@ -83,26 +89,30 @@ export const SearchForm = ({
     !autocompleteCities.includes(e.target.value) &&
       res &&
       setAutocompleteCities(
-        res.map(place => {
-          if (place.admin1) {
+        res
+          .filter(place => place.feature_code !== 'AIRP')
+          .map(place => {
+            if (place.admin1) {
+              return {
+                city: place.name,
+                countryName: place.country,
+                region: place.admin1,
+                countryCode: place.country_code.toLowerCase(),
+                latitude: place.latitude,
+                longitude: place.longitude,
+                timezone: place.timezone,
+              };
+            }
             return {
               city: place.name,
-              region: place.admin1,
-              country: place.country_code.toLowerCase(),
+              countryName: place.country,
+              region: '',
+              countryCode: place.country_code.toLowerCase(),
               latitude: place.latitude,
               longitude: place.longitude,
               timezone: place.timezone,
             };
-          }
-          return {
-            city: place.name,
-            region: '',
-            country: place.country_code.toLowerCase(),
-            latitude: place.latitude,
-            longitude: place.longitude,
-            timezone: place.timezone,
-          };
-        })
+          })
       );
     if (res && res.error) {
       setAutocompleteErr(res.error);
@@ -146,17 +156,18 @@ export const SearchForm = ({
                   setLat(item.latitude);
                   setLong(item.longitude);
                   setTimezone(item.timezone);
+                  setCountry(item.countryName);
                   setSelectedCity(true);
                 }}
               >
                 <img
-                  src={`${FLAGS_URL}${item.country}.svg`}
+                  src={`${FLAGS_URL}${item.countryCode}.svg`}
                   width="30"
                   alt="flag"
                 />
 
                 <CityName>
-                  {item.city}, {item.region}
+                  {item.city}, {item.region}, {item.countryName}
                 </CityName>
               </Option>
             ))}
