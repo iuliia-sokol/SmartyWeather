@@ -11,7 +11,8 @@ export const Form = styled.form`
   margin: 0 auto;
   margin-bottom: 56px;
   gap: 32px;
-  box-shadow: -5px -5px 80px #fff, 5px 5px 20px #babecc;
+  box-shadow: inset -5px -5px 9px rgba(255, 255, 255, 0.45),
+    inset 5px 5px 9px rgba(94, 104, 121, 0.3);
   backdrop-filter: blur(5.3px);
   -webkit-backdrop-filter: blur(5.3px);
   border: 1px solid rgba(255, 255, 255, 0.77);
