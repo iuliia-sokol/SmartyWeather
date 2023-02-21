@@ -56,6 +56,7 @@ export const CardUI = ({ selector, page }) => {
 
     if (currentWeather) {
       setWeatherCode(currentWeather.condition.code);
+      // setWeatherCode(1063);
     }
     if (
       weatherCode === 1066 ||

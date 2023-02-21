@@ -9,13 +9,12 @@ const movimiento = keyframes`
 
 export const EarthContainer = styled.div`
   position: relative;
-  background-color: rgba(0, 0, 0, 0.48);
+  /* background-color: rgba(0, 0, 0, 0.48); */
   height: 65px;
   width: 65px;
   border-radius: 50%;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
   z-index: 10;
-  overflow: hidden;
 `;
 
 export const Elipse = styled.svg`
