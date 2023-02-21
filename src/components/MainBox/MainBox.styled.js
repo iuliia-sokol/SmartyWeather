@@ -92,6 +92,7 @@ export const CityName = styled.p`
 
 export const WeatherConditions = styled.div`
   padding: 10px;
+  max-width: 50%;
   margin-bottom: 20px;
   color: ${p => p.theme.colors.mainLight};
   font-family: ${p => p.theme.fonts.main};
