@@ -12,8 +12,9 @@ export const ButtonMain = styled.button`
   font-size: 20px;
   line-height: ${p => p.theme.lineHeights.main};
   color: ${p =>
-    p.color === 'white' ? p.theme.colors.mainLight : p.theme.colors.textGrey};
+    p.color === 'white' ? p.theme.colors.mainDark : p.theme.colors.textGrey};
   text-align: center;
+
   text-transform: uppercase;
   border: none;
   background-color: transparent;

@@ -11,6 +11,7 @@ import {
   getCityName,
   getGeoImages,
   getCurrentWeather,
+  getForcast,
 } from 'redux/location/locSelectors';
 
 const { Container } = require('components/Container/Container');
@@ -22,6 +23,7 @@ const SearchPage = () => {
   const weather = useSelector(getCurrentWeather);
   const extraWeather = useSelector(getAdditionalCurrentWeather);
   const images = useSelector(getGeoImages);
+  const forecast = useSelector(getForcast);
   const elementRef = useRef();
   const [isHideSuggs, setIsHideSuggs] = useState(false);
   const [selection, setSelection] = useState(false);
@@ -63,7 +65,7 @@ const SearchPage = () => {
           selection={selection}
           setSelection={setSelection}
         />
-        {selection && weather && extraWeather && (
+        {selection && weather && extraWeather && forecast && (
           <>
             <ButtonUI text="Search other location" />
             <MainBoxUI />

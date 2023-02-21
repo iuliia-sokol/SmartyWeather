@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Form = styled.form`
   box-sizing: border-box;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   height: fit-content;
@@ -37,7 +38,7 @@ export const PlacesAutocomplete = styled.div`
 `;
 
 export const InputWrap = styled.div`
-  padding: 8px;
+  max-width: 100%;
 `;
 
 export const Label = styled.label`
@@ -56,12 +57,14 @@ export const InputError = styled.span`
 
 export const Input = styled.input`
   border-radius: 16px;
+  margin-bottom: 8px;
   border: none;
   box-sizing: border-box;
   display: block;
   height: 42px;
   padding: 12px 16px;
   width: 100%;
+  max-width: 100%;
   background-color: rgba(255, 255, 255, 0.63);
   font-size: 16px;
 
@@ -72,7 +75,9 @@ export const Input = styled.input`
 
 export const DataList = styled.ul`
   border-radius: 16px;
-  max-height: 20vh;
+
+  max-height: 30vh;
+  max-width: 100%;
   overflow-y: scroll;
   background-color: rgba(255, 255, 255, 0.63);
 `;
@@ -82,6 +87,7 @@ export const Option = styled.li`
   align-items: center;
   gap: 12px;
   padding: 8px 16px;
+  max-width: 100%;
 `;
 
 export const PlacesAutocompleteHint = styled.span`
