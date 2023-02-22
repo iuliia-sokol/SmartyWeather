@@ -7,8 +7,7 @@ import {
   // GOOGLE_MAPS_URL,
   // PLACES_KEY,
 } from 'utils/consts/consts';
-// import Notiflix from 'notiflix';
-// import { notifySettings } from 'utils/notifySettings';
+
 
 export async function getImagePexels(query) {
   const searchParams = new URLSearchParams({
@@ -24,7 +23,6 @@ export async function getImagePexels(query) {
   );
   if (response.status === 404) {
     console.log('No pics found for this place', response);
-    // Notiflix.Notify.failure('No pics found for this place', notifySettings);
     return Promise.reject();
   }
   return response.data.photos;

@@ -50,8 +50,6 @@ export const HourlyChartsAirUI = () => {
     };
   });
 
-  //   console.log(hourlyData);
-
   return (
     <ChartsWrapper>
       <ResponsiveContainer width="100%" height="100%">
