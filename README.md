@@ -31,7 +31,7 @@ Implemented user stories:
 
 NOTE: For better user experience run the App on your desktop, when the weather
 is not friendly: it's raining cats and dogs, snowing etc. This way you can
-experience beautifull animated background effects. Enjoy =)
+experience beautiful animated background effects. Enjoy =)
 
 ## Authors
 
