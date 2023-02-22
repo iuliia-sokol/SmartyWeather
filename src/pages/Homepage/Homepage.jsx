@@ -1,12 +1,14 @@
+import React, { useEffect } from 'react';
+import { useGeolocated } from 'react-geolocated';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { CardUI } from 'components/Card/Card';
 import { DEFAULT_LATITUDE, DEFAULT_LONGITUDE } from 'utils/consts/consts';
 import { Container } from 'components/Container/Container';
 import { Loader } from 'components/Loader/Loader';
 import { MainBoxUI } from 'components/MainBox/MainBox';
 import { TextLine } from 'components/TextLine/TextLine';
-import React, { useEffect } from 'react';
-import { useGeolocated } from 'react-geolocated';
-import { useDispatch, useSelector } from 'react-redux';
+
 import {
   fetchAirQuality,
   fetchAstroDataFromWeatherApi,
