@@ -64,12 +64,14 @@ export const fetchCurrentWeather = createAsyncThunk(
         return result;
       }
       const { location } = getState();
-      const result = await getCurrentWeather(
-        +location.latitude,
-        +location.longitude,
-        location.timezone
-      );
-      return result;
+      if (location.latitude && location.longitude && location.timezone) {
+        const result = await getCurrentWeather(
+          +location.latitude,
+          +location.longitude,
+          location.timezone
+        );
+        return result;
+      }
     } catch (error) {
       console.log(error);
       return rejectWithValue(error);
@@ -86,12 +88,14 @@ export const fetchAirQuality = createAsyncThunk(
         return result;
       }
       const { location } = getState();
-      const result = await getAirQuality(
-        +location.latitude,
-        +location.longitude,
-        location.timezone
-      );
-      return result;
+      if (location.latitude && location.longitude && location.timezone) {
+        const result = await getAirQuality(
+          +location.latitude,
+          +location.longitude,
+          location.timezone
+        );
+        return result;
+      }
     } catch (error) {
       console.log(error);
       return rejectWithValue(error);
