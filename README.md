@@ -33,6 +33,20 @@ NOTE: For better user experience run the App on your desktop, when the weather
 is not friendly: it's raining cats and dogs, snowing etc. This way you can
 experience beautiful animated background effects. Enjoy =)
 
+## Demo
+
+Homepage:
+
+![How it works](demo-home.gif)
+
+Search page:
+
+![How it works](demo-search.gif)
+
+History page:
+
+![How it works](history-demo.gif)
+
 ## Authors
 
 The project (from design to code) was created by me.

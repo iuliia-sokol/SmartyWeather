@@ -14,7 +14,6 @@ const client = createClient(`${PEXELS_KEY}`);
 
 export async function getImagePexels(query) {
   const result = await client.photos.search({query, orientation:'landscape',})
-  console.log(result);
   return result.photos
 }
 
