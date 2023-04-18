@@ -1,31 +1,21 @@
-import axios from 'axios';
+// import axios from 'axios';
 import {
   PEXELS_KEY,
-  PEXELS_URL,
   // PIXABAY_KEY,
   // PIXABAY_URL,
   // GOOGLE_MAPS_URL,
   // PLACES_KEY,
 } from 'utils/consts/consts';
 
+import { createClient } from 'pexels';
+
+const client = createClient(`${PEXELS_KEY}`);
+
 
 export async function getImagePexels(query) {
-  const searchParams = new URLSearchParams({
-    query: query,
-    orientation: 'landscape',
-  });
-  const response = await axios.get(
-    `${PEXELS_URL}${searchParams},{
-  headers: {
-    Authorization: ${PEXELS_KEY}
-  }
-}`
-  );
-  if (response.status === 404) {
-    console.log('No pics found for this place', response);
-    return Promise.reject();
-  }
-  return response.data.photos;
+  const result = await client.photos.search({query, orientation:'landscape',})
+  console.log(result);
+  return result.photos
 }
 
 // ALTERNATIVE API FOR FETCHING IMAGES
