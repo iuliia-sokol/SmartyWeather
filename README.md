@@ -64,7 +64,7 @@ The project (from design to code) was created by me.
 
 ## Tech Stack
 
-**Back** Swagger (https://byabbe.se/on-this-day/), Weather API, Open-meteo API,
+**Back:** Swagger (https://byabbe.se/on-this-day/), Weather API, Open-meteo API,
 Google Places API, Pexels API
 
 **Front:** React, Redux
