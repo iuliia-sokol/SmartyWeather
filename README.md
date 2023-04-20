@@ -39,6 +39,10 @@ Homepage:
 
 ![How it works](demo-home.gif)
 
+When its raining: 
+
+![How it works](demo-rainy.gif)
+
 Search page:
 
 ![How it works](demo-search.gif)
