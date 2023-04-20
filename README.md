@@ -30,7 +30,11 @@ Implemented user stories:
 - User can get historical data for today's date.
 
 NOTE: For better user experience run the App on your desktop, when the weather
-is not friendly: it's raining cats and dogs, snowing etc. This way you can
+is not friendly: it's raining cats and dogs, snowing etc.
+
+![How it works](demo-rainy.gif)
+
+This way you can
 experience beautiful animated background effects. Enjoy =)
 
 ## Demo
@@ -39,9 +43,7 @@ Homepage:
 
 ![How it works](demo-home.gif)
 
-When it's raining: 
 
-![How it works](demo-rainy.gif)
 
 Search page:
 
