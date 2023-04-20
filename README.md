@@ -39,7 +39,7 @@ Homepage:
 
 ![How it works](demo-home.gif)
 
-When its raining: 
+When it's raining: 
 
 ![How it works](demo-rainy.gif)
 
